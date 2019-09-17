@@ -1,57 +1,80 @@
-import React, {useState} from "react";
+import React from "react";
+import styled from "styled-components";
+import { greyBackground, green, greenDark, black } from "./constants/colors";
 
-import "../styles/slider.css";
-
-export default function Slider(props) {
+const Slider = (props) => {
 
     const style = {
-        dataView: {
+        minLabel:{
             display: 'flex',
             flex: 1,
-            marginTop: 4
+            fontFamily: '"Open Sans", sans-serif',
+            color: black,
+            fontSize: 14,
+            ...props.labelStyle
         },
-        
+        maxLabel:{
+            display: 'flex',
+            flex: 1,
+            fontFamily: '"Open Sans", sans-serif',
+            justifyContent: 'flex-end',
+            color: black,
+            fontSize: 14,
+            ...props.labelStyle
+        },
+        labelContainer:{
+            display: 'flex', 
+            flex: 1, 
+            marginTop: 4
+        }
     }
 
-    const [value, setValue] = useState(() => {
-        if(props.value){
-            return props.value;
+    const SliderStyled = styled.input`
+        -webkit-appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 4px;   
+        background: ${greyBackground};
+        outline: none;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+
+        ::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%; 
+            background: ${green};
+            border: 2px solid ${greenDark};
+            cursor: pointer;
         }
-        else{
-            return (props.maxValue - props.minValue)/2;
-        }
-    });
+    `
 
     return (
         <section>
-            <input
-                className="slider"
+            <SliderStyled
                 type="range"
-                min={props.minValue ? props.minValue.toString() : 0}
-                max={props.maxValue ? props.maxValue.toString() : 100}
-                value={value}
-                onChange={(e) => {
-                    setValue(e.target.value);
-                    props.onChange(e.target.value);
-                }}
-                onBlur={() => props.onBlur(value)}
+                {...props}
             />
-            <div style={style.dataView}>
-                <div style={{display: 'flex', flex: 1}}>
+            <div style={style.labelContainer}>
+                <div style={style.minLabel}>
                     {props.unit ?
-                        <label>{props.minValue+" "+props.unit}</label>
+                        <label>{props.min+" "+props.unit}</label>
                     :
-                        <label>{props.minValue}</label>
+                        <label>{props.min}</label>
                     }
                 </div>
-                <div style={{display: 'flex', flex: 1, justifyContent: 'flex-end'}}>
+                <div style={style.maxLabel}>
                     {props.unit ?
-                        <label>{props.maxValue+" "+props.unit}</label>
+                        <label>{props.max+" "+props.unit}</label>
                     :
-                        <label>{props.maxValue}</label>
+                        <label>{props.max}</label>
                     }
                 </div>
             </div>
         </section>
     )
 }
+
+export default Slider;

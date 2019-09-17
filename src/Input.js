@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { softGrey, greyishBrown } from "./constants/colors";
+import { greyBackground, black } from "./constants/colors";
 
 const Input = props => {
     const InputStyled = styled.input`
@@ -9,10 +9,11 @@ const Input = props => {
         font-size: 16px;
         line-height: 1.5px;
         padding: 4px 16px;
-        background-color: ${props => (props.badInput ? "#fff" : softGrey)};
+        background-color: ${props => (props.badInput ? "#fff" : greyBackground)};
         border: ${props =>
             props.badInput ? "1px solid #fa504c" : "1px solid transparent"};
-        color: ${greyishBrown};
+        color: ${black};
+        font-family: "Open Sans", sans-serif;
         outline: none;
         ${props => props.style};
         ${props => props.inputStyle};

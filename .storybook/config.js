@@ -6,7 +6,10 @@ import { configure } from "@storybook/react";
 // });
 
 function loadStories() {
-    require("../stories/input/index.js");
+    require("../stories/input.js");
+    require("../stories/radio-button.js");
+    require("../stories/search-bar.js");
+    require("../stories/slider.js");
 }
 
 configure(loadStories, module);
