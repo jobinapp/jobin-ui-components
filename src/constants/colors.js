@@ -1,0 +1,15 @@
+export const greyish = "#b0b0b0";
+export const coral = "#fa504c";
+export const coralDark = "#cf3b38";
+export const coralDarker = "#500200";
+export const warmGrey = "#848484";
+export const whiteTwo = "#e2e2e2";
+export const whiteFour = "#f0eee9";
+export const lightGrey = "#e7e3db";
+export const aquaJobin = "#05afb4";
+export const aquaJobinDarker = "#048285";
+export const boneLight = "#f8f7f6";
+export const greyishBrown = "#444444";
+export const softGrey = "#f2f2f2";
+export const blackJobin = "#202020";
+export const colorGreyMedium = "#b0b0b0";
