@@ -14,7 +14,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook",
-    "deploy-storybook": "storybook-to-ghpages"
+    "build-storybook": "build-storybook -c .storybook -o docs"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,7 +35,6 @@
     "@babel/core": "^7.6.0",
     "@storybook/addon-backgrounds": "^5.2.0",
     "@storybook/react": "^5.2.0",
-    "@storybook/storybook-deployer": "^2.8.1",
     "babel-loader": "^8.0.6"
   }
 }
