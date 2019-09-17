@@ -2,8 +2,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import Slider from "../src/Slider";
 
-storiesOf("Slider", module)
-    .add("Generic", () =>
+storiesOf("Components|Slider", module)
+    .add("Default", () =>
         <div style={{width: 250}}>
             <Slider
                 min={0}

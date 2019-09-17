@@ -2,8 +2,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import Input from "../src/Input";
 
-storiesOf("Input", module)
-    .add("Generic", () =>
+storiesOf("Components|Input", module)
+    .add("Default", () =>
         <Input
             placeholder="Escribe aquí..."
         />

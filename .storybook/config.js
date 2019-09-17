@@ -10,6 +10,7 @@ function loadStories() {
     require("../stories/radio-button.js");
     require("../stories/search-bar.js");
     require("../stories/slider.js");
+    require("../stories/constants.js");
 }
 
 configure(loadStories, module);
