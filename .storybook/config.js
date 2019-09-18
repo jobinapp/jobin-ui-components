@@ -6,11 +6,11 @@ import { configure } from "@storybook/react";
 // });
 
 function loadStories() {
-    require("../stories/input.js");
-    require("../stories/radio-button.js");
-    require("../stories/search-bar.js");
-    require("../stories/slider.js");
-    require("../stories/constants.js");
+    require("../stories/basics/input/input.js");
+    require("../stories/basics/radio-button.js");
+    require("../stories/basics/input/search-bar.js");
+    require("../stories/basics/slider.js");
+    require("../stories/others/constants.js");
 }
 
 configure(loadStories, module);

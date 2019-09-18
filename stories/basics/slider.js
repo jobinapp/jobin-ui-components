@@ -1,8 +1,8 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import Slider from "../src/Slider";
+import Slider from "../../src/basics/Slider";
 
-storiesOf("Components|Slider", module)
+storiesOf("Basics|Slider", module)
     .add("Default", () =>
         <div style={{width: 250}}>
             <Slider

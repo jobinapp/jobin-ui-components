@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { greyBackground, greyLight, greyMedium, black } from "./constants/colors";
+import { greyBackground, greyLight, greyMedium, black } from "../../constants/colors";
 
 const SearchBar = (props) => {
 

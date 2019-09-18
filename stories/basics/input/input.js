@@ -1,8 +1,8 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import Input from "../src/Input";
+import Input from "../../../src/basics/input/Input";
 
-storiesOf("Components|Input", module)
+storiesOf("Basics|Inputs/Input", module)
     .add("Default", () =>
         <Input
             placeholder="Escribe aquí..."

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import { black } from "./constants/colors";
+import { black } from "../constants/colors";
 
 const RadioButton = (props) => {
 
