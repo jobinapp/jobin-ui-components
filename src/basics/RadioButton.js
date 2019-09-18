@@ -4,7 +4,7 @@ import { black } from "../constants/colors";
 
 const RadioButton = (props) => {
 
-    const [selected, setSelected] = useState(false);
+    const [selected, setSelected] = useState(props.selected);
 
     const Container = styled.div`
         display: flex;

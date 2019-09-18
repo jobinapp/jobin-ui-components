@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Fuse from "fuse.js";
 
 import FilterCustom from "./FilterCustom";
-import SearchBar from "../SearchBar";
+import SearchBar from "../basics/input/SearchBar";
+import CheckBox from '../basics/CheckBox';
 
 const fuseOptions = {
     shouldSort: true,
@@ -14,7 +15,8 @@ const fuseOptions = {
     keys: ["name"]
 };
 
-export default function FilterMultipleSelection(props) {
+const FilterMultipleSelection = (props) => {
+    
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState(props.title);
     const [selectionArray, setSelectionArray] = useState(
@@ -157,65 +159,23 @@ export default function FilterMultipleSelection(props) {
         return (
             <div className="items-filter">
                 <SearchBar
-                    style={{height: 36, width: 180}}
+                    style={{height: 36, width: 180, marginBottom: 16}}
                     styleinput={{height: 36}}
                     placeholder={"Filtrar"}
                     onChange={e => setQuery(e.target.value)}
                 />
                 <div className="options">
-                    <ul>
-                        {data.map(item => {
-                            return (
-                                <li key={`${item.name}-${item.id}`}>
-                                    <label htmlFor={item.id}>
-                                        <input
-                                            id={item.id}
-                                            type="checkbox"
-                                            className="native-hidden"
-                                            onChange={() =>
-                                                optionSelected(item)
-                                            }
-                                        />
-                                        <svg
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <g fill="none" fillRule="evenodd">
-                                                <path d="M0 0h24v24H0z" />
-                                                {item.selected ? (
-                                                    <React.Fragment>
-                                                        <rect
-                                                            width="22"
-                                                            height="22"
-                                                            x="1"
-                                                            y="1"
-                                                            fill="#05AFB4"
-                                                            rx="2"
-                                                        />
-                                                        <path
-                                                            fill="#FFF"
-                                                            d="M9.615 14.279L7.742 12.36a1.002 1.002 0 0 0-1.443 0 1.06 1.06 0 0 0 0 1.477l2.594 2.656a1.002 1.002 0 0 0 1.443 0l6.165-6.311a1.06 1.06 0 0 0 0-1.477 1.002 1.002 0 0 0-1.443 0L9.615 14.28z"
-                                                        />
-                                                    </React.Fragment>
-                                                ) : (
-                                                    <rect
-                                                        width="21"
-                                                        height="21"
-                                                        x="1.5"
-                                                        y="1.5"
-                                                        stroke="#444444"
-                                                        rx="2"
-                                                    />
-                                                )}
-                                            </g>
-                                        </svg>
-                                        <span>{item.name}</span>
-                                    </label>
-                                </li>
-                            );
-                        })}
-                    </ul>
+                    {data.map(item => {
+                        return (
+                            <CheckBox
+                                key={item.id}
+                                style={{marginTop:8}}
+                                title={item.name}
+                                onClick={() => optionSelected(item)}
+                                selected={item.selected}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         );
@@ -231,3 +191,5 @@ export default function FilterMultipleSelection(props) {
         />
     );
 }
+
+export default FilterMultipleSelection

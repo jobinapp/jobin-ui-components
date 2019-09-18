@@ -6,10 +6,13 @@ import { configure } from "@storybook/react";
 // });
 
 function loadStories() {
-    require("../stories/basics/input/input.js");
+    require("../stories/basics/input.js");
+    require("../stories/basics/button.js");
     require("../stories/basics/radio-button.js");
-    require("../stories/basics/input/search-bar.js");
+    require("../stories/basics/check-box.js");
     require("../stories/basics/slider.js");
+    require("../stories/filters/filter-date.js");
+    require("../stories/filters/filter-multiple-selection.js");
     require("../stories/others/constants.js");
 }
 

@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import "react-dates/initialize";
 import { DayPickerRangeController } from "react-dates";
 
 import FilterCustom from "./FilterCustom";
-import ButtonEmpty from '../button/ButtonEmpty'
+import Button from '../basics/button/Button'
 
 import "react-dates/lib/css/_datepicker.css";
 
-export default function FilterDate(props) {
+const FilterDate = (props) => {
 
-    const style = {
-        footer:{
-            display: 'flex',
-            flex: 1,
-            marginTop: 16
-        }
-    }
+    const Footer = styled.div`
+        display: flex;
+        flex: 1;
+        margin-top: 8px;
+        font-family: "Open Sans", sans-serif;
+    `
 
     const [title, setTitle] = useState(props.title);
     const [filtered, setFiltered] = useState(false);
@@ -49,8 +49,8 @@ export default function FilterDate(props) {
 
     const renderFooter = () =>{
         return(
-            <section style={style.footer}>
-                <ButtonEmpty
+            <Footer>
+                <Button
                     buttonText="Limpiar busqueda"
                     onClick={()=>{
                         setTitle(props.title);
@@ -64,8 +64,9 @@ export default function FilterDate(props) {
                             endDate: undefined
                         });
                     }}
+                    empty
                 />
-            </section>
+            </Footer>
         )
     }
 
@@ -98,8 +99,8 @@ export default function FilterDate(props) {
 
     return (
         <FilterCustom
-            style={props.style}
-            type={props.type}
+            buttonStyle={props.buttonStyle}
+            menuStyle={props.menuStyle}
             title={title}
             filtered={filtered}
             menu={renderCalendar()}
@@ -107,3 +108,5 @@ export default function FilterDate(props) {
         />
     );
 }
+
+export default FilterDate;

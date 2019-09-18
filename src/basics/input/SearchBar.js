@@ -19,7 +19,7 @@ const SearchBar = (props) => {
         -webkit-border-radius: 4px;
         font-size: 16px;
         line-height: 1.5;
-        padding: 12px 12px 12px 48px;
+        padding: 12px 12px 12px ${props => props.hideicon ? '12px' : '48px'};
         background-color: ${greyBackground};
         -webkit-appearance: none;
         border: 1px solid transparent;
@@ -53,7 +53,7 @@ const SearchBar = (props) => {
                 style={props.styleinput}
                 type="search"
             />
-            {props.hideicon !== "true" &&
+            {props.hideicon !== true &&
                 <Button>
                     <svg
                         width="20px"

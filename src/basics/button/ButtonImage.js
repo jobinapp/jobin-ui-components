@@ -1,54 +1,45 @@
-import React, {useState} from "react";
+import React from "react";
+import styled from 'styled-components'
+import {black, greyBackground} from '../../constants/colors'
 
-export default function ButtonImage(props) {
+const ButtonImage = (props) => {
 
-    const styles = {
-        buttonContainer: {
-            display: 'flex',
-            flexDirection: 'column',
-            border: 0,
-            padding: 12,
-            color: 'var(--greyish-brown)',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: (props.disabled || props.loading) ? null : 'pointer',
-            outline: 0,
-            opacity: (props.disabled || props.loading) ? 0.5 : 1.0,
-            fontSize: 12,
-            width: 80,
-            backgroundColor: "transparent",
-            ...props.style
-        },
-        buttonContainerHover: {
-            display: 'flex',
-            flexDirection: 'column',
-            border: 0,
-            padding: 12,
-            color: 'var(--greyish-brown)',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: (props.disabled || props.loading) ? null : 'pointer',
-            outline: 0,
-            opacity: (props.disabled || props.loading) ? 0.5 : 1.0,
-            fontSize: 12,
-            backgroundColor: 'var(--soft-grey)',
-            borderRadius: 4,
-            width: 80,
-            ...props.style
-        },
-    }
+    const ButtonImageStyled = styled.button`
+        display: flex;
+        flex-direction: column;
+        border: 0px;
+        padding: 12px;
+        color: ${black};
+        align-items: center;
+        justify-content: center;
+        cursor: ${props => props.disabled ? null : 'pointer'};
+        outline: 0px;
+        opacity: ${props => props.disabled ? 0.5 : 1.0};
+        font-size: 12px;
+        width: 80px;
+        border-radius: 4px;
+        background-color: transparent;
+        ${props => props.style}
 
-    const [isHover, setIsHover] = useState(false);
+        :hover {
+            background-color: ${props => props.disabled ? 'transparent' : greyBackground};
+        }
+    `
+    const Image = styled.img`
+        margin-bottom: 4px;
+        max-height: 30px;
+        max-width: 30px;
+    `
 
     return (
-        <button
-            style={(isHover && !props.disabled) ? styles.buttonContainerHover : styles.buttonContainer}
-            onClick={(props.disabled || props.loading) ? null : props.onClick}
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
+        <ButtonImageStyled
+            {...props}
+            onClick={props.disabled ? null : props.onClick}
         >
-            <img style={{marginBottom: 4, height: 20, width: 20}} src={props.src}/>
+            <Image src={props.src}/>
             {props.buttonText}
-        </button>
+        </ButtonImageStyled>
     );
 }
+
+export default ButtonImage

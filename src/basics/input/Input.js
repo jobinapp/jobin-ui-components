@@ -4,6 +4,8 @@ import { greyBackground, black } from "../../constants/colors";
 
 const Input = props => {
     const InputStyled = styled.input`
+        display: flex;
+        flex: 1;
         height: 32px;
         border-radius: 4px;
         font-size: 16px;
