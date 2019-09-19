@@ -15,6 +15,7 @@ const CheckBox = (props) =>{
         flex: 1;
         flex-direction: row;
         align-items: center;
+        ${props => props.style}
     `
     const Title = styled.label`
         color: ${black};
@@ -29,45 +30,14 @@ const CheckBox = (props) =>{
 
     return(
         <Container {...props}>
-            <svg
+            <img 
                 style={{cursor: 'pointer'}}
                 onClick={() => {
                     setSelected(!selected);
                     props.onClick();
                 }}
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-            >
-                <g fill="none" fillRule="evenodd">
-                    <path d="M0 0h24v24H0z" />
-                    {selected ? (
-                        <React.Fragment>
-                            <rect
-                                width="22"
-                                height="22"
-                                x="1"
-                                y="1"
-                                fill="#05AFB4"
-                                rx="2"
-                            />
-                            <path
-                                fill="#FFF"
-                                d="M9.615 14.279L7.742 12.36a1.002 1.002 0 0 0-1.443 0 1.06 1.06 0 0 0 0 1.477l2.594 2.656a1.002 1.002 0 0 0 1.443 0l6.165-6.311a1.06 1.06 0 0 0 0-1.477 1.002 1.002 0 0 0-1.443 0L9.615 14.28z"
-                            />
-                        </React.Fragment>
-                    ) : (
-                        <rect
-                            width="21"
-                            height="21"
-                            x="1.5"
-                            y="1.5"
-                            stroke={greyMedium}
-                            rx="2"
-                        />
-                    )}
-                </g>
-            </svg>
+                src={selected ? require("../../assets/images/check-box-on.svg") : require("../../assets/images/check-box-off.svg")}
+            />
             <div style={{display: 'flex', flex: 1, flexDirection: 'column', marginLeft: 12}}>
                 <Title>{props.title}</Title>
                 {props.subtitle &&
