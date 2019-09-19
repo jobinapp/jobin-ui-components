@@ -12,7 +12,8 @@ function loadStories() {
     require("../stories/basics/check-box.js");
     require("../stories/basics/slider.js");
     require("../stories/filters/filter-date.js");
-    require("../stories/filters/filter-multiple-selection.js");
+    require("../stories/filters/filter-selection.js");
+    require("../stories/filters/filter-slider.js");
     require("../stories/others/constants.js");
 }
 

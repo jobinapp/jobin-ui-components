@@ -20,8 +20,9 @@ const FilterMultipleSelection = (props) => {
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState(props.title);
     const [selectionArray, setSelectionArray] = useState(
-        props.prevSelection ? props.prevSelection : []
+        props.singleSelection ? null : props.prevSelection ? props.prevSelection : []
     );
+    const [selection, setSelection] = useState(props.singleSelection ? props.prevSelection : null);
     const [query, setQuery] = useState("");
     const [filtered, setFiltered] = useState(false);
     const [items, setItems] = useState([]);
@@ -82,39 +83,64 @@ const FilterMultipleSelection = (props) => {
                 });
             });
         } else {
-            if (
-                loading &&
-                props.prevSelection &&
-                props.prevSelection.length > 0
-            ) {
-                setTitle(props.title + " - " + props.prevSelection.length);
-                setFiltered(true);
+            if(props.singleSelection){
+                if(loading || item !== selection){
+                    setItems(prevItems => {
+                        return prevItems.map((prevItem, idx) => {
+                            if (prevItem.id === item.id) {
+                                const newItem = {
+                                    ...prevItems[idx],
+                                    selected: true
+                                };
+                                setSelection(newItem);
+                                setFiltered(true);
+                                props.selectionChange(newItem);
+                                return newItem;
+                            } else {
+                                return {
+                                    ...prevItems[idx],
+                                    selected: false
+                                };
+                            }
+                        });
+                    });
+                }
             }
-            setItems(prevItems => {
-                return prevItems.map((prevItem, idx) => {
-                    if (prevItem.id === item.id) {
-                        const newItem = {
-                            ...prevItems[idx],
-                            selected: !prevItems[idx].selected
-                        };
-                        if (!loading) {
-                            changeItemSelection(newItem);
-                        }
-                        return newItem;
-                    } else {
-                        if (prevItem.id === "none") {
+            else{
+                if (
+                    loading &&
+                    props.prevSelection &&
+                    props.prevSelection.length > 0
+                ) {
+                    setTitle(props.title + " - " + props.prevSelection.length);
+                    setFiltered(true);
+                }
+                setItems(prevItems => {
+                    return prevItems.map((prevItem, idx) => {
+                        if (prevItem.id === item.id) {
                             const newItem = {
-                                id: "all",
-                                name: "Todas",
-                                selected: false
+                                ...prevItems[idx],
+                                selected: !prevItems[idx].selected
                             };
+                            if (!loading) {
+                                changeItemSelection(newItem);
+                            }
                             return newItem;
                         } else {
-                            return prevItem;
+                            if (prevItem.id === "none") {
+                                const newItem = {
+                                    id: "all",
+                                    name: "Todas",
+                                    selected: false
+                                };
+                                return newItem;
+                            } else {
+                                return prevItem;
+                            }
                         }
-                    }
+                    });
                 });
-            });
+            }
         }
     };
 

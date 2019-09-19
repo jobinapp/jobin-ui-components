@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components"
 
 import FilterCustom from './FilterCustom'
-import Slider from '../Slider'
+import Slider from '../basics/Slider'
 
 
-export default function FilterSlider(props) {
+const FilterSlider = (props) => {
     
-    const style = {
-        menu:{
-            width: 200
-        }
-    }
+    const Menu = styled.div`
+        width: 200px;
+    `
 
     const [title, setTitle] = useState(null);
     const [value, setValue] = useState(props.value);
@@ -29,16 +28,16 @@ export default function FilterSlider(props) {
 
     const renderMenu = () => {
         return (
-            <div style={style.menu}>
+            <Menu>
                 <Slider
-                    minValue={props.minValue}
-                    maxValue={props.maxValue}
+                    min={props.min}
+                    max={props.max}
                     unit={props.unit}
                     value={props.value}
                     onChange={(value) => onChange(value)}
                     onBlur={(value) => props.onBlur(value)}
                 />
-            </div>
+            </Menu>
         );
     };
 
@@ -52,3 +51,5 @@ export default function FilterSlider(props) {
         />
     );
 }
+
+export default FilterSlider
