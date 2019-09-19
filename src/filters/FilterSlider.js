@@ -11,31 +11,30 @@ const FilterSlider = (props) => {
         width: 200px;
     `
 
-    const [title, setTitle] = useState(null);
-    const [value, setValue] = useState(props.value);
+    const [title, setTitle] = useState("");
+    const [value, setValue] = useState(props.value ? props.value : 0);
 
     useEffect(() => {
-        onChange(props.value);
-    }, [props.value]);
-    
-    const onChange = (value) =>{
+        if(props.value){
+            onChange(props.value);
+        }
+    }, []);
+
+    const onChange = value =>{
         setValue(value);
-        if(props.unit)
+        if(props.unit){
             setTitle(props.title+" - "+value+" "+props.unit);
-        else
-            setTitle(props.title+" - "+value);
+        }
     }
 
     const renderMenu = () => {
         return (
             <Menu>
                 <Slider
-                    min={props.min}
-                    max={props.max}
-                    unit={props.unit}
-                    value={props.value}
-                    onChange={(value) => onChange(value)}
-                    onBlur={(value) => props.onBlur(value)}
+                    {...props}
+                    onChange={(e) => onChange(e.target.value)}
+                    value={value}
+                    onBlur={(e) => props.onBlur(e.target.value)}
                 />
             </Menu>
         );

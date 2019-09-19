@@ -4,31 +4,6 @@ import { greyBackground, green, greenDark, black } from "../constants/colors";
 
 const Slider = (props) => {
 
-    const style = {
-        minLabel:{
-            display: 'flex',
-            flex: 1,
-            fontFamily: '"Open Sans", sans-serif',
-            color: black,
-            fontSize: 14,
-            ...props.labelStyle
-        },
-        maxLabel:{
-            display: 'flex',
-            flex: 1,
-            fontFamily: '"Open Sans", sans-serif',
-            justifyContent: 'flex-end',
-            color: black,
-            fontSize: 14,
-            ...props.labelStyle
-        },
-        labelContainer:{
-            display: 'flex', 
-            flex: 1, 
-            marginTop: 4
-        }
-    }
-
     const SliderStyled = styled.input`
         -webkit-appearance: none;
         width: 100%;
@@ -50,6 +25,28 @@ const Slider = (props) => {
             cursor: pointer;
         }
     `
+    const LabelContainer = styled.div`
+        display: flex; 
+        flex: 1; 
+        margin-top: 4px;
+    `
+    const MinLabel = styled.div`
+        display: flex;
+        flex: 1;
+        font-family: "Open Sans", sans-serif;
+        color: ${black};
+        font-size: 14px;
+        ${props => props.labelStyle}
+    `
+    const MaxLabel = styled.div`
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        font-family: "Open Sans", sans-serif;
+        color: ${black};
+        font-size: 14px;
+        ${props => props.labelStyle}
+    `
 
     return (
         <section>
@@ -57,22 +54,22 @@ const Slider = (props) => {
                 type="range"
                 {...props}
             />
-            <div style={style.labelContainer}>
-                <div style={style.minLabel}>
+            <LabelContainer>
+                <MinLabel>
                     {props.unit ?
                         <label>{props.min+" "+props.unit}</label>
                     :
                         <label>{props.min}</label>
                     }
-                </div>
-                <div style={style.maxLabel}>
+                </MinLabel>
+                <MaxLabel>
                     {props.unit ?
                         <label>{props.max+" "+props.unit}</label>
                     :
                         <label>{props.max}</label>
                     }
-                </div>
-            </div>
+                </MaxLabel>
+            </LabelContainer>
         </section>
     )
 }

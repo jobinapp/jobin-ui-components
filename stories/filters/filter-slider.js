@@ -12,5 +12,7 @@ storiesOf("Filters|FilterSlider", module)
         unit={text("unit", "€")}
         min={number("min", 0)}
         max={number("max", 250)}
+        value={number("value", 10)}
+        onBlur={(value)=> alert(value)}
     />
 );

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'react-responsive-modal'
 
-const MainModal = (props) => {
+const Modal = (props) => {
 
 	const style = {
 		modal:{
@@ -39,4 +39,4 @@ const MainModal = (props) => {
     )
 }
 
-export default MainModal;
+export default Modal;

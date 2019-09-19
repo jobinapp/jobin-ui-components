@@ -12,6 +12,7 @@ storiesOf("Basics|Slider", module)
                 min={number ("min", 0)}
                 max={number ("max", 100)}
                 unit={text ("unit", "Km")}
+                onChange={(e) => console.log(e.target.value)}
             />
         </div>
     );
