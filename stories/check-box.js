@@ -2,9 +2,9 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
-import CheckBox from "../../src/basics/CheckBox";
+import CheckBox from "../src/basics/CheckBox";
 
-storiesOf("Basics|CheckBox", module)
+storiesOf("Components|CheckBox", module)
     .addDecorator(withKnobs)
     .add("Default", () =>
         <CheckBox

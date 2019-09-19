@@ -2,9 +2,9 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
-import Modal from "../../src/basics/Modal";
+import Modal from "../src/basics/Modal";
 
-storiesOf("Basics|Modal", module)
+storiesOf("Components|Modal", module)
 .addDecorator(withKnobs)
 .add("Default", () =>
     <Modal

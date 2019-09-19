@@ -2,11 +2,11 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
-import Button from "../../src/basics/button/Button";
-import ButtonTextImage from "../../src/basics/button/ButtonTextImage";
-import ButtonImage from '../../src/basics/button/ButtonImage';
+import Button from "../src/basics/button/Button";
+import ButtonTextImage from "../src/basics/button/ButtonTextImage";
+import ButtonImage from '../src/basics/button/ButtonImage';
 
-const story = storiesOf("Basics|Button", module)
+const story = storiesOf("Components|Button", module)
     .addDecorator(withKnobs)
     .add("Default", () =>
         <Button
@@ -27,7 +27,7 @@ const story = storiesOf("Basics|Button", module)
     )
     .add("Only image", () =>
         <ButtonImage
-            src={text ("src", require('../../assets/images/back.svg'))}
+            src={text ("src", require('../assets/images/back.svg'))}
             disabled={boolean ("disabled", false)}
             onClick={() => alert("Hola mundo")}
         />

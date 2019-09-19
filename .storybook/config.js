@@ -6,15 +6,15 @@ import { configure } from "@storybook/react";
 // });
 
 function loadStories() {
-    require("../stories/basics/input.js");
-    require("../stories/basics/button.js");
-    require("../stories/basics/radio-button.js");
-    require("../stories/basics/check-box.js");
-    require("../stories/basics/slider.js");
-    require("../stories/basics/modal.js");
-    require("../stories/filters/filter-date.js");
-    require("../stories/filters/filter-selection.js");
-    require("../stories/filters/filter-slider.js");
+    require("../stories/input.js");
+    require("../stories/button.js");
+    require("../stories/radio-button.js");
+    require("../stories/check-box.js");
+    require("../stories/slider.js");
+    require("../stories/menu-list.js");
+    require("../stories/modal.js");
+    require("../stories/loading.js");
+    require("../stories/filters.js");
     require("../stories/others/constants.js");
 }
 

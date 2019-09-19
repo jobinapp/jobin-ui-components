@@ -2,10 +2,10 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
-import Input from "../../src/basics/input/Input";
-import SearchBar from "../../src/basics/input/SearchBar";
+import Input from "../src/basics/input/Input";
+import SearchBar from "../src/basics/input/SearchBar";
 
-storiesOf("Basics|Input", module)
+storiesOf("Components|Input", module)
     .addDecorator(withKnobs)
     .add("Default", () =>
         <Input
