@@ -46,8 +46,9 @@ const FilterSlider = (props) => {
             type={props.type}
             title={title}
             filtered={value ? true : false}
-            menu={renderMenu()}
-        />
+        >
+            {renderMenu()}
+        </FilterCustom>
     );
 }
 

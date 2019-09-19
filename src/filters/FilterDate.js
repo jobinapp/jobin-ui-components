@@ -103,9 +103,10 @@ const FilterDate = (props) => {
             menuStyle={props.menuStyle}
             title={title}
             filtered={filtered}
-            menu={renderCalendar()}
-            footer={renderFooter()}
-        />
+        >
+            {renderCalendar()}
+            {renderFooter()}
+        </FilterCustom>
     );
 }
 

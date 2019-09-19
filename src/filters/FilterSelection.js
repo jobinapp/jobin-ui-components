@@ -213,8 +213,9 @@ const FilterMultipleSelection = (props) => {
             type={props.type}
             title={title}
             filtered={filtered}
-            menu={renderMenu()}
-        />
+        >
+            {renderMenu()}
+        </FilterCustom>
     );
 }
 

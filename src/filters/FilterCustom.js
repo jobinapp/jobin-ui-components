@@ -49,9 +49,7 @@ const FilterCustom = (props) => {
             </Button>
             {active &&
                 <Menu className="menu">
-                    {props.header}
-                    {props.menu}
-                    {props.footer}
+                    {props.children}
                 </Menu>
             }
         </div>

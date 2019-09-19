@@ -2,14 +2,21 @@ import React from "react";
 import styled from 'styled-components'
 import {black, greyBackground} from '../../constants/colors'
 
-const ButtonImage = (props) => {
+const ButtonTextImage = (props) => {
 
     const ButtonImageStyled = styled.button`
+        display: flex;
+        flex-direction: column;
         border: 0px;
-        padding: 8px;
+        padding: 12px;
+        color: ${black};
+        align-items: center;
+        justify-content: center;
         cursor: ${props => props.disabled ? null : 'pointer'};
         outline: 0px;
         opacity: ${props => props.disabled ? 0.5 : 1.0};
+        font-size: 12px;
+        width: 80px;
         border-radius: 4px;
         background-color: transparent;
         ${props => props.style}
@@ -19,8 +26,9 @@ const ButtonImage = (props) => {
         }
     `
     const Image = styled.img`
-        height: 25px;
-        width: 25px;
+        margin-bottom: 4px;
+        max-height: 30px;
+        max-width: 30px;
     `
 
     return (
@@ -34,4 +42,4 @@ const ButtonImage = (props) => {
     );
 }
 
-export default ButtonImage
+export default ButtonTextImage
