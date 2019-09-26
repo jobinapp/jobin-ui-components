@@ -1,6 +1,7 @@
 {
-  "name": "react-ui-components",
+  "name": "jobin-ui-components",
   "version": "0.2.0",
+  "main": "./src/basics/button/Button.js",
   "private": true,
   "dependencies": {
     "@storybook/addon-knobs": "^5.2.1",
@@ -15,6 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-npm": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook",
@@ -35,10 +37,22 @@
       "last 1 safari version"
     ]
   },
+  "contributors": [
+    {
+      "name": "Guillermo Angeles Amate"
+    },
+    {
+      "name": "Ricardo Veronese Ricci"
+    },
+    {
+      "name": "Eric García de Ceca Elejoste"
+    }
+  ],
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@storybook/addon-backgrounds": "^5.2.0",
     "@storybook/react": "^5.2.0",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "webpack-cli": "^3.3.9"
   }
 }
