@@ -16,6 +16,7 @@ function loadStories() {
     require("../stories/loading.js");
     require("../stories/filters.js");
     require("../stories/others/constants.js");
+    require("../stories/others/titles.js");
 }
 
 configure(loadStories, module);

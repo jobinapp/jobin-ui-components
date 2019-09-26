@@ -8,14 +8,15 @@ import * as cardSpinnerData from "../../../assets/animations/button-loading.json
 const Button = (props) => {
 
     const ButtonStyled = styled.button `
-        border: 0px;
-        min-width: 100px;
-        min-height: 48px;
+        border: 2px solid ${greenDark};
+        padding: 12px 24px 12px 24px;
+        height: 56px;
         background-color: ${props => props.empty ? 'transparent' : greenDark};
-        padding: 12px;
         border-radius: 4px;
         font-family: "Open Sans", sans-serif;
-        font-size: 15px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
         color: ${props => props.empty ? greenDark : '#fff'};
         align-items: center;
         justify-content: center;
@@ -25,8 +26,8 @@ const Button = (props) => {
         ${props => props.style}
         
         :hover {
-            text-decoration: underline ${props => (props.empty && !props.loading && !props.disabled) ? greenDark : 'transparent'}; 
-            background-color: ${props => props.empty  ? 'transparent'  : (!props.loading && !props.disabled) ? green : greenDark};
+            background-color: ${green};
+            color: #fff;
         }
     `
 
