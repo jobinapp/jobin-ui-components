@@ -1,12 +1,12 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 
-import RadioButton from "../src/basics/RadioButton";
+import RadioButton from "../src/components/basics/RadioButton";
 
 storiesOf("Components|RadioButton", module)
     .addDecorator(withKnobs)
-    .add("Default", () =>
+    .add("Default", () => (
         <div>
             <RadioButton
                 title={text("title", "Opción 1")}
@@ -14,4 +14,4 @@ storiesOf("Components|RadioButton", module)
                 selected={boolean("selected", false)}
             />
         </div>
-    );
+    ));

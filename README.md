@@ -1,5 +1,5 @@
-# react-ui-components
+# jobin-ui-components
 UI components for React
 
 ## Storybook
-https://jobinapp.github.io/react-ui-components/
+https://jobinapp.github.io/jobin-ui-components/

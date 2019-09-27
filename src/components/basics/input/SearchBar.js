@@ -1,15 +1,19 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import { greyBackground, greyLight, greyMedium, black } from "../../constants/colors";
+import {
+    greyBackground,
+    greyLight,
+    greyMedium,
+    black
+} from "../../constants/colors";
 
-const SearchBar = (props) => {
-
+const SearchBar = props => {
     const styles = {
-        container:{
-            position: 'relative',
+        container: {
+            position: "relative",
             ...props.style
-        },
-    }
+        }
+    };
 
     const Input = styled.input`
         width: 100%;
@@ -19,14 +23,13 @@ const SearchBar = (props) => {
         -webkit-border-radius: 4px;
         font-size: 16px;
         line-height: 1.5;
-        padding: 12px 12px 12px ${props => props.hideicon ? '12px' : '48px'};
+        padding: 12px 12px 12px ${props => (props.hideicon ? "12px" : "48px")};
         background-color: ${greyBackground};
         -webkit-appearance: none;
         border: 1px solid transparent;
         color: ${black};
         font-family: "Open Sans", sans-serif;
-        font-family: 
-        ${props => props.style};
+        font-family: ${props => props.style};
 
         :focus {
             outline: none;
@@ -34,7 +37,7 @@ const SearchBar = (props) => {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
             border-color: ${greyLight};
         }
-    `
+    `;
 
     const Button = styled.button`
         padding: 0;
@@ -44,16 +47,12 @@ const SearchBar = (props) => {
         top: 50%;
         left: 16px;
         transform: translate(0, -50%);
-    `
+    `;
 
     return (
         <div style={styles.container}>
-            <Input
-                {...props}
-                style={props.styleinput}
-                type="search"
-            />
-            {props.hideicon !== true &&
+            <Input {...props} style={props.styleinput} type="search" />
+            {props.hideicon !== true && (
                 <Button>
                     <svg
                         width="20px"
@@ -76,9 +75,9 @@ const SearchBar = (props) => {
                         </g>
                     </svg>
                 </Button>
-            }
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default SearchBar;

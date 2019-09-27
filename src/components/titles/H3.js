@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import { black } from "../constants/colors";
 
-const H3 = (props) =>{
-
+const H3 = props => {
     const H3Styled = styled.h1`
         display: flex;
         flex: 1;
@@ -14,11 +13,9 @@ const H3 = (props) =>{
         line-height: 32px;
         color: ${black};
         ${props => props.style}
-    `
+    `;
 
-    return(
-        <H3Styled style={props.style}>{props.children}</H3Styled>
-    )
-}
+    return <H3Styled style={props.style}>{props.children}</H3Styled>;
+};
 
-export default H3
+export default H3;

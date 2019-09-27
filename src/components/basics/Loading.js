@@ -1,11 +1,10 @@
 import React from "react";
-import Lottie from 'react-lottie'
-import styled from 'styled-components'
+import Lottie from "react-lottie";
+import styled from "styled-components";
 
-import * as loadingAnimationData from "../../assets/animations/main-loading.json";
+import * as loadingAnimationData from "../../../assets/animations/main-loading.json";
 
-const Loading = (props) => {
-
+const Loading = props => {
     const View = styled.div`
         display: flex;
         background-color: #fff;
@@ -14,8 +13,8 @@ const Loading = (props) => {
         justify-content: center;
         align-items: center;
         border-radius: 4px;
-        box-shadow: 8px 8px 15px 0px rgba(0,0,0,0.25);
-    `
+        box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.25);
+    `;
 
     const defaultOptions = {
         loop: true,
@@ -29,11 +28,11 @@ const Loading = (props) => {
     return (
         <View>
             <Lottie
-                style={{height: 45, width: 45}}
+                style={{ height: 45, width: 45 }}
                 options={defaultOptions}
             />
         </View>
-    )
-}
+    );
+};
 
-export default Loading
+export default Loading;

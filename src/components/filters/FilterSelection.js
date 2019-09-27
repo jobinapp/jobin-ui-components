@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 
 import FilterCustom from "./FilterCustom";
 import SearchBar from "../basics/input/SearchBar";
-import CheckBox from '../basics/CheckBox';
+import CheckBox from "../basics/CheckBox";
 
 const fuseOptions = {
     shouldSort: true,
@@ -15,14 +15,19 @@ const fuseOptions = {
     keys: ["name"]
 };
 
-const FilterMultipleSelection = (props) => {
-    
+const FilterMultipleSelection = props => {
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState(props.title);
     const [selectionArray, setSelectionArray] = useState(
-        props.singleSelection ? null : props.prevSelection ? props.prevSelection : []
+        props.singleSelection
+            ? null
+            : props.prevSelection
+            ? props.prevSelection
+            : []
     );
-    const [selection, setSelection] = useState(props.singleSelection ? props.prevSelection : null);
+    const [selection, setSelection] = useState(
+        props.singleSelection ? props.prevSelection : null
+    );
     const [query, setQuery] = useState("");
     const [filtered, setFiltered] = useState(false);
     const [items, setItems] = useState([]);
@@ -83,8 +88,8 @@ const FilterMultipleSelection = (props) => {
                 });
             });
         } else {
-            if(props.singleSelection){
-                if(loading || item !== selection){
+            if (props.singleSelection) {
+                if (loading || item !== selection) {
                     setItems(prevItems => {
                         return prevItems.map((prevItem, idx) => {
                             if (prevItem.id === item.id) {
@@ -105,8 +110,7 @@ const FilterMultipleSelection = (props) => {
                         });
                     });
                 }
-            }
-            else{
+            } else {
                 if (
                     loading &&
                     props.prevSelection &&
@@ -185,8 +189,8 @@ const FilterMultipleSelection = (props) => {
         return (
             <div className="items-filter">
                 <SearchBar
-                    style={{height: 36, width: 180, marginBottom: 16}}
-                    styleinput={{height: 36}}
+                    style={{ height: 36, width: 180, marginBottom: 16 }}
+                    styleinput={{ height: 36 }}
                     placeholder={"Filtrar"}
                     onChange={e => setQuery(e.target.value)}
                 />
@@ -195,7 +199,7 @@ const FilterMultipleSelection = (props) => {
                         return (
                             <CheckBox
                                 key={item.id}
-                                style={{marginTop:8}}
+                                style={{ marginTop: 8 }}
                                 title={item.name}
                                 onClick={() => optionSelected(item)}
                                 selected={item.selected}
@@ -217,6 +221,6 @@ const FilterMultipleSelection = (props) => {
             {renderMenu()}
         </FilterCustom>
     );
-}
+};
 
-export default FilterMultipleSelection
+export default FilterMultipleSelection;

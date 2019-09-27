@@ -1,9 +1,8 @@
 import React from "react";
-import styled from 'styled-components'
-import {black, greyBackground} from '../../constants/colors'
+import styled from "styled-components";
+import { black, greyBackground } from "../../constants/colors";
 
-const ButtonTextImage = (props) => {
-
+const ButtonTextImage = props => {
     const ButtonImageStyled = styled.button`
         display: flex;
         flex-direction: column;
@@ -12,9 +11,9 @@ const ButtonTextImage = (props) => {
         color: ${black};
         align-items: center;
         justify-content: center;
-        cursor: ${props => props.disabled ? null : 'pointer'};
+        cursor: ${props => (props.disabled ? null : "pointer")};
         outline: 0px;
-        opacity: ${props => props.disabled ? 0.5 : 1.0};
+        opacity: ${props => (props.disabled ? 0.5 : 1.0)};
         font-size: 12px;
         width: 80px;
         border-radius: 4px;
@@ -22,24 +21,25 @@ const ButtonTextImage = (props) => {
         ${props => props.style}
 
         :hover {
-            background-color: ${props => props.disabled ? 'transparent' : greyBackground};
+            background-color: ${props =>
+                props.disabled ? "transparent" : greyBackground};
         }
-    `
+    `;
     const Image = styled.img`
         margin-bottom: 4px;
         max-height: 30px;
         max-width: 30px;
-    `
+    `;
 
     return (
         <ButtonImageStyled
             {...props}
             onClick={props.disabled ? null : props.onClick}
         >
-            <Image src={props.src}/>
+            <Image src={props.src} />
             {props.buttonText}
         </ButtonImageStyled>
     );
-}
+};
 
-export default ButtonTextImage
+export default ButtonTextImage;

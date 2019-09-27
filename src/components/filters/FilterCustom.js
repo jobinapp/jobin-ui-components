@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { greyMedium, greyBackground, greenDark, black } from "../constants/colors";
+import {
+    greyMedium,
+    greyBackground,
+    greenDark,
+    black
+} from "../constants/colors";
 
-const FilterCustom = (props) => {
-
+const FilterCustom = props => {
     const [active, setActive] = useState(false);
 
     const Button = styled.button`
         cursor: pointer;
         padding: 6px;
-        border: 1px solid ${props => props.filtered ? greenDark : greyMedium};
+        border: 1px solid ${props => (props.filtered ? greenDark : greyMedium)};
         border-radius: 4px;
         outline: none;
-        background-color: ${props => props.filtered ? greenDark : '#fff'};
+        background-color: ${props => (props.filtered ? greenDark : "#fff")};
         font-family: "Open Sans", sans-serif;
         font-size: 14px;
-        color: ${props => props.filtered ? '#fff' : black};
+        color: ${props => (props.filtered ? "#fff" : black)};
         ${props => props.buttonStyle}
 
         :hover {
             background-color: ${greyBackground};
             border-color: ${greyBackground};
         }
-    `
+    `;
     const Menu = styled.div`
         position: absolute;
         top: 46px;
@@ -36,7 +40,7 @@ const FilterCustom = (props) => {
         border-radius: 4px;
         padding: 24px;
         ${props => props.menuStyle}
-    `
+    `;
 
     return (
         <div style={props.style}>
@@ -47,13 +51,9 @@ const FilterCustom = (props) => {
             >
                 {props.title}
             </Button>
-            {active &&
-                <Menu className="menu">
-                    {props.children}
-                </Menu>
-            }
+            {active && <Menu className="menu">{props.children}</Menu>}
         </div>
     );
-}
+};
 
-export default FilterCustom
+export default FilterCustom;

@@ -4,18 +4,17 @@ import "react-dates/initialize";
 import { DayPickerRangeController } from "react-dates";
 
 import FilterCustom from "./FilterCustom";
-import Button from '../basics/button/Button'
+import Button from "../basics/button/Button";
 
 import "react-dates/lib/css/_datepicker.css";
 
-const FilterDate = (props) => {
-
+const FilterDate = props => {
     const Footer = styled.div`
         display: flex;
         flex: 1;
         margin-top: 8px;
         font-family: "Open Sans", sans-serif;
-    `
+    `;
 
     const [title, setTitle] = useState(props.title);
     const [filtered, setFiltered] = useState(false);
@@ -47,12 +46,12 @@ const FilterDate = (props) => {
         setFocused(!focusedInput ? "startDate" : focusedInput);
     };
 
-    const renderFooter = () =>{
-        return(
+    const renderFooter = () => {
+        return (
             <Footer>
                 <Button
                     buttonText="Limpiar busqueda"
-                    onClick={()=>{
+                    onClick={() => {
                         setTitle(props.title);
                         setFiltered(false);
                         setDate({
@@ -67,8 +66,8 @@ const FilterDate = (props) => {
                     empty
                 />
             </Footer>
-        )
-    }
+        );
+    };
 
     const renderCalendar = () => {
         return (
@@ -108,6 +107,6 @@ const FilterDate = (props) => {
             {renderFooter()}
         </FilterCustom>
     );
-}
+};
 
 export default FilterDate;
