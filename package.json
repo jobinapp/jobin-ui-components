@@ -1,6 +1,6 @@
 {
     "name": "jobin-ui-components",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "main": "dist/main.js",
     "peerDependencies": {
         "react": "^16.9.0"
