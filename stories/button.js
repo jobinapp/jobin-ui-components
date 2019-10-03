@@ -6,7 +6,7 @@ import Button from "../src/components/basics/button/Button";
 import ButtonTextImage from "../src/components/basics/button/ButtonTextImage";
 import ButtonImage from "../src/components/basics/button/ButtonImage";
 
-const story = storiesOf("Components|Button", module)
+storiesOf("Components|Button", module)
     .addDecorator(withKnobs)
     .add("Default", () => (
         <Button

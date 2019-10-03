@@ -28,7 +28,7 @@ const ButtonImage = props => {
             {...props}
             onClick={props.disabled ? null : props.onClick}
         >
-            <Image src={props.src} />
+            {props.svgSrc ? <props.svgSrc /> : <Image src={props.src} />}
             {props.buttonText}
         </ButtonImageStyled>
     );

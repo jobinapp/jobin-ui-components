@@ -5,6 +5,9 @@ import { greyLight, black } from "../constants/colors";
 import Button from "../basics/button/Button";
 import ButtonImage from "../basics/button/ButtonImage";
 
+import Back from "../../icons/images/Back";
+import Close from "../../icons/images/Close";
+
 const Modal = props => {
     const ModalStyled = styled.div`
         position: absolute;
@@ -64,7 +67,7 @@ const Modal = props => {
         <ModalStyled big={props.big}>
             <ButtonImage
                 style={{ position: "absolute", top: 16, right: 24 }}
-                src={require("../../../assets/images/close.svg")}
+                svgSrc={Close}
                 onClick={props.close}
             />
             <section>
@@ -78,10 +81,7 @@ const Modal = props => {
                 <ButtonsContainer>
                     {props.goBack && (
                         <LeftButtonsContainer>
-                            <ButtonImage
-                                src={require("../../../assets/images/back.svg")}
-                                onClick={props.goBack}
-                            />
+                            <ButtonImage svgSrc={Back} onClick={props.goBack} />
                         </LeftButtonsContainer>
                     )}
                     {props.buttonText && (

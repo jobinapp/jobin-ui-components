@@ -1,7 +1,7 @@
 import React from "react";
 
 const SvgCheckBoxOn = props => (
-  <svg width={24} height={24} {...props}>
+  <svg width={24} height={24} {...props} viewBox="0 0 24 24">
     <g fill="none" fillRule="evenodd">
       <path d="M0 24h24V0H0z" />
       <path

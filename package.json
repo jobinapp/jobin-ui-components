@@ -1,7 +1,7 @@
 {
     "name": "jobin-ui-components",
-    "version": "0.2.2",
-    "main": "dist/main.js",
+    "version": "0.2.3",
+    "main": "dist/prod.js",
     "peerDependencies": {
         "react": "^16.9.0"
     },
@@ -18,7 +18,8 @@
         "build:prod": "NODE_ENV=production rollup -c",
         "build:dev": "NODE_ENV=development rollup -c",
         "storybook": "start-storybook",
-        "build-storybook": "build-storybook -c .storybook -o docs"
+        "build-storybook": "build-storybook -c .storybook -o docs",
+        "svgr": "svgr -d src/icons/ assets/"
     },
     "repository": {
         "type": "git",
@@ -71,6 +72,7 @@
         "rollup-plugin-peer-deps-external": "^2.2.0",
         "rollup-plugin-replace": "^2.2.0",
         "rollup-plugin-url": "^2.1.0",
-        "style-loader": "^1.0.0"
+        "style-loader": "^1.0.0",
+        "@svgr/cli": "^4.3.3"
     }
 }

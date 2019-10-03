@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { black } from "../constants/colors";
 
+import RadioButtonOn from "../../icons/images/RadioButtonOn";
+import RadioButtonOff from "../../icons/images/RadioButtonOff";
+
 const RadioButton = props => {
     const [selected, setSelected] = useState(props.selected);
 
@@ -24,7 +27,12 @@ const RadioButton = props => {
         font-size: 12px;
         cursor: pointer;
     `;
-    const Image = styled.img`
+    const RadioButtonOnStyled = styled(RadioButtonOn)`
+        margin-right: 12px;
+        height: 20px;
+        width: 20px;
+    `;
+    const RadioButtonOffStyled = styled(RadioButtonOff)`
         margin-right: 12px;
         height: 20px;
         width: 20px;
@@ -42,15 +50,7 @@ const RadioButton = props => {
             }}
         >
             <div style={{ height: 20 }}>
-                {selected ? (
-                    <Image
-                        src={require("../../../assets/images/radio-button-on.svg")}
-                    />
-                ) : (
-                    <Image
-                        src={require("../../../assets/images/radio-button-off.svg")}
-                    />
-                )}
+                {selected ? <RadioButtonOnStyled /> : <RadioButtonOffStyled />}
             </div>
             <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
                 <Title>{props.title}</Title>

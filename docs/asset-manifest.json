@@ -1,21 +1,16 @@
 {
   "files": {
-    "main.js": "/main.7cc0587a706e8b3925c4.bundle.js",
-    "main.js.map": "/main.7cc0587a706e8b3925c4.bundle.js.map",
-    "runtime~main.js": "/runtime~main.7cc0587a706e8b3925c4.bundle.js",
-    "runtime~main.js.map": "/runtime~main.7cc0587a706e8b3925c4.bundle.js.map",
+    "main.js": "/main.5cdd6b4ed6c9224b02cb.bundle.js",
+    "main.js.map": "/main.5cdd6b4ed6c9224b02cb.bundle.js.map",
+    "runtime~main.js": "/runtime~main.5cdd6b4ed6c9224b02cb.bundle.js",
+    "runtime~main.js.map": "/runtime~main.5cdd6b4ed6c9224b02cb.bundle.js.map",
     "vendors~main.css": "/vendors~main.css",
-    "vendors~main.js": "/vendors~main.7cc0587a706e8b3925c4.bundle.js",
+    "vendors~main.js": "/vendors~main.5cdd6b4ed6c9224b02cb.bundle.js",
     "vendors~main.css.map": "/vendors~main.css.map",
-    "vendors~main.js.map": "/vendors~main.7cc0587a706e8b3925c4.bundle.js.map",
+    "vendors~main.js.map": "/vendors~main.5cdd6b4ed6c9224b02cb.bundle.js.map",
     "iframe.html": "/iframe.html",
-    "precache-manifest.c2be44f4971b279252abbc4649240425.js": "/precache-manifest.c2be44f4971b279252abbc4649240425.js",
+    "precache-manifest.39d16d2a2a5cfea0611f691ff9e8c7f1.js": "/precache-manifest.39d16d2a2a5cfea0611f691ff9e8c7f1.js",
     "service-worker.js": "/service-worker.js",
-    "static/media/back.svg": "/static/media/back.e9f89f85.svg",
-    "static/media/check-box-off.svg": "/static/media/check-box-off.b936c208.svg",
-    "static/media/check-box-on.svg": "/static/media/check-box-on.c723fe65.svg",
-    "static/media/close.svg": "/static/media/close.7fd72a98.svg",
-    "static/media/radio-button-off.svg": "/static/media/radio-button-off.7c341377.svg",
-    "static/media/radio-button-on.svg": "/static/media/radio-button-on.b898d869.svg"
+    "static/media/back.svg": "/static/media/back.e9f89f85.svg"
   }
 }

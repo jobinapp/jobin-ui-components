@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { black } from "../constants/colors";
 
+import CheckBoxOn from "../../icons/images/CheckBoxOn";
+import CheckBoxOff from "../../icons/images/CheckBoxOff";
+
 const CheckBox = props => {
     const [selected, setSelected] = useState(false);
 
@@ -16,12 +19,15 @@ const CheckBox = props => {
         align-items: center;
         ${props => props.style}
     `;
-    const Title = styled.label`
+    const Title = styled.p`
+        margin: 0;
         color: ${black};
         font-family: "Open Sans", sans-serif;
         font-size: 16px;
+        margin-left: 12px;
     `;
-    const Subtitle = styled.label`
+    const Subtitle = styled.p`
+        margin: 0;
         color: ${black};
         font-family: "Open Sans", sans-serif;
         font-size: 12px;
@@ -29,29 +35,25 @@ const CheckBox = props => {
 
     return (
         <Container {...props}>
-            <img
+            <label
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                     setSelected(!selected);
                     props.onClick();
                 }}
-                src={
-                    selected
-                        ? require("../../../assets/images/check-box-on.svg")
-                        : require("../../../assets/images/check-box-off.svg")
-                }
-            />
-            <div
-                style={{
-                    display: "flex",
-                    flex: 1,
-                    flexDirection: "column",
-                    marginLeft: 12
-                }}
             >
-                <Title>{props.title}</Title>
-                {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
-            </div>
+                <div
+                    style={{
+                        display: "flex",
+                        flex: 1,
+                        flexDirection: "row"
+                    }}
+                >
+                    {selected ? <CheckBoxOn /> : <CheckBoxOff />}
+                    <Title>{props.title}</Title>
+                    {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
+                </div>
+            </label>
         </Container>
     );
 };
