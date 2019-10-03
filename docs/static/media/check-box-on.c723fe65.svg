@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Icono / Checkbox / Checket</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icono-/-Checkbox-/-Checket" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <polygon id="Fill-2" points="0 24 24 24 24 0 0 0"></polygon>
+            <path d="M19.3333333,23 L4.66666667,23 C2.64175,23 1,21.35825 1,19.3333333 L1,4.66666667 C1,2.64175 2.64175,1 4.66666667,1 L19.3333333,1 C21.35825,1 23,2.64175 23,4.66666667 L23,19.3333333 C23,21.35825 21.35825,23 19.3333333,23" id="Fill-3" fill="#048285"></path>
+            <path d="M10.0552,13.6074 L8.2192,11.7714 C7.8282,11.3804 7.1962,11.3804 6.8052,11.7714 C6.4142,12.1624 6.4142,12.7954 6.8052,13.1854 L9.3482,15.7284 C9.7392,16.1194 10.3712,16.1194 10.7622,15.7284 L16.8052,9.6854 C17.1962,9.2954 17.1962,8.6624 16.8052,8.2714 C16.4142,7.8804 15.7822,7.8804 15.3912,8.2714 L10.0552,13.6074 Z" id="Fill-3" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>
