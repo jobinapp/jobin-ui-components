@@ -58,5 +58,3 @@ const Button = props => {
 };
 
 export default Button;
-
-//npm install jobin-ui-components@latest
