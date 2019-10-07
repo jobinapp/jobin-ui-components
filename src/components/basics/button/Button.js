@@ -7,16 +7,16 @@ import * as cardSpinnerData from "../../../../assets/animations/button-loading.j
 
 const Button = props => {
     const ButtonStyled = styled.button`
-        border: 2px solid ${greenDark};
+        border: 2px solid ${props => props.mainColor || greenDark};
         padding: 12px 24px 12px 24px;
         height: 56px;
-        background-color: ${props => (props.empty ? "transparent" : greenDark)};
+        background-color: ${props => (props.empty ? "transparent" : (props.mainColor || greenDark))};
         border-radius: 4px;
         font-family: "Open Sans", sans-serif;
         font-weight: 600;
         font-size: 16px;
         line-height: 24px;
-        color: ${props => (props.empty ? greenDark : "#fff")};
+        color: ${props => (props.empty ? (props.mainColor || greenDark) : "#fff")};
         align-items: center;
         justify-content: center;
         cursor: ${props =>
@@ -26,7 +26,7 @@ const Button = props => {
         ${props => props.style}
 
         :hover {
-            background-color: ${green};
+            background-color: ${props.mainColor || green};
             color: #fff;
         }
     `;
@@ -58,3 +58,5 @@ const Button = props => {
 };
 
 export default Button;
+
+//npm install jobin-ui-components@latest

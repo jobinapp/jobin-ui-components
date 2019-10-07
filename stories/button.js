@@ -17,6 +17,16 @@ storiesOf("Components|Button", module)
             empty={boolean("empty", false)}
         />
     ))
+    .add("Custom color", () => (
+        <Button
+            buttonText={text("buttonText", "Botón")}
+            disabled={boolean("disabled", false)}
+            loading={boolean("loading", false)}
+            onClick={() => alert("Hola mundo")}
+            empty={boolean("empty", false)}
+            mainColor={text("mainColor","#fa504c")}
+        />
+    ))
     .add("Text with image", () => (
         <ButtonTextImage
             buttonText={text("buttonText", "Botón")}
