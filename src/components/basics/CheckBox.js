@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { black } from "../constants/colors";
+import { black } from "../../constants/colors";
 
 import CheckBoxOn from "../../icons/images/CheckBoxOn";
 import CheckBoxOff from "../../icons/images/CheckBoxOff";

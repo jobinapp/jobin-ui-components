@@ -1,4 +1,6 @@
 import { configure } from "@storybook/react";
+import "../styles/normalize.css";
+import "../styles/jobin.css";
 // import { addParameters } from "@storybook/react";
 
 // addParameters({
@@ -17,6 +19,20 @@ function loadStories() {
     require("../stories/filters.js");
     require("../stories/others/constants.js");
     require("../stories/others/titles.js");
+    require("../stories/others/title.js");
+    require("../stories/call-to-action.js");
+    require("../stories/card.js");
+    require("../stories/grid.js");
+    require("../stories/others/p.js");
+    require("../stories/others/title-and-description.js");
+    require("../stories/nav.js");
+    require("../stories/social-nav.js");
+    require("../stories/footer.js");
+    require("../stories/section.js");
+    require("../stories/dropdown.js");
+    require("../stories/reviews.js");
+    require("../stories/job.js");
+    require("../stories/jumbotron.js");
 }
 
 configure(loadStories, module);

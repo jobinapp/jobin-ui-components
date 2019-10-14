@@ -5,7 +5,7 @@ import {
     greyLight,
     greyMedium,
     black
-} from "../../constants/colors";
+} from "../../../constants/colors";
 
 const SearchBar = props => {
     const styles = {

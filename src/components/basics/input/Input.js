@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { greyBackground, black, red, greyLight } from "../../constants/colors";
+import { greyBackground, black, red, greyLight } from "../../../constants/colors";
 
 const Input = props => {
     const InputStyled = styled.input`

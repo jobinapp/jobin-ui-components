@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { black } from "../constants/colors";
+import { black } from "../../constants/colors";
 
 const H3 = props => {
     const H3Styled = styled.h1`

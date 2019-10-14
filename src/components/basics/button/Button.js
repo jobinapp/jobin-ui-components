@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
-import { green, greenDark } from "../../constants/colors";
+import { green, greenDark } from "../../../constants/colors";
 
 import * as cardSpinnerData from "../../../../assets/animations/button-loading.json";
 
 const Button = props => {
     const ButtonStyled = styled.button`
-        border: 2px solid ${props => props.mainColor || greenDark};
+        border: 2px solid ${props.mainColor || greenDark};
         padding: 12px 24px 12px 24px;
         height: 56px;
-        background-color: ${props => (props.empty ? "transparent" : (props.mainColor || greenDark))};
+        background-color: ${props.empty ? "transparent" : props.mainColor || greenDark};
         border-radius: 4px;
         font-family: "Open Sans", sans-serif;
         font-weight: 600;
         font-size: 16px;
         line-height: 24px;
-        color: ${props => (props.empty ? (props.mainColor || greenDark) : "#fff")};
+        color: ${props.empty ? props.mainColor || greenDark : "#fff"};
         align-items: center;
         justify-content: center;
         cursor: ${props =>
@@ -28,6 +28,9 @@ const Button = props => {
         :hover {
             background-color: ${props.mainColor || green};
             color: #fff;
+            ${
+                props.mainColor && `filter: brightness(150%);`
+            }
         }
     `;
 

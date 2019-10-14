@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { greyBackground, green, greenDark, black } from "../constants/colors";
+import { greyBackground, green, greenDark, black } from "../../constants/colors";
 
 const Slider = props => {
     const SliderStyled = styled.input`

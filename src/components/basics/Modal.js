@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { greyLight, black } from "../constants/colors";
+import { greyLight, black } from "../../constants/colors";
 
 import Button from "../basics/button/Button";
 import ButtonImage from "../basics/button/ButtonImage";

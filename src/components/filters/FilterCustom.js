@@ -5,7 +5,7 @@ import {
     greyBackground,
     greenDark,
     black
-} from "../constants/colors";
+} from "../../constants/colors";
 
 const FilterCustom = props => {
     const [active, setActive] = useState(false);

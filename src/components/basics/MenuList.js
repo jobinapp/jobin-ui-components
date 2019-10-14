@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { greyBackground } from "../constants/colors";
+import { greyBackground } from "../../constants/colors";
 
 import Button from "./button/Button";
 

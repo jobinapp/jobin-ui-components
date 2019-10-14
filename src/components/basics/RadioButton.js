@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { black } from "../constants/colors";
+import { black } from "../../constants/colors";
 
 import RadioButtonOn from "../../icons/images/RadioButtonOn";
 import RadioButtonOff from "../../icons/images/RadioButtonOff";

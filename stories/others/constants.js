@@ -10,7 +10,7 @@ import {
     greyLight,
     greyBackground,
     black
-} from "../../src/components/constants/colors";
+} from "../../src/constants/colors";
 
 const style = {
     mainContainer: {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { black, greyBackground } from "../../constants/colors";
+import { black, greyBackground } from "../../../constants/colors";
 
 const ButtonTextImage = props => {
     const ButtonImageStyled = styled.button`
