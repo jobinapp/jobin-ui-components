@@ -7,4 +7,5 @@ export { default as Modal } from "./Modal";
 export { default as RadioButton } from "./RadioButton";
 export { default as Slider } from "./Slider";
 export { default as Card } from "./Card";
+export { default as Counter } from "./Counter";
 
