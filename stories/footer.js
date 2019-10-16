@@ -135,7 +135,7 @@ const socialNavItems = [
 ]
 
 storiesOf("Navigation|Footer", module)
-    .add("Default", () => (
+    .add("Footer", () => (
         <Footer
         items={footerItems}
         copyright="© 2016-2019 Jobin App S.L. Todos los derechos reservados"

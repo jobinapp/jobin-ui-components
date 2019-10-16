@@ -8,6 +8,8 @@ import ArrowDown from "../../icons/images/ArrowDown";
 
 const CollapseContainerActive = styled.div`
   display: block;
+  box-shadow: inset 0 -1px 0 0 #e8e8e8;
+  ${props => props.collapsed ? `padding-bottom:24px;` : "height:1px;" }
 `;
 
 const FlexibleContainer = styled.div`
@@ -15,8 +17,9 @@ const FlexibleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-shadow: inset 0 -1px 0 0 #e8e8e8;
   cursor: pointer;
+  padding-top:24px;
+  ${props => !props.collapsed ? `padding-bottom:24px;` : "" }
 
   div:first-child {
     width: 90%;
@@ -33,7 +36,7 @@ const Dropdown = props => {
 
   return (
     <div>
-      <FlexibleContainer onClick={props.onClickDropdown}>
+      <FlexibleContainer collapsed={props.collapsed} onClick={props.onClickDropdown}>
         <div>{children[0]}</div>
         <div>
           <span>
@@ -41,13 +44,15 @@ const Dropdown = props => {
           </span>
         </div>
       </FlexibleContainer>
-      {props.collapsed && (
-        <CollapseContainerActive>
-          {children[1]}
+     
+        <CollapseContainerActive collapsed={props.collapsed}>
+        {props.collapsed && (children[1]
+        )}
         </CollapseContainerActive>
-      )}
+      
     </div>
   );
 };
 
 export default Dropdown;
+

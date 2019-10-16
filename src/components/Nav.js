@@ -3,11 +3,11 @@ import Container from "./layout/Container";
 import styled from "styled-components";
 
 //Styles
-import { black, white } from "../constants/colors";
+import { black, white, red } from "../constants/colors";
 import device from "../constants/mediasQueries";
 
 //Asstes
-import ArrowDown from "../icons/images/ArrowDown";
+import MenuBotton from "../icons/images/Menu";
 
 const Div = styled.div`
   display: block;
@@ -98,6 +98,10 @@ const MenuItem = styled.li`
   font-size: 14px;
 
   @media ${device.tablet} {
+    ${props =>
+      props.isActive &&
+      `border-bottom:1px solid ${props.hover ? props.hover : red}`}
+
     &:last-child {
       margin-right: 0px;
     }
@@ -110,7 +114,17 @@ const MenuItem = styled.li`
 
 const LinkMenu = styled.a`
   color: ${props => props.altColor};
+  font-weight: 600;
   text-decoration: none;
+  transition: 0.5s all;
+
+  ${props =>
+    props.isActive && `color:${props.hover ? props.hover : red} !important`}
+
+  &:hover {
+    color: ${props => (props.hover ? props.hover : red)};
+    transition: 0.5s all;
+  }
 `;
 
 const LinkMenuWithIcon = styled(LinkMenu)`
@@ -140,7 +154,10 @@ const ButtonToggleNav = styled.button`
   width: 55px;
   background: transparent;
   border: none;
-
+  outline: none;
+  &:active {
+    border: none;
+  }
   @media ${device.tablet} {
     display: none;
   }
@@ -163,24 +180,29 @@ let styledIcon = element => {
 };
 
 const Nav = props => {
+  const STICKY_SINCE = props.stickyScrollSince || 10
   const [isMenuVisible, setMenuVisible] = useState(true);
-  const [isFixed, setFixed] = useState(false);
-  const [mainColor, setMainColor] = useState(props.mainColor || white);
-  const [altColor, setAltColor] = useState(props.altColor || black);
+  const [isFixed, setFixed] = useState(() => {
+    return window.scrollY > STICKY_SINCE
+  });
+  const [mainColor, setMainColor] = useState(() => {
+    return props.mainColor || black;
+  });
+  const [altColor, setAltColor] = useState(() => {
+    return props.altColor || white;
+  });
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    setAltColor(props.altColor);
-    setMainColor(props.mainColor);
 
     // unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [props.altColor, props.mainColor]);
+  }, []);
 
-  let handleScroll = event => {
-    setFixed(event.currentTarget.scrollY > 10);
+  const handleScroll = event => {
+    setFixed(event.currentTarget.scrollY > STICKY_SINCE);
   };
 
   const toggleMenu = () => {
@@ -192,6 +214,7 @@ const Nav = props => {
       isFixed={isFixed}
       altColor={altColor}
       mainColor={mainColor}
+      hover={props.hover}
       className="container-fuild"
     >
       <ContainerStyled>
@@ -201,7 +224,7 @@ const Nav = props => {
           </LinkHome>
         </Div>
         <ButtonToggleNav onClick={toggleMenu}>
-          <ArrowDown mainColor={isFixed ? mainColor : altColor} />
+          <MenuBotton mainColor={isFixed ? mainColor : altColor} />
         </ButtonToggleNav>
         <MenuContainer
           mainColor={mainColor}
@@ -212,15 +235,19 @@ const Nav = props => {
             let Icon = item.icon.icon;
             Icon = styledIcon(Icon);
             return (
-              <MenuItem key={i}>
+              <MenuItem key={i} isActive={item.active}>
                 <LinkMenuWithIcon
+                  hover={props.hover}
                   altColor={altColor}
                   direction={item.direction}
+                  isActive={item.active}
                   href="#"
                 >
                   <Icon
                     className={item.icon.isAlwaysVisible}
-                    mainColor={isFixed ? mainColor : altColor}
+                    mainColor={
+                      item.active ? props.hover : isFixed ? mainColor : altColor
+                    }
                   />
                   <span>{item.text}</span>
                 </LinkMenuWithIcon>

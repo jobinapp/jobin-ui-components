@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 //Styles
@@ -9,15 +8,15 @@ const GridContainer = styled.div`
   display: grid;
 `;
 
-let creatCustomElemtnt = element => {
+const creatCustomElemtnt = element => {
   const newElement = styled(element)`
     display: grid;
   `;
   return newElement;
 };
 
-let createGridResponsive = (element, stylesObj) => {
-  let GridResponsive = styled(element)`
+const createGridResponsive = (element, stylesObj) => {
+  const GridResponsive = styled(element)`
     grid-template-columns: ${stylesObj.mobileS};
     grid-gap: ${stylesObj.gridGap};
 
@@ -44,82 +43,76 @@ let createGridResponsive = (element, stylesObj) => {
     @media ${device.laptopL} {
       grid-template-columns: ${stylesObj.laptopL};
     }
-
-    @media ${device.desktop} {
-      grid-template-columns: ${stylesObj.desktop};
-    }
-
-    @media ${device.desktopL} {
-      grid-template-columns: ${stylesObj.desktopL};
-    }
   `;
 
   return GridResponsive;
 };
 
-let gridStyles = {
-  gridTemplateColumns: "inherit",
-  gridGap: "inherit",
-  mobileS: "100%",
-  mobileM: "100%",
-  mobileL: "100%",
-  tablet: "auto auto auto",
-  laptop: "auto auto auto auto",
-  laptopL: "auto auto auto auto",
-  desktop: "auto auto auto auto",
-  desktopL: "auto auto auto auto"
-};
-
 const Grid = props => {
-  const changeGrid = () => {
-    const element = !props.tag ? GridContainer : creatCustomElemtnt(props.tag);
-    gridStyles.gridGap = props.gap || gridStyles.gridGap;
-    
+  const changeGrid = props => {
+    let gridTemp = {
+      gridTemplateColumns: "inherit",
+      gridGap: props.gap || "inherit",
+      mobileS: "100%",
+      mobileM: "100%",
+      mobileL: "100%",
+      tablet: "auto auto auto",
+      laptop: "auto auto auto auto",
+      laptopL: "auto auto auto auto"
+    };
+
     // props.allResponsive overwrite all propieties, this will ignore any other responsive propieti defined on the Grid component
     if (props.allResponsive) {
-      for (const key in gridStyles) {
-        if (key != "gridGap" && key != "gridTemplateColumns") {
-          gridStyles[key] = props.allResponsive;
-        }
-      }
+      gridTemp = {
+        gridTemplateColumns: "inherit",
+        gridGap: props.gap || "inherit",
+        mobileS: props.allResponsive,
+        mobileM: props.allResponsive,
+        mobileL: props.allResponsive,
+        tablet: props.allResponsive,
+        laptop: props.allResponsive,
+        laptopL: props.allResponsive
+      };
     } else {
-      gridStyles.mobileS = props.mobileS || gridStyles.mobileS;
-      gridStyles.mobileM = props.mobileM || gridStyles.mobileM;
-      gridStyles.mobileL = props.mobileL || gridStyles.mobileL;
-      gridStyles.tablet = props.tablet || gridStyles.tablet;
-      gridStyles.laptop = props.laptop || gridStyles.laptop;
-      gridStyles.laptopL = props.laptopL || gridStyles.laptop;
-      gridStyles.desktop = props.desktop || gridStyles.laptop;
-      gridStyles.desktopL = props.desktopL || gridStyles.laptop;
+      gridTemp = {
+        gridTemplateColumns: "inherit",
+        gridGap: props.gap || "inherit",
+        mobileS: props.mobileS || gridTemp.mobileS,
+        mobileM: props.mobileM || gridTemp.mobileM,
+        mobileL: props.mobileL || gridTemp.mobileL,
+        tablet: props.tablet || gridTemp.tablet,
+        laptop: props.laptop || gridTemp.laptop,
+        laptopL: props.laptopL || (props.laptop || gridTemp.laptop)
+      };
     }
 
+    return gridTemp;
+  };
+  const changeContainer = (props, gridStyles) => {
+    const element = !props.tag ? GridContainer : creatCustomElemtnt(props.tag);
     return createGridResponsive(element, gridStyles);
-  }
-  const [ConditionalContainer, setConditionalContainer] = useState(() => {
-    return changeGrid();
-  });
+  };
+  const [gridStyles, setGridStyles] = useState(changeGrid(props));
+  const [ConditionalContainer, setConditionalContainer] = useState(
+    changeContainer(props, gridStyles)
+  );
 
   useEffect(() => {
-    setConditionalContainer(()=> {
-      return changeGrid()
-    })
+    setGridStyles(changeGrid(props));
+    setConditionalContainer(changeContainer(props, gridStyles));
   }, [
+    props.gap,
     props.mobileS,
     props.mobileM,
     props.mobileL,
     props.tablet,
     props.laptop,
     props.laptopL,
-    props.desktop,
-    props.desktopL,
-    props.allResponsive,
-    props.gap
+    props.allResponsive
   ]);
 
-  
-
   return (
-    <ConditionalContainer style={props.style}>
+    <ConditionalContainer className={props.className} style={props.style}>
       {props.children}
     </ConditionalContainer>
   );

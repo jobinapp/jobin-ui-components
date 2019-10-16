@@ -20,8 +20,8 @@ const socialNavItems = [
     }
 ]
 
-storiesOf("Navigation|Social nav", module)
-    .add("Default", () => (
+storiesOf("Navigation", module)
+    .add("Social nav", () => (
         <SocialNav icons={socialNavItems} />
         )
     );

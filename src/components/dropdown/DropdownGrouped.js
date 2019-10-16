@@ -11,7 +11,7 @@ const DropdownGrouped = props => {
             onClickDropdown={props.onClickDropdown ? () => props.onClickDropdown(item, i) : null}
             collapsed={props.items[i].collapsed}
           >
-            <h2>{item.title}</h2>
+            <h2 style={{fontSize: "18px", margin:0}}>{item.title}</h2>
             <p>{item.text}</p>
           </Dropdown>
         );

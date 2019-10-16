@@ -37,9 +37,9 @@ const dropdownItems = [
   ]
 
 
-storiesOf("Dropdowns|Dropdown", module)
+storiesOf("Dropdowns", module)
   .addDecorator(withKnobs)
-  .add("Default", () => {
+  .add("Dropdown", () => {
     const [items, setItems] = useState(dropdownItems)
 
     const onClickDropdown = (item, i) => {

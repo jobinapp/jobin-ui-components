@@ -49,7 +49,7 @@ li {
 li a,
 h5 {
   text-decoration: none;
-  color: ${black};
+  color: ${greyDark};
 }
 
 @media ${device.mobileL} {
@@ -79,8 +79,44 @@ justify-content: flex-start;
 
 const WrapperCenter = styled(Wrapper)`
 justify-content: center;
+
+div:first-child {
+  width: 100%;
+  order:2;
+  p {
+    text-align: center;
+  }
+  
+}
+
+div:last-child {
+  order:1;
+  margin-bottom:16px;
+  width: 100%;
+  ul {
+    justify-content: center;
+  }
+}
+
 @media ${device.tablet} {
-    justify-content: space-between;
+  justify-content: space-between;
+  div:first-child {
+    width: 60%;
+    order:1;
+    p {
+      text-align: left;
+    }
+  }
+  
+  div:last-child {
+    order:2;
+    margin-bottom:16px;
+    width: 40%;
+    ul {
+      justify-content: flex-end;
+    }
+  }
+ 
 }
 
 `;
@@ -109,6 +145,7 @@ li {
 
 const Copyright = styled.p`
 text-align: center;
+font-size: 14px;
 
 @media ${device.laptop} {
     text-align: left;

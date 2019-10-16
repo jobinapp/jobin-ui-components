@@ -35,7 +35,7 @@ const latestJobs = [
   ];
 
 
-  storiesOf("Job|Job", module)
+  storiesOf("Job", module)
   .addDecorator(withKnobs)
   .add("Default", () => (
     <Job

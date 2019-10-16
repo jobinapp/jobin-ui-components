@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import moment from "moment/min/moment-with-locales";
 import Jobitem from "./Jobitem";
 import Grid from "../layout/Grid";
+import { greenDark } from "../../constants/colors";
 
 const Job = props => {
   const [items, setItems] = useState(() => {
     let locale = window.navigator.userLanguage || window.navigator.language;
+    let newestsJobs = props.newestsJobs.replace(/\s+/g,' ').trim().split(" ");
+
+    
 
     return props.items
       .sort((a, b) => {
-        console.log();
         if (moment(a.date).isAfter(b.date)) {
           return -1;
         }
@@ -19,10 +22,13 @@ const Job = props => {
         return 0;
       })
       .map(item => {
-        item.date = moment(item.date)
-          .locale(locale)
-          .fromNow();
-        return item;
+        item.date = (
+              <div>{
+                  moment(item.date).locale(locale).fromNow()} 
+                { moment().diff(moment(item.date), newestsJobs[1]) <= newestsJobs[0] && 
+                    <span> - <span style={{color:greenDark}}>NUEVO</span></span> }
+              </div>)
+          return item;
       });
   });
 
@@ -32,10 +38,10 @@ const Job = props => {
 
   return (
     <Grid
-      gap="24px 24px"
-      tablet="auto auto auto"
+      gap="24px 24px"s
+      tablet="auto auto"
       laptop="auto auto auto"
-      desktopL="auto auto auto auto"
+      laptopL="auto auto auto auto"
       style={props.style}
     >
       {items.map((item, i) => {

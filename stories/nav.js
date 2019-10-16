@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, number } from "@storybook/addon-knobs";
 
 import Nav from "../src/components/Nav";
 import ArrowRight from "../src/icons/images/ArrowRight";
@@ -76,10 +76,19 @@ storiesOf("Navigation|Navbar", module)
     .add("Default", () => (
         <Nav brand={{logo: Logo, link: "#"}} items={nav} />
     ))
-    .add("Settings colors", () => (
+    .add("Setting colors", () => (
         <Nav 
             brand={{logo: Logo, link: "#"}} 
             mainColor={text("Main color",blackDark)}
             altColor={text("Alternative color", white)}
             items={nav} />
     ))
+    .add("Setting value for made sticky the navbar ", () => (
+      <Nav 
+          brand={{logo: Logo, link: "#"}} 
+          mainColor={text("Main color",blackDark)}
+          altColor={text("Alternative color", white)}
+          items={nav}
+          stickyScrollSince={number("Set value for sticky", 10)}
+           />
+  ))

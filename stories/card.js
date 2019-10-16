@@ -4,7 +4,7 @@ import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 
 import Card from "../src/components/basics/Card";
 
-storiesOf("Components|Card", module)
+storiesOf("Card", module)
     .addDecorator(withKnobs)
     .add("Default", () => (
         <Card style={{width:300}}>

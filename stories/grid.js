@@ -30,8 +30,6 @@ storiesOf("Layout|Grid", module)
             tablet={text("tablet", "auto auto")}
             laptop={text("laptop", "auto auto auto auto")}
             laptopL={text("laptop large", "auto auto auto auto")}
-            desktop={text("desktop", "auto auto auto auto")}
-            desktopL={text("desktop large", "auto auto auto auto")}
         >
             <div style={{border:"1px solid grey", height:100, display:"flex", justifyContent:"center", alignItems:"center"}}>
                 item #1
