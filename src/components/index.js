@@ -11,7 +11,8 @@ export {
   Modal,
   RadioButton,
   Slider,
-  Card
+  Card,
+  Counter
 } from "./basics";
 export {
   FilterCustom,

@@ -30,5 +30,6 @@ export {
     Header,
     Job,
     Jobitem,
-    Jumbotron
+    Jumbotron,
+    Counter
 } from "./components";
