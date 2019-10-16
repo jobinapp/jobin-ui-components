@@ -73,11 +73,11 @@ const Counter = props => {
     return (
         <View>
             <ButtonLeft onClick={disabledLeft ? null : substractToCounter}>
-                <Image src={require("../../../assets/images/substract-button.png")}/>
+                <Image src={require("../../icons/images/substract-button.png")}/>
             </ButtonLeft>
             <Label>{counter+" "+props.unit}</Label>
             <ButtonRight onClick={disabledRight ? null : addToCounter}>
-                <Image src={require("../../../assets/images/add-button.png")}/>
+                <Image src={require("../../icons/images/add-button.png")}/>
             </ButtonRight>
         </View>
     );
