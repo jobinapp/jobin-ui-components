@@ -39,23 +39,28 @@ const NavContainer = styled.nav`
   right: auto;
   width: 100%;
   height: 72px;
-  background-color: ${props => props.mainColor};
+  background-color: ${props => props.bgColor};
   z-index: 1000;
 
+  & li a {
+    color: ${props => props.itemsColor || props.mainColor};
+  }
+
   ${props =>
-    props.isFixed &&
-    `
+    !props.isSticky ||
+    (props.isFixed &&
+      `
         position:fixed;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
     
         & ,ul {
-          background-color:${props.altColor};
+          background-color:${props. bgColorWhenSticky || props.mainColor};
         }
     
         & li a {
-          color: ${props.mainColor};
+          color: ${props.itemsColorsWhenSticky || props.bgColor};
         }
-      `}
+      `)}
 `;
 
 const ContainerStyled = styled(Container)`
@@ -80,7 +85,7 @@ const MenuContainer = styled.ul`
   height: 100%;
   top: 71px;
   left: 0px;
-  background-color: ${props => props.mainColor};
+  background-color: ${props => props.bgColor};
   margin-right: -36px;
 
   @media ${device.tablet} {
@@ -113,7 +118,7 @@ const MenuItem = styled.li`
 `;
 
 const LinkMenu = styled.a`
-  color: ${props => props.altColor};
+  color: ${props => props.mainColor};
   font-weight: 600;
   text-decoration: none;
   transition: 0.5s all;
@@ -132,15 +137,15 @@ const LinkMenuWithIcon = styled(LinkMenu)`
   justify-content: start;
   align-items: center;
   padding: 8px;
-  ${props => props.direction == "left" && "margin-left:0px;"}
+  ${props => props.direction === "left" && "margin-left:0px;"}
 
   & span {
-    order: ${props => (props.direction == "left" ? "2" : "1")};
-    ${props => props.direction == "right" && "margin-right:16px;"}
+    order: ${props => (props.direction === "left" ? "2" : "1")};
+    ${props => props.direction === "right" && "margin-right:16px;"}
   }
 
   & svg {
-    order: ${props => (props.direction == "left" ? "1" : "2")};
+    order: ${props => (props.direction === "left" ? "1" : "2")};
   }
 
   @media ${device.tablet} {
@@ -168,7 +173,7 @@ let styledIcon = element => {
     display: block;
     margin-right: 16px;
     ${props =>
-      props.className == "hidden" &&
+      props.className === "hidden" &&
       `
         @media ${device.tablet} {
           display: none;
@@ -179,27 +184,44 @@ let styledIcon = element => {
   return Icon;
 };
 
+/*
+
+          hover: Set hover of Menu items, it isnt defined the default value is red
+          bgColor: Set backgroundColor for de Nav container and ul, it inst defined default will be black
+          mainColor: Set color for the items of the menu like <a> tags and svg icons and logo
+          brand: {{ logo: React component (could be anything), link: Link for redirection }}
+          brandColor: Is the element is a Svg it will set the color, you should configure your svg like a Reac component who recived and main color propety. This property will be overrite the mainColor setted before
+          brandColorWhenSticky: It is the color of the brand when navbar is fixed. (Againg this will only work for Svg)
+          bgColorWhenSticky: Set background color of nav and ul when navbar is sticky
+          items: Array of objects with nav items
+          itemsColor: Set color of <a> elements. This will overwrite mainColor for those elements
+          itemsColorsWhenSticky:  Set color of <a> elements when navbar is sticky. This will overwrite bgColor for those elements
+          isSticky: Default is true. It is set to false the propieties who depends of sticky state wont work.
+
+
+*/
+
 const Nav = props => {
-  const STICKY_SINCE = props.stickyScrollSince || 10
+  const STICKY_SINCE = props.stickyScrollSince || 10;
   const [isMenuVisible, setMenuVisible] = useState(true);
   const [isFixed, setFixed] = useState(() => {
-    return window.scrollY > STICKY_SINCE
+    return window.scrollY > STICKY_SINCE;
   });
-  const [mainColor, setMainColor] = useState(() => {
-    return props.mainColor || black;
+  const [bgColor] = useState(() => {
+    return props.bgColor || black;
   });
-  const [altColor, setAltColor] = useState(() => {
-    return props.altColor || white;
+  const [mainColor] = useState(() => {
+    return props.mainColor || white;
   });
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    if (props.isSticky) window.addEventListener("scroll", handleScroll);
 
     // unmount
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (props.isSticky) window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [props.isSticky]);
 
   const handleScroll = event => {
     setFixed(event.currentTarget.scrollY > STICKY_SINCE);
@@ -212,22 +234,38 @@ const Nav = props => {
   return (
     <NavContainer
       isFixed={isFixed}
-      altColor={altColor}
       mainColor={mainColor}
+      bgColor={bgColor}
       hover={props.hover}
       className="container-fuild"
+      itemsColor={props.itemsColor}
+      itemsColorsWhenSticky={props.itemsColorsWhenSticky}
+      isSticky={props.isSticky ? true : false}
+      bgColorWhenSticky={props.bgColorWhenSticky}
     >
       <ContainerStyled>
         <Div>
           <LinkHome href={props.brand.link}>
-            <props.brand.logo mainColor={isFixed ? mainColor : altColor} />
+            <props.brand.logo
+              mainColor={
+                props.isSticky ?
+                  isFixed ? props.brandColorWhenSticky || bgColor
+                          : props.brandColor || mainColor
+                  : props.brandColor || mainColor
+              }
+            />
           </LinkHome>
         </Div>
         <ButtonToggleNav onClick={toggleMenu}>
-          <MenuBotton mainColor={isFixed ? mainColor : altColor} />
+          <MenuBotton mainColor={
+                props.isSticky ?
+                  isFixed ? props.itemsColorsWhenSticky || bgColor
+                          : props.itemsColor || mainColor
+                  : props.itemsColor || mainColor
+              } />
         </ButtonToggleNav>
         <MenuContainer
-          mainColor={mainColor}
+          bgColor={bgColor}
           isMenuVisible={isMenuVisible}
           collapsed={isMenuVisible ? "collapsed" : ""}
         >
@@ -238,7 +276,7 @@ const Nav = props => {
               <MenuItem key={i} isActive={item.active}>
                 <LinkMenuWithIcon
                   hover={props.hover}
-                  altColor={altColor}
+                  mainColor={mainColor}
                   direction={item.direction}
                   isActive={item.active}
                   href="#"
@@ -246,7 +284,12 @@ const Nav = props => {
                   <Icon
                     className={item.icon.isAlwaysVisible}
                     mainColor={
-                      item.active ? props.hover : isFixed ? mainColor : altColor
+                      item.active
+                        ? props.hover
+                        : isFixed
+                        ? props.itemsColorsWhenSticky ||
+                          bgColor
+                        : props.itemsColor || mainColor
                     }
                   />
                   <span>{item.text}</span>
@@ -261,3 +304,4 @@ const Nav = props => {
 };
 
 export default Nav;
+
