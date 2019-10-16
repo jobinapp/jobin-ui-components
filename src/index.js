@@ -31,5 +31,8 @@ export {
     Job,
     Jobitem,
     Jumbotron,
-    Counter
+    Counter, 
+    Footer,
+    TitleAndDescription,
+    Section
 } from "./components";
