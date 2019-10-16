@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
-import {black} from '../../constants/colors'
+import {black, greenDark} from '../../constants/colors'
+import AddButton from '../../icons/images/AddButton'
+import SubstractButton from '../../icons/images/SubstractButton'
 
 const Counter = props => {
 
@@ -73,11 +75,11 @@ const Counter = props => {
     return (
         <View>
             <ButtonLeft onClick={disabledLeft ? null : substractToCounter}>
-                <Image src={require("../../icons/images/substract-button.png")}/>
+                <SubstractButton style={{fill: greenDark}}/>
             </ButtonLeft>
             <Label>{counter+" "+props.unit}</Label>
             <ButtonRight onClick={disabledRight ? null : addToCounter}>
-                <Image src={require("../../icons/images/add-button.png")}/>
+                <AddButton style={{fill: greenDark}}/>
             </ButtonRight>
         </View>
     );

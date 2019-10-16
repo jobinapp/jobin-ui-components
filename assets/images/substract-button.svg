@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>Icono / L / Remove / Enabled Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icono-/-L-/-Remove-/-Enabled-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M18,0 C27.9411255,0 36,8.0588745 36,18 C36,27.9411255 27.9411255,36 18,36 C8.0588745,36 0,27.9411255 0,18 C0,8.0588745 8.0588745,0 18,0 Z M18,2 C9.163444,2 2,9.163444 2,18 C2,26.836556 9.163444,34 18,34 C26.836556,34 34,26.836556 34,18 C34,9.163444 26.836556,2 18,2 Z" id="Oval-2" fill="#000000"></path>
+        <path d="M13,19 C12.448,19 12,18.553 12,18 C12,17.447 12.448,17 13,17 L23,17 C23.552,17 24,17.447 24,18 C24,18.553 23.552,19 23,19 L13,19 Z" id="Mask" fill="#000000"></path>
+    </g>
+</svg>
