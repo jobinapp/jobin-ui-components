@@ -34,5 +34,6 @@ export {
     Counter, 
     Footer,
     TitleAndDescription,
-    Section
+    Section,
+    Testimonial
 } from "./components";

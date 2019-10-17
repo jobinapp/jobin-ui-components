@@ -34,6 +34,7 @@ function loadStories() {
     require("../stories/reviews.js");
     require("../stories/job.js");
     require("../stories/jumbotron.js");
+    require("../stories/others/testimonial");
 }
 
 configure(loadStories, module);

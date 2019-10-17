@@ -124,6 +124,7 @@ storiesOf("Navigation|Navbar", module)
       items={nav}
       itemsColor={text("Color of <a> element and button toggle", black)}
       itemsColorsWhenSticky={black}
+      itemsActiveColor={text("Active item color", red)}
       isSticky={boolean("Define if navbar should be sticky when scroll", true)}
     />
   ));

@@ -30,3 +30,4 @@ export { default as Reviews } from "./Reviews";
 export { Job, Jobitem } from "./job";
 export { default as Jumbotron } from "./Jumbotron";
 export { default as Nav } from "./Nav";
+export { default as Testimonial } from "./Testimonial";

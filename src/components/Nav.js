@@ -105,7 +105,7 @@ const MenuItem = styled.li`
   @media ${device.tablet} {
     ${props =>
       props.isActive &&
-      `border-bottom:1px solid ${props.hover ? props.hover : red}`}
+      `border-bottom:1px solid ${props.activeColor || (props.hover ? props.hover : red)}`}
 
     &:last-child {
       margin-right: 0px;
@@ -124,7 +124,7 @@ const LinkMenu = styled.a`
   transition: 0.5s all;
 
   ${props =>
-    props.isActive && `color:${props.hover ? props.hover : red} !important`}
+    props.isActive && `color:${props.activeColor || (props.hover ? props.hover : red)} !important`}
 
   &:hover {
     color: ${props => (props.hover ? props.hover : red)};
@@ -273,12 +273,13 @@ const Nav = props => {
             let Icon = item.icon.icon;
             Icon = styledIcon(Icon);
             return (
-              <MenuItem key={i} isActive={item.active}>
+              <MenuItem key={i} isActive={item.active} activeColor={props.itemsActiveColor} >
                 <LinkMenuWithIcon
                   hover={props.hover}
                   mainColor={mainColor}
                   direction={item.direction}
                   isActive={item.active}
+                  activeColor={props.itemsActiveColor}
                   href="#"
                 >
                   <Icon
@@ -304,4 +305,3 @@ const Nav = props => {
 };
 
 export default Nav;
-
