@@ -38,7 +38,7 @@ import styled from "styled-components";
 
 
 
-const TitleAndDescription = props => {
+  const TitleAndDescription = props => {
     const Icon = props.icon;
     let ConditionalWrapper = Wrapper;
     if(Icon) {
@@ -63,7 +63,7 @@ const TitleAndDescription = props => {
         <div className={props.className} style={{...props.style}}>
             <ConditionalWrapper hasIcon={Icon ? true: false}>
                 {
-                    Icon &&  <div><Icon /></div>
+                    Icon &&  <div><Icon mainColor={props.iconMainColor || null} /></div>
                 }
                 <div>
                     <Title hierarchy={4} style={{fontSize:20, marginBottom:8}}>{props.title}</Title>
