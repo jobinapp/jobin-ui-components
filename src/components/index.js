@@ -12,7 +12,8 @@ export {
   RadioButton,
   Slider,
   Card,
-  Counter
+  Counter,
+  CountDown
 } from "./basics";
 export {
   FilterCustom,

@@ -10,3 +10,4 @@ export const white = "#ffffff";
 export const black = "#444444";
 export const blackDark = "#202020";
 export const brownLight = "#f8f7f5";
+export const yellow = "#FFC900";

@@ -32,6 +32,7 @@ export {
     Jobitem,
     Jumbotron,
     Counter, 
+    CountDown,
     Footer,
     TitleAndDescription,
     Section,
