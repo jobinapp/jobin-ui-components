@@ -59,10 +59,13 @@ const CountDown = props => {
     })
  
     useEffect(() => {
-        setInterval(() => {
+        let interval = setInterval(() => {
             calculateCountdown();
         }, 1000);
-    });
+        return ()=> {
+            clearInterval(interval);
+        }
+    }, []);
 
     const calculateCountdown = () => {
 
