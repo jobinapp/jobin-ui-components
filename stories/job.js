@@ -40,7 +40,9 @@ const latestJobs = [
   .add("Default", () => (
     <Job
         items={latestJobs}
-        maxitems={number("Max items",4)}
+        maxitems={3}
+        maxitemsPerColumns={3}
+        newestsJobs={"1 days"}
         style={{ marginBottom: 36 }}
     />
   ));

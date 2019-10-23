@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment/min/moment-with-locales";
 import Jobitem from "./Jobitem";
 import Grid from "../layout/Grid";
 import { greenDark } from "../../constants/colors";
 
 const Job = props => {
-  const [items, setItems] = useState(() => {
-    let locale = window.navigator.userLanguage || window.navigator.language;
-    let newestsJobs = props.newestsJobs.replace(/\s+/g,' ').trim().split(" ");
-
-    
-
-    return props.items
+  const sortItems = (items, newestsJobs) => {
+    console.log(window);
+    let locale = window ? window.navigator.userLanguage || window.navigator.language : "es";
+    newestsJobs = newestsJobs.replace(/\s+/g,' ').trim().split(" ");
+    return items
       .sort((a, b) => {
         if (moment(a.date).isAfter(b.date)) {
           return -1;
@@ -30,7 +28,13 @@ const Job = props => {
               </div>)
           return item;
       });
-  });
+  }
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    setItems(sortItems(props.items, props.newestsJobs))
+  }, []);
+
+  
 
   let onJobItemClick = (event, item) => {
     console.log(event, item);
@@ -53,6 +57,7 @@ const Job = props => {
               onJobItemClick={event => onJobItemClick(event, item)}
             />
           );
+        else return null
       })}
     </Grid>
   );

@@ -204,9 +204,7 @@ let styledIcon = element => {
 const Nav = props => {
   const STICKY_SINCE = props.stickyScrollSince || 10;
   const [isMenuVisible, setMenuVisible] = useState(true);
-  const [isFixed, setFixed] = useState(() => {
-    return window.scrollY > STICKY_SINCE;
-  });
+  const [isFixed, setFixed] = useState(true);
   const [bgColor] = useState(() => {
     return props.bgColor || black;
   });
@@ -215,13 +213,16 @@ const Nav = props => {
   });
 
   useEffect(() => {
-    if (props.isSticky) window.addEventListener("scroll", handleScroll);
+    if (props.isSticky) {
+      setFixed(window.scrollY > STICKY_SINCE);
+      window.addEventListener("scroll", handleScroll)
+    };
 
     // unmount
     return () => {
       if (props.isSticky) window.removeEventListener("scroll", handleScroll);
     };
-  }, [props.isSticky]);
+  }, [props.isSticky, isFixed]);
 
   const handleScroll = event => {
     setFixed(event.currentTarget.scrollY > STICKY_SINCE);
