@@ -10,6 +10,6 @@ storiesOf("Components|Counter", module)
         <Counter
             min={number("min", 4)}
             max={number("max", 20)}
-            unit={text("unit", "m2")}
+            onClick={(value) => console.log(value)}
         />
     ));

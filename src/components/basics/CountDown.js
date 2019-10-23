@@ -3,6 +3,52 @@ import styled from "styled-components";
 
 import {red, black, yellow} from '../../constants/colors'
 
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 230px;
+    color: ${props => props.timeLeft.hours <= 6 ? red : black};
+`
+const CounterView = styled.div`
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+`
+const View = styled.div`
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+const Counter = styled.label`
+    font-size: 32px;
+    font-weight: bold;
+    height: 38px;
+`
+const Label = styled.label`
+    font-size: 12px;
+`
+const TitleView = styled.div`
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-top: 6px;
+    background-color: ${props => props.timeLeft.hours <= 6 ? red : props.timeLeft.days < 1 ? yellow : black};
+    color: ${props => props.timeLeft.hours <= 6 ? "#fff" : props.timeLeft.days < 1 ? black : "#fff"};
+    padding: 2px;
+    border-radius: 4px;
+`
+const Title = styled.label`
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+`
+
 const CountDown = props => {
 
     const [timeLeft, setTimeLeft] = useState({
@@ -17,51 +63,6 @@ const CountDown = props => {
             calculateCountdown();
         }, 1000);
     });
-
-    const Container = styled.div`
-        display: flex;
-        flex-direction: column;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        width: 230px;
-        color: ${timeLeft.hours <= 6 ? red : black};
-    `
-    const CounterView = styled.div`
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: center;
-    `
-    const View = styled.div`
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    `
-    const Counter = styled.label`
-        font-size: 32px;
-        font-weight: bold;
-        height: 32px;
-    `
-    const Label = styled.label`
-        font-size: 12px;
-    `
-    const TitleView = styled.div`
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        margin-top: 6px;
-        background-color: ${timeLeft.hours <= 6 ? red : timeLeft.days < 1 ? yellow : black};
-        color: ${timeLeft.hours <= 6 ? "#fff" : timeLeft.days < 1 ? black : "#fff"};
-        padding: 2px;
-        border-radius: 4px;
-    `
-    const Title = styled.label`
-        font-family: "Open Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-    `
 
     const calculateCountdown = () => {
 
@@ -104,7 +105,7 @@ const CountDown = props => {
     }
 
     return (
-        <Container>
+        <Container timeLeft={timeLeft}>
             <CounterView>
                 <View>
                     <Counter>{addLeadingZeros(timeLeft.days)}</Counter>
@@ -124,7 +125,7 @@ const CountDown = props => {
                 </View>
             </CounterView>
             {props.title &&
-                <TitleView>
+                <TitleView timeLeft={timeLeft}>
                     <Title>{props.title}</Title>
                 </TitleView>
             }
