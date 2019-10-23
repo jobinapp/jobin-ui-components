@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 
-import {red, black, greyBackground, yellow} from '../../constants/colors'
+import {red, black, yellow} from '../../constants/colors'
 
 const CountDown = props => {
 
@@ -20,13 +20,17 @@ const CountDown = props => {
 
     const Container = styled.div`
         display: flex;
-        height: 48px;
+        flex-direction: column;
+        padding-top: 8px;
+        padding-bottom: 8px;
         width: 230px;
-        background-color: ${timeLeft.hours <= 6 ? red : timeLeft.days < 1 ? yellow : greyBackground};
-        border-radius: 4px;
+        color: ${timeLeft.hours <= 6 ? red : black};
+    `
+    const CounterView = styled.div`
+        display: flex;
+        flex: 1;
         align-items: center;
         justify-content: center;
-        color: ${timeLeft.hours <= 6 ? '#fff' : black};
     `
     const View = styled.div`
         display: flex;
@@ -36,11 +40,27 @@ const CountDown = props => {
         justify-content: center;
     `
     const Counter = styled.label`
-        font-size: 20px;
+        font-size: 32px;
         font-weight: bold;
+        height: 32px;
     `
     const Label = styled.label`
         font-size: 12px;
+    `
+    const TitleView = styled.div`
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        margin-top: 6px;
+        background-color: ${timeLeft.hours <= 6 ? red : timeLeft.days < 1 ? yellow : black};
+        color: ${timeLeft.hours <= 6 ? "#fff" : timeLeft.days < 1 ? black : "#fff"};
+        padding: 2px;
+        border-radius: 4px;
+    `
+    const Title = styled.label`
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
     `
 
     const calculateCountdown = () => {
@@ -85,22 +105,29 @@ const CountDown = props => {
 
     return (
         <Container>
-            <View>
-                <Counter>{addLeadingZeros(timeLeft.days)}</Counter>
-                <Label>Días</Label>
-            </View>
-            <View>
-                <Counter>{addLeadingZeros(timeLeft.hours)}</Counter>
-                <Label>Horas</Label>
-            </View>
-            <View>
-                <Counter>{addLeadingZeros(timeLeft.min)}</Counter>
-                <Label>Min</Label>
-            </View>
-            <View>
-                <Counter>{addLeadingZeros(timeLeft.sec)}</Counter>
-                <Label>Seg</Label>
-            </View>
+            <CounterView>
+                <View>
+                    <Counter>{addLeadingZeros(timeLeft.days)}</Counter>
+                    <Label>Días</Label>
+                </View>
+                <View>
+                    <Counter>{addLeadingZeros(timeLeft.hours)}</Counter>
+                    <Label>Horas</Label>
+                </View>
+                <View>
+                    <Counter>{addLeadingZeros(timeLeft.min)}</Counter>
+                    <Label>Min</Label>
+                </View>
+                <View>
+                    <Counter>{addLeadingZeros(timeLeft.sec)}</Counter>
+                    <Label>Seg</Label>
+                </View>
+            </CounterView>
+            {props.title &&
+                <TitleView>
+                    <Title>{props.title}</Title>
+                </TitleView>
+            }
         </Container>
     );
 };
