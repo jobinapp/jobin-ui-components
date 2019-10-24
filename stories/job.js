@@ -31,6 +31,20 @@ const latestJobs = [
       user: "Jorge",
       location: "Madrid, España",
       date: "2019-10-02 10:00:26.387"
+    },
+    {
+      guild: "Pintar",
+      title: "Quitar gotelé y pintar una pared de 20m2",
+      user: "Jorge",
+      location: "Madrid, España",
+      date: "2019-10-02 10:00:26.387"
+    },
+    {
+      guild: "Pintar",
+      title: "Quitar gotelé y pintar una pared de 20m2",
+      user: "Jorge",
+      location: "Madrid, España",
+      date: "2019-10-02 10:00:26.387"
     }
   ];
 
@@ -40,8 +54,7 @@ const latestJobs = [
   .add("Default", () => (
     <Job
         items={latestJobs}
-        maxitems={3}
-        maxitemsPerColumns={3}
+        maxitems={6}
         newestsJobs={"1 days"}
         style={{ marginBottom: 36 }}
     />

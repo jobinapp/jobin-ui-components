@@ -5,11 +5,11 @@ import Grid from "../layout/Grid";
 import { greenDark } from "../../constants/colors";
 
 const Job = props => {
-  const sortItems = (items, newestsJobs) => {
-    console.log(window);
+  const sortItems = (items, newestsJobs, isWindowMobile) => {
     let locale = window ? window.navigator.userLanguage || window.navigator.language : "es";
     newestsJobs = newestsJobs.replace(/\s+/g,' ').trim().split(" ");
-    return items
+
+    items
       .sort((a, b) => {
         if (moment(a.date).isAfter(b.date)) {
           return -1;
@@ -19,6 +19,9 @@ const Job = props => {
         }
         return 0;
       })
+  
+
+    return JSON.parse(JSON.stringify( isWindowMobile ? items.slice(0,3) : items))
       .map(item => {
         item.date = (
               <div>{
@@ -28,24 +31,32 @@ const Job = props => {
               </div>)
           return item;
       });
+
   }
+
   const [items, setItems] = useState([]);
+
+  const  handleItemsOnMobile = () => setItems(sortItems(props.items, props.newestsJobs, window.screen.width < 786));
+
   useEffect(() => {
-    setItems(sortItems(props.items, props.newestsJobs))
-  }, []);
+
+    setItems(sortItems(props.items, props.newestsJobs, window.screen.width < 786))
+    window.addEventListener("resize", handleItemsOnMobile);
+    
+    return () => window.removeEventListener("resize" , handleItemsOnMobile)
+  }, [props.items]);
 
   
 
-  let onJobItemClick = (event, item) => {
+  const onJobItemClick = (event, item) => {
     console.log(event, item);
   };
 
   return (
     <Grid
       gap="24px 24px"s
-      tablet="auto auto"
+      tablet="auto auto auto"
       laptop="auto auto auto"
-      laptopL="auto auto auto auto"
       style={props.style}
     >
       {items.map((item, i) => {
