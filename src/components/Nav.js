@@ -19,7 +19,7 @@ const LinkHome = styled.a`
   width: 35px;
   height: 39.1px;
   margin-top: 20px;
-  margin-left: -36px;
+  margin-left:0px;
   overflow: hidden;
   cursor: pointer;
 
@@ -29,6 +29,7 @@ const LinkHome = styled.a`
   @media ${device.tablet} {
     overflow: visible;
     width: 145px;
+    margin-left: -36px;
   }
 `;
 
@@ -64,16 +65,13 @@ const NavContainer = styled.nav`
 `;
 
 const ContainerStyled = styled(Container)`
-  width: 90%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0 auto;
 
   @media ${device.tablet} {
-    width: 75%;
     flex-wrap: nowrap;
   }
 `;
@@ -88,6 +86,14 @@ const MenuContainer = styled.ul`
   background-color: ${props => props.bgColor};
   margin-right: -36px;
 
+  ${props => (!props.isMenuVisible && `
+    & li {
+      margin-left:32px;
+      padding:8px;
+    }
+  
+  `)}
+
   @media ${device.tablet} {
     position: static;
     display: flex;
@@ -98,14 +104,34 @@ const MenuContainer = styled.ul`
 `;
 
 const MenuItem = styled.li`
-  margin-right: 16px;
-  margin-left: 16px;
+  margin-right: 8px;
+  margin-left: 8px;
   font-size: 14px;
+
+  a {
+    position:relative;
+  }
 
   @media ${device.tablet} {
     ${props =>
       props.isActive &&
-      `border-bottom:1px solid ${props.activeColor || (props.hover ? props.hover : red)}`}
+      `
+      & a:after {
+        content: "";
+        display:block;
+        position:absolute;
+        width: 100%;
+        height: 2px;
+        background: ${props.activeColor || (props.hover ? props.hover : red)};
+        bottom:-8px;
+      }` 
+    }
+
+
+    font-size: 13px;
+    ${props =>
+      props.isActive &&
+      `/* border-bottom:2px solid ${props.activeColor || (props.hover ? props.hover : red)} */`}
 
     &:last-child {
       margin-right: 0px;
@@ -115,6 +141,11 @@ const MenuItem = styled.li`
       margin-left: 0px;
     }
   }
+  @media ${device.laptop} {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+  
 `;
 
 const LinkMenu = styled.a`
@@ -136,12 +167,12 @@ const LinkMenuWithIcon = styled(LinkMenu)`
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 8px;
+  
   ${props => props.direction === "left" && "margin-left:0px;"}
 
   & span {
     order: ${props => (props.direction === "left" ? "2" : "1")};
-    ${props => props.direction === "right" && "margin-right:16px;"}
+    ${props => props.direction === "right" && "margin-right:8px;"}
   }
 
   & svg {
@@ -172,6 +203,7 @@ let styledIcon = element => {
   const Icon = styled(element)`
     display: block;
     margin-right: 16px;
+    width: 24px;
     ${props =>
       props.className === "hidden" &&
       `
@@ -218,15 +250,24 @@ const Nav = props => {
       window.addEventListener("scroll", handleScroll)
     };
 
+    window.addEventListener("resize", handleResize);
+
     // unmount
     return () => {
       if (props.isSticky) window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [props.isSticky, isFixed]);
+  }, [props.isSticky, isFixed, isMenuVisible]);
 
   const handleScroll = event => {
     setFixed(event.currentTarget.scrollY > STICKY_SINCE);
   };
+
+  const handleResize = () => {
+    if (window.screen.width >= 786) {
+      setMenuVisible(true)
+    }
+  }
 
   const toggleMenu = () => {
     setMenuVisible(!isMenuVisible);
