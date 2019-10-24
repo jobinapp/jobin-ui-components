@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Title from "./titles/Title";
 import P from "./texts/P";
 import Container from "./layout/Container";
@@ -6,6 +6,8 @@ import styled from "styled-components";
 
 //colors
 import { brownLight } from "../constants/colors";
+
+import device from "../constants/mediasQueries";
 
 const DivStyled = styled.div`
   position: relative;
@@ -27,16 +29,33 @@ ${props => props.hasDivider &&
 }
 `;
 
+const ChildrenWrapper = styled.div`
+  width: 100%;
+
+  @media ${device.tablet} {
+    width: 70%;
+  }
+
+  @media ${device.laptop} {
+    width: 60%;
+  }
+
+`;
+
 const Jumbotron = props => {
 
+  const ConditionalContainerChildrenWrapper = props.childrenWrapper || ChildrenWrapper;
+
   return (
-    <DivStyled>
+    <DivStyled className={props.className}>
       <ContainerWithDivider hasDivider={props.hasDivider}>
-        <Title hierarchy={2} style={{ fontSize: 32, marginBottom: 12 }}>
-          {props.title}
-        </Title>
-        <P style={{marginBottom: 32 }}>{props.desc}</P>
-        {props.children}
+        <ConditionalContainerChildrenWrapper>
+          <Title hierarchy={2} style={{ fontSize: 32, marginBottom: 12 }}>
+            {props.title}
+          </Title>
+          <P style={{marginBottom: 32 }}>{props.desc}</P>
+          {props.children}
+        </ConditionalContainerChildrenWrapper>
       </ContainerWithDivider>
     </DivStyled>
   );

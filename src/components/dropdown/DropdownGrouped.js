@@ -1,5 +1,6 @@
 import React from "react";
 import Dropdown from "./Dropdown";
+import P from "../texts/P";
 
 const DropdownGrouped = props => {
   return (
@@ -12,7 +13,7 @@ const DropdownGrouped = props => {
             collapsed={props.items[i].collapsed}
           >
             <h2 style={{fontSize: "18px", margin:0}}>{item.title}</h2>
-            <p>{item.text}</p>
+            <P style={{marginTop: 16}}>{item.text}</P>
           </Dropdown>
         );
       })}
