@@ -2,20 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import Grid from "../components/layout/Grid";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {useCallbackRef} from "use-callback-ref";
+import { useCallbackRef } from "use-callback-ref";
 
 //Styles
 import { black } from "../constants/colors";
 import device from "../constants/mediasQueries";
 
 const ImageRound = styled.img`
-  opacity: 0.5;
+  opacity: ${props => (props.isActive ? "1" : "0.5")};
   width: 56px;
   border-radius: 50%;
-`;
-
-const ImageRoundActive = styled(ImageRound)`
-  opacity: 1;
 `;
 
 const FlexContainer = styled.div`
@@ -27,17 +23,23 @@ const FlexContainer = styled.div`
 const Textbig = styled.p`
   margin-top: 0px;
   font-size: 24px;
-  width:100%;
+  width: 100%;
   color: ${black};
+  line-height: 1.42;
 `;
 
 const Textsmall = styled(Textbig)`
   font-size: 16px;
-  text-align: right;
-  width:100%;
+  width: 100%;
+  text-align: left;
+
+  @media ${device.tablet} {
+    text-align: right;
+  }
 `;
 
 const TextsContainer = styled.div`
+  width: 100%;
   padding-top: 0px;
   height: calc(100% - 56px);
   @media ${device.tablet} {
@@ -46,9 +48,24 @@ const TextsContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  display: none;
+  width:100%;
+  padding-top: 56.25%; 
+  position relative;
+  overflow:hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width:100%;
+  }
+
   @media ${device.tablet} {
     display: block;
+    padding-top: 100%; 
+    max-width:468px;
   }
 `;
 
@@ -57,11 +74,14 @@ const ControlWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  
-  @media ${device.tablet} {
+  margin-top:32px @media ${device.tablet} {
     justify-content: start;
   }
-  
+
+  @media ${device.laptop} {
+    justify-content: start;
+    margin-top: 0px;
+  }
 `;
 
 const Reviews = props => {
@@ -81,22 +101,24 @@ const Reviews = props => {
   const [timerID, setTimerID] = useState();
   const activeReviewRef = useRef(activeReview);
   const [height, setHeight] = useState(null);
-  const refCustom = useCallbackRef(null, node => {
-    if (node) {
+  const refCustom = useCallbackRef(
+    null,
+    node => {
+      if (node) {
         setHeight(node.getBoundingClientRect().height);
-    }
-
-  }, []);
+      }
+    },
+    []
+  );
 
   const fixHegith = () => {
-    setActiveReview(0)
-    setHeight("auto")
-    setHeight(refCustom.current.getBoundingClientRect().height)
+    setActiveReview(0);
+    setHeight("auto");
+    setHeight(refCustom.current.getBoundingClientRect().height);
     if (props.autoplay) clearTimeout(timerID);
-  }
+  };
 
   useEffect(() => {
-    
     activeReviewRef.current = activeReview;
     if (props.autoplay) {
       let id = setTimeout(
@@ -120,7 +142,7 @@ const Reviews = props => {
 
   useEffect(() => {
     window.addEventListener("resize", fixHegith);
-    
+
     return () => {
       window.removeEventListener("resize", fixHegith);
     };
@@ -136,7 +158,7 @@ const Reviews = props => {
       <Grid
         tablet="calc(50% - 106px) auto"
         laptop="calc(50% - 106px) auto"
-        gap="0px 106px"
+        gap="24px 106px"
       >
         <ImageContainer>
           <div>
@@ -148,7 +170,9 @@ const Reviews = props => {
         </ImageContainer>
         <FlexContainer>
           <TextsContainer>
-            <Textbig ref={refCustom} style={{height:height}}>“{props.items[activeReview].review}”</Textbig>
+            <Textbig ref={refCustom} style={{ height: height }}>
+              “{props.items[activeReview].review}”
+            </Textbig>
             <Textsmall>
               <strong>{props.items[activeReview].author}</strong>,{" "}
               {props.items[activeReview].location}
@@ -157,17 +181,16 @@ const Reviews = props => {
           <ControlWrapper>
             <Grid tag="ul" allResponsive="56px 56px 56px" gap="0px 10px">
               {props.items.map((item, i) => {
-                let ConditionalImg =
-                    item === props.items[activeReview]
-                      ? ImageRoundActive
-                      : ImageRound;
                 return (
                   <li
                     key={i}
                     style={{ cursor: "pointer" }}
                     onClick={() => onReviewClick(i)}
                   >
-                    <ConditionalImg src={item.imgThumbUrl} />
+                    <ImageRound
+                      isActive={item === props.items[activeReview]}
+                      src={item.imgThumbUrl}
+                    />
                   </li>
                 );
               })}
