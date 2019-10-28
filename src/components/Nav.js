@@ -322,7 +322,7 @@ const Nav = props => {
                   direction={item.direction}
                   isActive={item.active}
                   activeColor={props.itemsActiveColor}
-                  href="#"
+                  href={item.link}
                 >
                   <Icon
                     className={item.icon.isAlwaysVisible}
