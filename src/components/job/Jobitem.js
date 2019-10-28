@@ -19,6 +19,8 @@ const Guild = styled.span`
     letter-spacing: 0.2px;
     color:${greenDark}
     padding-bottom:4px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
 
 `;
 
@@ -27,12 +29,14 @@ const JobDesc = styled(P)`
     font-weight: bold;
     line-height: 1.5;
     color: ${black};
+    margin-bottom:12px;
 `;
 const TextIconAligned = styled.div`
     display:flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap:wrap;
+    margin-bottom: 3px;
 
     svg {
         vertical-align: bottom;
@@ -43,6 +47,7 @@ const TextIconAligned = styled.div`
     }
 
 `;
+
 
 const Jobitem = props => {
     return (
