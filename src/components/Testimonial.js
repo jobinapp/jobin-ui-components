@@ -21,15 +21,32 @@ const Textsmall = styled(Textbig)`
 const TextsContainer = styled.div`
   padding-top: 0px;
   height: calc(100% - 56px);
+  line-height: 1.42;
+
   @media ${device.tablet} {
     padding-top: 56px;
   }
 `;
 
 const ImageContainer = styled.div`
-  display: none;
+  width:100%;
+  padding-top: 56.25%; 
+  position relative;
+  overflow:hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width:100%;
+  }
+
   @media ${device.tablet} {
     display: block;
+    padding-top: 100%; 
+    max-width:368px;
   }
 `;
 
@@ -38,7 +55,7 @@ const Testimonial = props => {
     <Grid
       tablet="calc(50% - 106px) auto"
       laptop="calc(50% - 106px) auto"
-      gap="0px 106px"
+      gap="24px 106px"
     >
         <ImageContainer>
           <div>
