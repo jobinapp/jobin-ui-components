@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 //styles
-import { greyMedium } from "../../constants/colors";
+import { greyMedium, red } from "../../constants/colors";
 //Assets
 import ArrowDown from "../../icons/images/ArrowDown";
 
@@ -21,6 +21,23 @@ const FlexibleContainer = styled.div`
   padding-top:24px;
   ${props => !props.collapsed ? `padding-bottom:24px;` : "" }
 
+  & h2, & svg use {
+    transition: all 500ms;
+  }
+
+  &:hover {
+    svg use, h2 {
+      transition: all 500ms;
+    }
+    h2 {
+      color:${red};
+      
+    }
+    svg use {
+      fill:${red};
+    }
+  }
+
   div:first-child {
     width: 90%;
   }
@@ -31,6 +48,7 @@ const FlexibleContainer = styled.div`
   }
 `;
 
+
 const Dropdown = props => {
   const children = React.Children.toArray(props.children);
 
@@ -40,7 +58,7 @@ const Dropdown = props => {
         <div>{children[0]}</div>
         <div>
           <span>
-            <ArrowDown style={{width:24}} mainColor={greyMedium} />
+            <ArrowDown style={{width:24, transform:`rotate( ${ props.collapsed ? "180deg" : "0deg"} )` }} mainColor={greyMedium} />
           </span>
         </div>
       </FlexibleContainer>
@@ -55,4 +73,3 @@ const Dropdown = props => {
 };
 
 export default Dropdown;
-
