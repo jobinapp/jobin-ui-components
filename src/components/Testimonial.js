@@ -14,7 +14,7 @@ const Textbig = styled.p`
 
 const Textsmall = styled(Textbig)`
   font-size: 16px;
-  text-align: right;
+  text-align: left;
   width:100%;
 `;
 

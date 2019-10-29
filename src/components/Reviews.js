@@ -32,10 +32,6 @@ const Textsmall = styled(Textbig)`
   font-size: 16px;
   width: 100%;
   text-align: left;
-
-  @media ${device.tablet} {
-    text-align: right;
-  }
 `;
 
 const TextsContainer = styled.div`
@@ -65,7 +61,6 @@ const ImageContainer = styled.div`
   @media ${device.tablet} {
     display: block;
     padding-top: 100%; 
-    max-width:468px;
   }
 `;
 
