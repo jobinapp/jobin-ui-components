@@ -36,8 +36,8 @@ storiesOf("Components|Button", module)
     ))
     .add("Call to action", () => (
         <CallToAction
-            src={text("src", require("../assets/images/back.svg"))}
             buttonText={text("buttonText", "Call to action")}
+            hasIcon={boolean("hasIcon", false)}
             onClick={() => alert("Hola mundo")}
         />
     ));
