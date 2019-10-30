@@ -46,7 +46,7 @@ const TextsContainer = styled.div`
 const ImageContainer = styled.div`
   width:100%;
   padding-top: 56.25%; 
-  position relative;
+  position: relative;
   overflow:hidden;
 
   img {
@@ -69,7 +69,7 @@ const ControlWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top:32px @media ${device.tablet} {
+  margin-top:32px media ${device.tablet} {
     justify-content: start;
   }
 

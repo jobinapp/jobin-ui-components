@@ -49,7 +49,7 @@ module.exports = {
                         limit: 50000
                     }
                 }
-            }
+            }   
         ]
     },
     // Here we define explicitly the file types we intend to deal with

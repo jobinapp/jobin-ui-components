@@ -22,7 +22,6 @@ function loadStories() {
     require("../stories/others/constants.js");
     require("../stories/others/titles.js");
     require("../stories/others/title.js");
-    require("../stories/call-to-action.js");
     require("../stories/card.js");
     require("../stories/grid.js");
     require("../stories/others/p.js");

@@ -5,19 +5,11 @@ import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 import Button from "../src/components/basics/button/Button";
 import ButtonTextImage from "../src/components/basics/button/ButtonTextImage";
 import ButtonImage from "../src/components/basics/button/ButtonImage";
+import CallToAction from "../src/components/basics/button/CallToAction";
 
 storiesOf("Components|Button", module)
     .addDecorator(withKnobs)
     .add("Default", () => (
-        <Button
-            buttonText={text("buttonText", "Botón")}
-            disabled={boolean("disabled", false)}
-            loading={boolean("loading", false)}
-            onClick={() => alert("Hola mundo")}
-            empty={boolean("empty", false)}
-        />
-    ))
-    .add("Custom color", () => (
         <Button
             buttonText={text("buttonText", "Botón")}
             disabled={boolean("disabled", false)}
@@ -39,6 +31,13 @@ storiesOf("Components|Button", module)
         <ButtonImage
             src={text("src", require("../assets/images/back.svg"))}
             disabled={boolean("disabled", false)}
+            onClick={() => alert("Hola mundo")}
+        />
+    ))
+    .add("Call to action", () => (
+        <CallToAction
+            src={text("src", require("../assets/images/back.svg"))}
+            buttonText={text("buttonText", "Call to action")}
             onClick={() => alert("Hola mundo")}
         />
     ));
