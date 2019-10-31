@@ -12,6 +12,7 @@ const WrapperStyled = styled.div`
 
     div:first-child {
         margin-bottom:10.4px;
+        ${props => props.hasIcon && `height:56px;`}
     }
 
     @media ${device.tablet} {
