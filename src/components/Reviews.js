@@ -69,7 +69,9 @@ const ControlWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top:32px media ${device.tablet} {
+  margin-top:32px;
+  
+  media ${device.tablet} {
     justify-content: start;
   }
 
