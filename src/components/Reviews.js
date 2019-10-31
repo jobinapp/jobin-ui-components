@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useCallbackRef } from "use-callback-ref";
 
 //Styles
-import { black } from "../constants/colors";
+import { black, greyDark } from "../constants/colors";
 import device from "../constants/mediasQueries";
 
 const ImageRound = styled.img`
@@ -171,8 +171,8 @@ const Reviews = props => {
               “{props.items[activeReview].review}”
             </Textbig>
             <Textsmall>
-              <strong>{props.items[activeReview].author}</strong>,{" "}
-              {props.items[activeReview].location}
+              {props.items[activeReview].author},{" "}
+              <span style={{color:greyDark}}>{props.items[activeReview].location}</span>
             </Textsmall>
           </TextsContainer>
           <ControlWrapper>

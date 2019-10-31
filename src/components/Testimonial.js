@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "../components/layout/Grid";
 import styled from "styled-components";
 
-import { black } from "../constants/colors";
+import { black, greyDark } from "../constants/colors";
 import device from "../constants/mediasQueries";
 
 const Textbig = styled.p`
@@ -19,13 +19,10 @@ const Textsmall = styled(Textbig)`
 `;
 
 const TextsContainer = styled.div`
-  padding-top: 0px;
-  height: calc(100% - 56px);
   line-height: 1.42;
-
-  @media ${device.tablet} {
-    padding-top: 56px;
-  }
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
 `;
 
 const ImageContainer = styled.div`
@@ -46,8 +43,8 @@ const ImageContainer = styled.div`
   @media ${device.tablet} {
     display: block;
     padding-top: 100%; 
-    max-width:368px;
   }
+
 `;
 
 const Testimonial = props => {
@@ -66,11 +63,13 @@ const Testimonial = props => {
           </div>
         </ImageContainer>
         <TextsContainer>
+          <div>
             <Textbig>“{props.review}”</Textbig>
             <Textsmall>
-              <strong>{props.author}</strong>,{" "}
-              {props.location}
+              {props.author},{" "}
+              <span style={{color:greyDark}}>{props.location}</span>
             </Textsmall>
+          </div>
         </TextsContainer>
     </Grid>
   );
