@@ -50,7 +50,17 @@ const RadioButton = props => {
             }}
         >
             <div style={{ height: 20 }}>
-                {selected ? <RadioButtonOnStyled /> : <RadioButtonOffStyled />}
+                {selected ? 
+                    props.customOnImage ?
+                        props.customOnImage
+                    :
+                        <RadioButtonOnStyled />
+                :
+                    props.customOffImage ?
+                        props.customOffImage
+                    :
+                        <RadioButtonOffStyled />
+                }
             </div>
             <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
                 <Title>{props.title}</Title>
