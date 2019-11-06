@@ -15,7 +15,62 @@ const fuseOptions = {
     keys: ["name"]
 };
 
-const FilterMultipleSelection = props => {
+
+// TODO: this styles wont be needed when inline svg element dissappears
+const styles = {
+    nestedTitle: {
+        cursor: "pointer",
+        verticalAlign: "middle"
+    },
+    nestedButton: {
+        width: 12,
+        height: 12,
+        marginLeft: 8,
+        verticalAlign: "middle"
+    },
+    nestedButtonRotated: {
+        width: 12,
+        height: 12,
+        marginLeft: 8,
+        verticalAlign: "middle",
+        transform: "rotate(90deg)"
+    },
+    nestedList: {
+        marginTop: 8
+    }
+};
+
+const NestedButton = collapsed => {
+    return (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            style={
+                collapsed.collapsed
+                    ? styles.nestedButton
+                    : styles.nestedButtonRotated
+            }
+        >
+            <defs>
+                <path
+                    id="nestedA"
+                    d="M9 4c.256 0 .512.098.707.293l7 7a.999.999 0 0 1 0 1.415l-7.071 7.07a.999.999 0 1 1-1.414-1.413L14.586 12 8.293 5.708A.999.999 0 0 1 9 4"
+                />
+            </defs>
+            <g fill="none" fillRule="evenodd">
+                <mask id="nestedB" fill="#fff">
+                    <use xlinkHref="#nestedA" />
+                </mask>
+                <g fill="#b0b0b0" mask="url(#nestedB)">
+                    <path d="M0 0h24v24H0z" />
+                </g>
+            </g>
+        </svg>
+    );
+};
+
+const FilterSelection = props => {
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState(props.title);
     const [selectionArray, setSelectionArray] = useState(
@@ -31,8 +86,15 @@ const FilterMultipleSelection = props => {
     const [query, setQuery] = useState("");
     const [filtered, setFiltered] = useState(false);
     const [items, setItems] = useState([]);
+    const [itemsIsArr, setItemsIsArr] = useState(true);
 
     useEffect(() => {
+        const keys = Object.keys(props.items).filter(
+            key => props.items[key].parent
+        );
+        if (keys.length > 0) setItemsIsArr(false);
+        else setItemsIsArr(true);
+
         setItems(props.items && props.items.length > 0 ? props.items : []);
 
         if (props.prevSelection && props.prevSelection.length > 0) {
@@ -51,17 +113,42 @@ const FilterMultipleSelection = props => {
             setItems(prevItems => {
                 const tempArray = [];
                 const all = prevItems.map((item, idx) => {
-                    let allTemp = {
-                        ...item,
-                        selected: true
-                    };
-                    if (idx === 0) {
-                        allTemp.id = "none";
-                        allTemp.name = "Ninguna";
-                    } else {
-                        tempArray.push(allTemp);
+                    // for nested objects
+                    if (item.items) {
+                        const nested = item.items.map(innerItem => {
+                            let innerTemp = {
+                                ...innerItem,
+                                selected: true
+                            };
+                            if (idx === 0) {
+                                innerTemp.id = "none";
+                                innerTemp.name = "Ninguna";
+                            } else {
+                                tempArray.push(innerTemp);
+                            }
+                            return innerTemp;
+                        });
+                        let allTemp = {
+                            ...item,
+                            items: nested,
+                            collapsed: false
+                        };
+                        return allTemp;
                     }
-                    return allTemp;
+                    // for regular objects
+                    else {
+                        let allTemp = {
+                            ...item,
+                            selected: true
+                        };
+                        if (idx === 0) {
+                            allTemp.id = "none";
+                            allTemp.name = "Ninguna";
+                        } else {
+                            tempArray.push(allTemp);
+                        }
+                        return allTemp;
+                    }
                 });
                 if (!loading) {
                     setSelectionArray(tempArray);
@@ -76,15 +163,38 @@ const FilterMultipleSelection = props => {
             props.selectionChange([]);
             setItems(prevItems => {
                 return prevItems.map((item, idx) => {
-                    let noneTemp = {
-                        ...item,
-                        selected: false
-                    };
-                    if (idx === 0) {
-                        noneTemp.id = "all";
-                        noneTemp.name = "Todas";
+                    // for nested objects
+                    if (item.items) {
+                        const nested = item.items.map(innerItem => {
+                            let innerTemp = {
+                                ...innerItem,
+                                selected: false
+                            };
+                            if (idx === 0) {
+                                innerTemp.id = "all";
+                                innerTemp.name = "Todas";
+                            }
+                            return innerTemp;
+                        });
+                        let allTemp = {
+                            ...item,
+                            items: nested,
+                            collapsed: false
+                        };
+                        return allTemp;
                     }
-                    return noneTemp;
+                    // for regular objects
+                    else {
+                        let noneTemp = {
+                            ...item,
+                            selected: false
+                        };
+                        if (idx === 0) {
+                            noneTemp.id = "all";
+                            noneTemp.name = "Todas";
+                        }
+                        return noneTemp;
+                    }
                 });
             });
         } else {
@@ -121,26 +231,43 @@ const FilterMultipleSelection = props => {
                 }
                 setItems(prevItems => {
                     return prevItems.map((prevItem, idx) => {
-                        if (prevItem.id === item.id) {
-                            const newItem = {
-                                ...prevItems[idx],
-                                selected: !prevItems[idx].selected
-                            };
-                            if (!loading) {
-                                changeItemSelection(newItem);
-                            }
-                            return newItem;
-                        } else {
-                            if (prevItem.id === "none") {
+                        // for regular objects
+                        if (itemsIsArr) {
+                            if (prevItem.id === item.id) {
                                 const newItem = {
-                                    id: "all",
-                                    name: "Todas",
-                                    selected: false
+                                    ...prevItems[idx],
+                                    selected: !prevItems[idx].selected
                                 };
+                                if (!loading) {
+                                    changeItemSelection(newItem);
+                                }
                                 return newItem;
                             } else {
-                                return prevItem;
+                                if (prevItem.id === "none") {
+                                    const newItem = {
+                                        id: "all",
+                                        name: "Todas",
+                                        selected: false
+                                    };
+                                    return newItem;
+                                } else {
+                                    return prevItem;
+                                }
                             }
+                        }
+                        // for nested objects
+                        else {
+                            // repeat it once
+                            if (idx === 0) item.selected = !item.selected;
+                            if (prevItem.parent === item.parent) {
+                                changeItemSelection(item);
+                                if (
+                                    prevItem.id === "all" ||
+                                    prevItem.id === "none"
+                                )
+                                    return prevItem;
+                                else return item;
+                            } else return prevItem;
                         }
                     });
                 });
@@ -149,20 +276,37 @@ const FilterMultipleSelection = props => {
     };
 
     const changeItemSelection = item => {
-        //New element
+        // new element
         if (item.selected) {
             setFiltered(true);
-            const tempArray = selectionArray;
+            let tempArray = selectionArray;
             tempArray.push(item);
+            tempArray = getUnique(tempArray, "id");
             setSelectionArray(tempArray);
             props.selectionChange(tempArray);
-            if (tempArray.length === items.length - 1) {
-                setTitle(props.title + " - Todas");
-            } else {
-                setTitle(props.title + " - " + tempArray.length);
+            // for regular objects
+            if (itemsIsArr) {
+                if (tempArray.length === items.length - 1)
+                    setTitle(props.title + " - Todas");
+                else setTitle(props.title + " - " + tempArray.length);
+            }
+            // for nested objects
+            else {
+                const elems = items.map(inner =>
+                    inner.items && inner.items.length > 0
+                        ? inner.items.length
+                        : 0
+                );
+                const count = elems.reduce(
+                    (accumulator, currentVal) => accumulator + currentVal,
+                    0
+                );
+                if (tempArray.length === count - 1)
+                    setTitle(props.title + " - Todas");
+                else setTitle(props.title + " - " + tempArray.length);
             }
         }
-        //Remove element
+        // remove element
         else {
             if (selectionArray.length - 1 === 0) {
                 setTitle(props.title);
@@ -183,6 +327,32 @@ const FilterMultipleSelection = props => {
         }
     };
 
+    const toggleItems = item => {
+        item.collapsed = !item.collapsed;
+        setItems(prevItems => {
+            return prevItems.map(pItem => {
+                if ("collapsed" in pItem) {
+                    if (pItem.parent === item.parent) return item;
+                    else return pItem;
+                } else return pItem;
+            });
+        });
+    };
+
+    const getUnique = (arr, comp) => {
+        const unique = arr
+            .map(e => e[comp])
+
+            // store the keys of the unique objects
+            .map((e, i, final) => final.indexOf(e) === i && i)
+
+            // eliminate the dead keys & store unique objects
+            .filter(e => arr[e])
+            .map(e => arr[e]);
+
+        return unique;
+    };
+
     const renderMenu = () => {
         const fuse = new Fuse(items, fuseOptions);
         const data = query ? fuse.search(query) : items;
@@ -198,7 +368,7 @@ const FilterMultipleSelection = props => {
                     {data.map(item => {
                         return (
                             <CheckBox
-                                key={item.id}
+                                key={`${item.name}-${item.id}`}
                                 style={{ marginTop: 8 }}
                                 title={item.name}
                                 onClick={() => optionSelected(item)}
@@ -211,6 +381,171 @@ const FilterMultipleSelection = props => {
         );
     };
 
+    // TODO: fix the svg element, it should be a checkbox
+    const renderNestedMenu = () => {
+        const data = items.map(item => {
+            if (item.parent && query) {
+                // fully clone without mutations
+                let temp = JSON.parse(JSON.stringify(item));
+                const fuse = new Fuse(item.items, fuseOptions);
+                temp.items = fuse.search(query);
+                temp.collapsed = false;
+                return temp;
+            } else return item;
+        });
+        return (
+            <div className="items-filter">
+                <SearchBar
+                    style={{ height: 36, width: 180 }}
+                    styleinput={{ height: 36 }}
+                    placeholder="Filtrar"
+                    onChange={e => setQuery(e.target.value)}
+                />
+                <div className="options">
+                    <ul>
+                        {data.map((item, index) => {
+                            return item.items ? (
+                                <li key={`${item.parent}-${index}`}>
+                                    <span
+                                        style={styles.nestedTitle}
+                                        onClick={() => toggleItems(item)}
+                                    >
+                                        {item.parent}
+                                        <NestedButton
+                                            collapsed={item.collapsed}
+                                        />
+                                    </span>
+                                    {!item.collapsed && (
+                                        <ul style={styles.nestedList}>
+                                            {item.items.length > 0
+                                                ? item.items.map(item => {
+                                                      return (
+                                                          <li
+                                                              key={`${item.name}-${item.id}`}
+                                                          >
+                                                              <label
+                                                                  htmlFor={
+                                                                      item.id
+                                                                  }
+                                                              >
+                                                                  <input
+                                                                      id={
+                                                                          item.id
+                                                                      }
+                                                                      type="checkbox"
+                                                                      className="native-hidden"
+                                                                      onChange={() =>
+                                                                          optionSelected(
+                                                                              item
+                                                                          )
+                                                                      }
+                                                                  />
+                                                                  <svg
+                                                                      width="24"
+                                                                      height="24"
+                                                                      viewBox="0 0 24 24"
+                                                                  >
+                                                                      <g
+                                                                          fill="none"
+                                                                          fillRule="evenodd"
+                                                                      >
+                                                                          <path d="M0 0h24v24H0z" />
+                                                                          {item.selected ? (
+                                                                              <React.Fragment>
+                                                                                  <rect
+                                                                                      width="22"
+                                                                                      height="22"
+                                                                                      x="1"
+                                                                                      y="1"
+                                                                                      fill="#05AFB4"
+                                                                                      rx="2"
+                                                                                  />
+                                                                                  <path
+                                                                                      fill="#FFF"
+                                                                                      d="M9.615 14.279L7.742 12.36a1.002 1.002 0 0 0-1.443 0 1.06 1.06 0 0 0 0 1.477l2.594 2.656a1.002 1.002 0 0 0 1.443 0l6.165-6.311a1.06 1.06 0 0 0 0-1.477 1.002 1.002 0 0 0-1.443 0L9.615 14.28z"
+                                                                                  />
+                                                                              </React.Fragment>
+                                                                          ) : (
+                                                                              <rect
+                                                                                  width="21"
+                                                                                  height="21"
+                                                                                  x="1.5"
+                                                                                  y="1.5"
+                                                                                  stroke="#444444"
+                                                                                  rx="2"
+                                                                              />
+                                                                          )}
+                                                                      </g>
+                                                                  </svg>
+                                                                  <span>
+                                                                      {
+                                                                          item.name
+                                                                      }
+                                                                  </span>
+                                                              </label>
+                                                          </li>
+                                                      );
+                                                  })
+                                                : ""}
+                                        </ul>
+                                    )}
+                                </li>
+                            ) : (
+                                <li key={`${item.name}-${item.id}`}>
+                                    <label htmlFor={item.id}>
+                                        <input
+                                            id={item.id}
+                                            type="checkbox"
+                                            className="native-hidden"
+                                            onChange={() =>
+                                                optionSelected(item)
+                                            }
+                                        />
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <g fill="none" fillRule="evenodd">
+                                                <path d="M0 0h24v24H0z" />
+                                                {item.selected ? (
+                                                    <React.Fragment>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            x="1"
+                                                            y="1"
+                                                            fill="#05AFB4"
+                                                            rx="2"
+                                                        />
+                                                        <path
+                                                            fill="#FFF"
+                                                            d="M9.615 14.279L7.742 12.36a1.002 1.002 0 0 0-1.443 0 1.06 1.06 0 0 0 0 1.477l2.594 2.656a1.002 1.002 0 0 0 1.443 0l6.165-6.311a1.06 1.06 0 0 0 0-1.477 1.002 1.002 0 0 0-1.443 0L9.615 14.28z"
+                                                        />
+                                                    </React.Fragment>
+                                                ) : (
+                                                    <rect
+                                                        width="21"
+                                                        height="21"
+                                                        x="1.5"
+                                                        y="1.5"
+                                                        stroke="#444444"
+                                                        rx="2"
+                                                    />
+                                                )}
+                                            </g>
+                                        </svg>
+                                        <span>{item.name}</span>
+                                    </label>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            </div>
+        );
+    };
+
     return (
         <FilterCustom
             style={props.style}
@@ -218,9 +553,9 @@ const FilterMultipleSelection = props => {
             title={title}
             filtered={filtered}
         >
-            {renderMenu()}
+            {itemsIsArr ? renderMenu() : renderNestedMenu()}
         </FilterCustom>
     );
 };
 
-export default FilterMultipleSelection;
+export default FilterSelection;
