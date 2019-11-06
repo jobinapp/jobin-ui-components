@@ -16,11 +16,12 @@ const Textsmall = styled(Textbig)`
   font-size: 16px;
   text-align: left;
   width:100%;
+  color:${greyDark};
 `;
 
 const TextsContainer = styled.div`
   line-height: 1.42;
-  display:flex; 
+  display:flex;
   align-items:center; 
   justify-content:center;
 `;
@@ -30,7 +31,8 @@ const ImageContainer = styled.div`
   padding-top: 56.25%; 
   position relative;
   overflow:hidden;
-
+  border-radius:5px;
+  
   img {
     position: absolute;
     top: 0;
@@ -38,6 +40,7 @@ const ImageContainer = styled.div`
     bottom: 0;
     right: 0;
     width:100%;
+    border-radius:5px;
   }
 
   @media ${device.tablet} {
