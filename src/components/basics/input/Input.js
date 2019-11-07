@@ -27,8 +27,8 @@ const InputStyled = styled.input`
     }
 `;
 
-const Input = props => {
-    return <InputStyled {...props} />;
-};
+const Input = React.forwardRef( (props, ref) => {
+    return <InputStyled {...props} ref={ref}/>;
+});
 
 export default Input;

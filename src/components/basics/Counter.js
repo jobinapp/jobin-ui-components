@@ -48,16 +48,16 @@ const ButtonLeft = styled.button`
 
 const Counter = props => {
 
-    const [counter, setCounter] = useState(props.min ? props.min : 0);
+    const [counter, setCounter] = useState(props.min || 0);
     const [input, setInput] = useState(null);
     const [disabledLeft, setDisabledLeft] = useState(true);
-    const [disabledRight, setDisabledRight] = useState(false);
+    const [disabledRight, setDisabledRight] = useState(props.min === props.max);
 
     const addToCounter = () =>{
         const temp = counter+1;
         setDisabledLeft(false);
         setCounter(temp);
-        props.onClick(temp);
+        if (props.onClick) props.onClick(temp);
 
         if(temp+1 > props.max){
             setDisabledRight(true);
@@ -68,7 +68,7 @@ const Counter = props => {
         const temp = counter-1;
         setDisabledRight(false);
         setCounter(temp);
-        props.onClick(temp);
+        if (props.onClick) props.onClick(temp);
         if(temp-1 < props.min || temp-1 < 0){
             setDisabledLeft(true);
         }
@@ -81,7 +81,7 @@ const Counter = props => {
                 if (input >= (props.min ? props.min : 0)) {
                     setCounter(Number(input));
                     setInput(null);
-                    props.onClick(Number(input));
+                    if (props.onClick) props.onClick(Number(input));
                 } else {
                     setInput(props.min ? props.min : 0);
                 }
