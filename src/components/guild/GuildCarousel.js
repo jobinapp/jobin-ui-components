@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, createRef } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import TitleAndDescription from "../texts/TitleAndDescription";
+import { TitleAndDescription } from "../texts";
 
 //Assets
 import Next from "../../icons/images/Next";
@@ -9,13 +9,15 @@ import Back from "../../icons/images/Back";
 
 //Styles
 import { black, white, greyLight } from "../../constants/colors";
+import device from "../../constants/mediasQueries";
 
 const CarouselWrapper = styled.div`
-  max-width: 100%;
-  width: 100%;
+  transform: translateX(-65px);
+  max-width: calc(100% + 135px);
+  width: calc(100% + 135px);
+  padding: 32px 64px 32px;
   position: relative;
   overflow: hidden;
-  padding: 32px 64px 64px;
   border-radius: 8px;
   background: ${props => props.backgroundColor || "transparent"};
   ${props => props.style}
@@ -23,7 +25,7 @@ const CarouselWrapper = styled.div`
 
 const ChildrenWrapper = styled.div`
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
 `;
 
 const TitleAndDescriptionStyled = styled(TitleAndDescription)`
@@ -46,14 +48,29 @@ const FlexContainer = styled.div`
 `;
 
 const TitleAndDescriptionWrapper = styled.div`
-  width: 70%;
+  @media ${device.mobileM} {
+    width: 100%;
+  }
+
+  @media ${device.tablet} {
+    width: 70%;
+  }
 `;
 
 const ControlsWrapper = styled.div`
-  width: 30%;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  padding-top:24px;
+  @media ${device.mobileM} {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  @media ${device.tablet} {
+    width: 30%;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
 `;
 
 const ChildrenPlaceHolder = styled.div`
@@ -76,7 +93,7 @@ const SubTitlePlaceHolder = styled.div`
 `;
 
 const GuildCarousel = props => {
-  const [childrenWidth, setChildrenWidth] = useState(null);
+  const [childrenWidth, setChildrenWidth] = useState(null); //This state is calculated after DOM is rendered
   const [childrenWrapperWidth, setChildrenWrapperWidth] = useState(null);
   const carouselWrapperRef = useRef(null);
   const childrenWrapperRef = useRef(null);
@@ -89,7 +106,9 @@ const GuildCarousel = props => {
   const [backButtonActive, setBackButtonActive] = useState(false);
   const [nextButtonActive, setNextButtonActive] = useState(true);
   const carouselWrapperGap = 64;
-  const [placeHolderArray] = useState([...Array(props.placeHolderNumber || 6)].map( (v, i) => i));
+  const [placeHolderArray] = useState(
+    [...Array(props.placeHolderNumber || 6)].map((v, i) => i)
+  );
   const itemsRefs = useRef(
     props.dataLoading
       ? placeHolderArray.map(() => createRef())
@@ -181,14 +200,14 @@ const GuildCarousel = props => {
       setNextButtonActive(
         translatedX >
           -(
-            childrenWrapperRef.current.getBoundingClientRect().width  -
+            childrenWrapperRef.current.getBoundingClientRect().width -
             carouselWrapperRef.current.getBoundingClientRect().width
-          ) 
+          )
       );
     } else {
       setIsControlsActive(false);
     }
-  }
+  };
 
   useEffect(() => {
     const childElementWidth =
@@ -215,14 +234,13 @@ const GuildCarousel = props => {
   // Triggered every time translatedX if setted
   useEffect(() => {
     if (!props.dataLoading) {
-
       setBackButtonActive(translatedX < 0);
       setNextButtonActive(
         translatedX >
           -(
             childrenWrapperWidth -
             carouselWrapperRef.current.getBoundingClientRect().width
-          ) 
+          )
       );
     } else {
       setBackButtonActive(false);
