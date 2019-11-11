@@ -7,6 +7,8 @@ import styled from "styled-components";
 
 import device from "../../constants/mediasQueries";
 
+import { black } from "../../constants/colors";
+
 const WrapperStyled = styled.div`
     display:block;
 
@@ -60,10 +62,10 @@ const TitleAndDescription = props => {
           </div>
         )}
         <div>
-          <Title hierarchy={4} style={{ fontSize: 20, marginBottom: 8 }}>
+          <Title hierarchy={4} style={{ fontSize: 20, marginBottom: 8, color: props.textColor || black }}>
             {props.title}
           </Title>
-          <P style={{ marginBottom: 16 }}>{props.desc}</P>
+          <P style={{ marginBottom: 16, color: props.textColor || black}} >{props.desc}</P>
           {props.children}
         </div>
       </WrapperStyled>
