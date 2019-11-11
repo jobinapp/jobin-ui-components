@@ -38,6 +38,8 @@ function loadStories() {
     require("../stories/guild");
     require("../stories/guildCarousel");
     require("../stories/litsItem");
+    require("../stories/image");
+    require("../stories/post");
 }
 
 configure(loadStories, module);
