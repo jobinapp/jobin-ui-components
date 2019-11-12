@@ -9,7 +9,7 @@ const Menu = styled.div`
     top: 30px;
     left: ${props => (props.left ? null : "10px")};
     right: ${props => (props.left ? "10px" : null)};
-    z-index: 10px;
+    z-index: 100;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 36px 2px;
     max-height: calc(100vh - 152px);
     overflow-y: auto;
