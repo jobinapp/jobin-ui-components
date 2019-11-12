@@ -35,6 +35,11 @@ function loadStories() {
     require("../stories/job.js");
     require("../stories/jumbotron.js");
     require("../stories/others/testimonial");
+    require("../stories/guild");
+    require("../stories/guildCarousel");
+    require("../stories/litsItem");
+    require("../stories/image");
+    require("../stories/post");
 }
 
 configure(loadStories, module);

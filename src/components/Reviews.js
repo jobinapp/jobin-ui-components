@@ -32,6 +32,7 @@ const Textsmall = styled(Textbig)`
   font-size: 16px;
   width: 100%;
   text-align: left;
+  color:${greyDark};
 `;
 
 const TextsContainer = styled.div`
@@ -48,6 +49,7 @@ const ImageContainer = styled.div`
   padding-top: 56.25%; 
   position: relative;
   overflow:hidden;
+  border-radius:5px;
 
   img {
     position: absolute;
@@ -56,6 +58,7 @@ const ImageContainer = styled.div`
     bottom: 0;
     right: 0;
     width:100%;
+    border-radius:5px;
   }
 
   @media ${device.tablet} {
@@ -172,7 +175,7 @@ const Reviews = props => {
             </Textbig>
             <Textsmall>
               {props.items[activeReview].author},{" "}
-              <span style={{color:greyDark}}>{props.items[activeReview].location}</span>
+              {props.items[activeReview].location}
             </Textsmall>
           </TextsContainer>
           <ControlWrapper>

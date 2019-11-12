@@ -65,7 +65,7 @@ const CountDown = props => {
         return ()=> {
             clearInterval(interval);
         }
-    }, []);
+    }, [props.endDate]);
 
     const calculateCountdown = () => {
 

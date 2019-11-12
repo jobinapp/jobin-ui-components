@@ -36,7 +36,7 @@ const P = styled.p`
 const Section = props => {
  
   return (
-    <SectionStyled style={props.style}>
+    <SectionStyled className={props.className}  style={props.style}>
       <ContainerWithDivider hasDivider={props.hasDivider}>
         {props.title && (
           <div>
