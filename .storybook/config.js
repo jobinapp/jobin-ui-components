@@ -40,6 +40,7 @@ function loadStories() {
     require("../stories/litsItem");
     require("../stories/image");
     require("../stories/post");
+    require("../stories/guildWithImage");
 }
 
 configure(loadStories, module);

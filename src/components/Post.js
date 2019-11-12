@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { black, greyDark } from "../constants/colors";
+import { black, greyDark, greyLight } from "../constants/colors";
 import { P } from "./texts";
 import { Title } from "./titles";
 import moment from "moment/min/moment-with-locales";
@@ -19,7 +19,6 @@ const DateWrapper = styled.time`
 `;
 
 const WrapperWithDecoration = styled.div`
-
   &:before {
     content: "";
     display:block;
@@ -32,14 +31,14 @@ const WrapperWithDecoration = styled.div`
 
 const Post = props => {
   const locale = window ? window.navigator.userLanguage || window.navigator.language : "es";
-  const {postObj, imageAspectRatio, ...rest} = props
+  const {postObj, imageAspectRatio, loading, ...rest} = props;
 
   return (
     <div {...rest}>
-      <Image  aspectRatio={props.imageAspectRatio || "4:3"} alt={props.postObj.title} src={props.postObj.postImage} style={{marginBottom:24}}/>
+      <Image  aspectRatio={props.imageAspectRatio || "4:3"} alt={props.postObj.title} src={props.postObj.postImage} style={{marginBottom:24, borderRadius: 4}} cover="height"/>
       <Title hierarchy={4} style={{paddingBottom:8}}><a href={props.postObj.link} style={{color: black, textDecoration: "none"}}>{props.postObj.title}</a></Title>
-      <P style={{paddingBottom:16}}>{props.postObj.excerpt}</P>
-      <WrapperWithDecoration>
+     <P style={{paddingBottom:16}}>{props.postObj.excerpt}</P>
+     <WrapperWithDecoration>
         <AuthorWrapper href={props.postObj.author.link}>{props.postObj.author.name}</AuthorWrapper>
         <DateWrapper>{moment(props.postObj.date).locale(locale).fromNow()}</DateWrapper>
       </WrapperWithDecoration>
@@ -48,3 +47,6 @@ const Post = props => {
 };
 
 export default Post;
+
+
+

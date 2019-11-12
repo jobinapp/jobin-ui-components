@@ -36,13 +36,13 @@ const P = styled.p`
 const Section = props => {
  
   return (
-    <SectionStyled className={props.className}  style={props.style}>
+    <SectionStyled style={props.style}>
       <ContainerWithDivider hasDivider={props.hasDivider}>
         {props.title && (
           <div>
-            <Title hierarchy={2} style={{ marginBottom: 48 }}>
+            <Title hierarchy={2} style={{ marginBottom: 48, ...props.titleStyle }}>
               {props.title}
-              {props.subtitle && <P>{props.subtitle}</P>}
+              {props.subtitle && <P style={{...props.subtitleStyle}}>{props.subtitle}</P>}
             </Title>
           </div>
         )}

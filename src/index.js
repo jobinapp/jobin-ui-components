@@ -41,5 +41,6 @@ export {
   GuildCarousel,
   ListItem,
   Image,
-  Post
+  Post,
+  GuildWithImage
 } from "./components";

@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { white, black } from "../../constants/colors";
 
-const DivStyled = styled.div`
+
+const LinkStyled = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +14,9 @@ const DivStyled = styled.div`
   border-radius: 4px;
   border: 1px rgba(0,0,0,.15) solid;
   box-sizing: border-box;
+  cursor:pointer;
+  text-decoration:none;
+  color:${black};
 `;
 
 const ImageStyled = styled.img`
@@ -29,7 +33,6 @@ const GuildTitle = styled.p`
   margin: 0px;
   align-self: center;
   justify-self: center;
-  color: ${black}
 `;
 const ChildrenWrapper = styled.div`
   text-align: center;
@@ -45,12 +48,12 @@ const Guild = props => {
   useEffect(() => {
   })
   return (
-    <DivStyled ref={guildRef}  {...props}>
+    <LinkStyled ref={guildRef}  {...props}>
       <ChildrenWrapper>
         <ImageStyled src={props.guildImgSrc} />
         <GuildTitle>{props.guildTitle}</GuildTitle>
       </ChildrenWrapper>
-    </DivStyled>
+    </LinkStyled>
   );
 };
 

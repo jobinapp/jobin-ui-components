@@ -16,7 +16,7 @@ const AspectRatio = styled.div`
                 ? "padding-top: 75%;"
                 : props.aspectRatio === "1:1"
                   ? "padding-top: 100%;"
-                  : "padding-top: 56.25%;"
+                  : ""
   }
   ${props => props.style}
 `;
@@ -27,15 +27,15 @@ const ImageStyled = styled.img`
   left: 0;
   bottom: 0;
   right: 0;
-  width:auto;
-  height:100%;
+  ${props => props.cover === "width" ? "width:100%; height: auto;" : "width:auto; height: 100%;"}
 `;
 
 
 const Image = props => {
+  const {aspectRatio, cover, ...rest} = props
   return (
-    <AspectRatio aspectRatio={props.aspectRatio} style={{...props.style}}>
-      <ImageStyled src={props.src} alt={props.alt} />
+    <AspectRatio aspectRatio={props.aspectRatio} {...rest}>
+      <ImageStyled src={props.src} alt={props.alt} cover={props.cover} />
     </AspectRatio>
   );
 };
