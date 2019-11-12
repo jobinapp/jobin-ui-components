@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { greyBackground } from "../../constants/colors";
 
-import Button from "./button/Button";
+import CallToAction from "./button/CallToAction";
 
 const Menu = styled.div`
     position: absolute;
@@ -39,8 +39,8 @@ export default function MenuList(props) {
     return (
         <Menu {...props}>
             {props.aditionalAction && (
-                <Button
-                    style={{ position: "absolute", right: 0 }}
+                <CallToAction
+                    style={{ position: "absolute", right: 0, fontSize: 12, marginTop: 8, marginRight: 8 }}
                     buttonText={props.aditionalAction.buttonText}
                     onClick={props.aditionalAction.aditionalOnClick}
                     empty
@@ -59,7 +59,7 @@ export default function MenuList(props) {
                             }}
                             {...props}
                         >
-                            <label>{item.title}</label>
+                            {item.title}
                         </Option>
                     );
                 })}
