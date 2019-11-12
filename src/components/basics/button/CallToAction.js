@@ -28,7 +28,7 @@ const CallToAction = props => {
 			<Button
 				{...props}
 			>
-				<label>{props.buttonText}</label>
+				{props.buttonText}
 				{props.hasIcon && (
 					<Icon
 						mainColor={props.mainColor || greenDark}
