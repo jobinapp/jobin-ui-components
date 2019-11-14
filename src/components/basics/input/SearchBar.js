@@ -4,7 +4,8 @@ import {
   greyBackground,
   greyLight,
   greyMedium,
-  black
+  black,
+  white
 } from "../../../constants/colors";
 
 import Button from "../button/Button";
@@ -13,18 +14,21 @@ const Wrapper = styled.div`
   position:relative;
   ${props => props.hasSearchButton &&
     `
-    background-color: ${greyBackground};
+    background-color: ${white};
+    border:1px solid ${greyLight};
+    border-radius:4px;
     display:flex;
     align-items:center;
     padding:4px 4px 4px 0px;
     &:focus-within {
-      background-color: #fff;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
-      border-color: ${greyLight};
     }
     input:focus {
       border:none;
       box-shadow:none;
+    }
+    input {
+      background-color: ${white};
     }
     `
   }
@@ -73,7 +77,7 @@ const SearchBar = props => {
   };
 
 const ButtonStyled = styled(Button)`
-  border-radius: 0px 4px 4px 0px;
+  border-radius:4px;
   height: 48px;
 `;
 
