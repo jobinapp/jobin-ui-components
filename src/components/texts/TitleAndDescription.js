@@ -62,10 +62,10 @@ const TitleAndDescription = props => {
           </div>
         )}
         <div>
-          <Title hierarchy={4} style={{ fontSize: 20, marginBottom: 8, color: props.textColor || black }}>
+          <Title hierarchy={4} style={{ fontSize: props.titleSize || 20, marginBottom: 8, color: props.textColor || black }}>
             {props.title}
           </Title>
-          <P style={{ marginBottom: 16, color: props.textColor || black}} >{props.desc}</P>
+          <P style={{ marginBottom: 16, color: props.textColor || black, fontSize: props.descSize || 16}} >{props.desc}</P>
           {props.children}
         </div>
       </WrapperStyled>
