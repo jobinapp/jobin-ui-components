@@ -1,6 +1,6 @@
 {
   "name": "jobin-ui-components",
-  "version": "0.2.66",
+  "version": "0.2.68",
   "main": "dist/prod.js",
   "peerDependencies": {
     "react": "^16.9.0"
@@ -54,6 +54,9 @@
     },
     {
       "name": "Eric García de Ceca Elejoste"
+    },
+    {
+      "name": "Oscar Garcia Lugo"
     }
   ],
   "devDependencies": {

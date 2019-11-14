@@ -36,3 +36,4 @@ export { default as Nav } from "./Nav";
 export { default as Testimonial } from "./Testimonial";
 export { Guild, GuildCarousel, GuildWithImage } from "./guild";
 export { default as Post } from "./Post";
+export { TabContent } from "./tab";

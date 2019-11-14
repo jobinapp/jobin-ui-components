@@ -41,6 +41,7 @@ function loadStories() {
     require("../stories/image");
     require("../stories/post");
     require("../stories/guildWithImage");
+    require("../stories/tab");
 }
 
 configure(loadStories, module);
