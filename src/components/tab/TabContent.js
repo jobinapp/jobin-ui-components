@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { greyLight, greenDark } from "../../constants/colors";
+import { P } from "../../components/texts";
 
 const NavStyled = styled.nav`
   padding-bottom:32px;
@@ -45,7 +46,7 @@ const TabContent = props => {
   return (
     <div>
       <NavStyled>
-        <UlStyled>{props.tabsPane.map((tabPane, i) => <LiStyled key={i} isActive={currentTab === i} onClick={() => handleNavItemClick(i)}>{tabPane.title}</LiStyled>)}</UlStyled>
+        <UlStyled>{props.tabsPane.map((tabPane, i) => <LiStyled key={i} isActive={currentTab === i} onClick={() => handleNavItemClick(i)}><P style={{fontWeight: 600}}>{tabPane.title}</P></LiStyled>)}</UlStyled>
       </NavStyled>
       <div>
         {props.tabsPane[currentTab].content}
