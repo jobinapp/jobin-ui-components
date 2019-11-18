@@ -11,6 +11,7 @@ const AuthorWrapper = styled.a`
   color:${black};
   font-size:14px;
   text-decoration:none;
+  padding-bottom:14px;
 
 `;
 const DateWrapper = styled.time`
@@ -36,7 +37,7 @@ const Post = props => {
   return (
     <div {...rest}>
       <Image  aspectRatio={props.imageAspectRatio || "4:3"} alt={props.postObj.title} src={props.postObj.postImage} style={{marginBottom:24, borderRadius: 4}} cover="height"/>
-      <Title hierarchy={4} style={{paddingBottom:8}}><a href={props.postObj.link} style={{color: black, textDecoration: "none"}}>{props.postObj.title}</a></Title>
+      <Title hierarchy={4} style={{paddingBottom:8, fontSize:20}}><a href={props.postObj.link} style={{color: black, textDecoration: "none"}}>{props.postObj.title}</a></Title>
      <P style={{paddingBottom:16}}>{props.postObj.excerpt}</P>
      <WrapperWithDecoration>
         <AuthorWrapper href={props.postObj.author.link}>{props.postObj.author.name}</AuthorWrapper>

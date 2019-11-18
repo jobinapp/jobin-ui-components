@@ -9,6 +9,7 @@ const NavStyled = styled.nav`
 
 const UlStyled = styled.ul`
   display:flex;
+  flex-wrap:wrap;
   justify-content:flex-start;
   border-bottom: 1px solid ${greyLight};
 `;
@@ -16,13 +17,8 @@ const UlStyled = styled.ul`
 const LiStyled = styled.li`
   position:relative;
   padding: 24px 32px;
-  border-right:1px solid ${greyLight};
   cursor:pointer;
   
-  &:first-child {
-    border-left:1px solid ${greyLight};
-  }
-
   ${props => props.isActive && `
     &:after {
       content:"";

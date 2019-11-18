@@ -32,10 +32,6 @@ const TitleAndDescriptionStyled = styled(TitleAndDescription)`
   div:first-child {
     margin-bottom: 0px;
   }
-
-  h4 {
-    font-size: 24px;
-  }
   p {
     margin-bottom: 0px !important;
   }
@@ -97,15 +93,14 @@ const GuildCarousel = props => {
   const [childrenWrapperWidth, setChildrenWrapperWidth] = useState(null);
   const carouselWrapperRef = useRef(null);
   const childrenWrapperRef = useRef(null);
-  const [loop, setLoop] = useState(props.loop || false);
+  const [loop] = useState(props.loop || false);
   const [animation] = useState(props.animation || "default");
   const [translatedX, setTranslatedX] = useState(0);
   const [transition, setTransition] = useState(false);
-  const [gap, setGap] = useState(props.gaps || 24);
+  const [gap] = useState(props.gaps || 24);
   const [isControlsActive, setIsControlsActive] = useState(null);
   const [backButtonActive, setBackButtonActive] = useState(false);
   const [nextButtonActive, setNextButtonActive] = useState(true);
-  const carouselWrapperGap = 64;
   const [placeHolderArray] = useState(
     [...Array(props.placeHolderNumber || 6)].map((v, i) => i)
   );
@@ -258,6 +253,7 @@ const GuildCarousel = props => {
                 title={props.title}
                 desc={props.subtitle}
                 textColor={props.textColor}
+                titleSize={24}
               />
             )}
           </TitleAndDescriptionWrapper>
