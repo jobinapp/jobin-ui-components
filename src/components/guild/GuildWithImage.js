@@ -19,6 +19,7 @@ const GuildWithImage = props => {
         src={guildImgSrc}
         aspectRatio="16:9"
         alt={guildTitle}
+        cover="width"
         style={{ borderRadius: "4px" }}
       />
       <P style={{ paddingTop: 8, fontSize: 14, fontWeight: 600 }}>

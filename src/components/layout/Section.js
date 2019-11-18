@@ -19,8 +19,8 @@ const ContainerWithDivider = styled(Container)`
 
 const SectionStyled = styled.section`
   position: relative;
-  padding-top: 56px;
-  padding-bottom: 56px;
+  padding-top: 28px;
+  padding-bottom: 28px;
   ${props => props.style}
 `;
 
