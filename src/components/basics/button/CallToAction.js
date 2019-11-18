@@ -42,7 +42,7 @@ const CallToAction = props => {
         {props.hasIcon && (
           <Icon
             mainColor={props.mainColor || greenDark}
-            style={{ width: 17, marginLeft: 8 }}
+            style={{ width: 17, height:17, marginLeft: 8 }}
           />
         )}
       </CallToActionElement>
