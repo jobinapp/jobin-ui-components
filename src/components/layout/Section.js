@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Container from "../layout/Container";
 import styled from "styled-components";
 import Title from "../titles/Title";
 
+
 const ContainerWithDivider = styled(Container)`
-    ${props => props.hasDivider && 
-        `&:after {
+  ${props =>
+    props.hasDivider &&
+    `&:after {
             content: "";
             display: block;
             position: absolute;
@@ -13,14 +15,21 @@ const ContainerWithDivider = styled(Container)`
             width: 75%;
             height: 1px;
             box-shadow: inset 0 -1px 0 0 #e8e8e8;
-          }`
-    }
+          }`}
 `;
 
 const SectionStyled = styled.section`
   position: relative;
+  ${props =>
+    props.hasDivider
+      ? `
+    padding-top: 56px;
+    padding-bottom: 56px;
+  `
+      : `
   padding-top: 28px;
   padding-bottom: 28px;
+  `}
   ${props => props.style}
 `;
 
@@ -34,15 +43,23 @@ const P = styled.p`
   margin-bottom: 0px;
 `;
 const Section = props => {
- 
+  const {
+    hasDivider,
+    titleStyle,
+    subtitleStyle,
+    subtitle,
+    title,
+    ...rest
+  } = props;
+
   return (
-    <SectionStyled style={props.style}>
-      <ContainerWithDivider hasDivider={props.hasDivider}>
+    <SectionStyled hasDivider={hasDivider} {...rest}>
+      <ContainerWithDivider hasDivider={hasDivider}>
         {props.title && (
           <div>
-            <Title hierarchy={2} style={{ marginBottom: 48, ...props.titleStyle }}>
-              {props.title}
-              {props.subtitle && <P style={{...props.subtitleStyle}}>{props.subtitle}</P>}
+            <Title hierarchy={2} style={{ marginBottom: 48, ...titleStyle }}>
+              {title}
+              {subtitle && <P style={{ ...props.subtitleStyle }}>{subtitle}</P>}
             </Title>
           </div>
         )}
