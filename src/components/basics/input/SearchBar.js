@@ -9,17 +9,21 @@ import {
 } from "../../../constants/colors";
 
 import Button from "../button/Button";
+import device from "../../../constants/mediasQueries";
 
 const Wrapper = styled.div`
-  position:relative;
-  ${props => props.hasSearchButton &&
+  position: relative;
+  ${props =>
+    props.hasSearchButton &&
     `
     background-color: ${white};
     border:1px solid ${greyLight};
     border-radius:4px;
     display:flex;
+    flex-wrap:wrap;
     align-items:center;
-    padding:4px 4px 4px 0px;
+    padding:4px;
+
     &:focus-within {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
     }
@@ -30,8 +34,26 @@ const Wrapper = styled.div`
     input {
       background-color: ${white};
     }
-    `
-  }
+    .btn-search {
+      width:100%;
+     }
+
+    .icon-search {
+      top:29px;
+    }
+    
+    @media ${device.mobileL} {
+      flex-wrap:nowrap;
+      padding:4px 4px 4px 0px;
+      .btn-search {
+       width:auto;
+      }
+
+      .icon-search {
+        top:50%;
+      }
+    }
+    `}
 `;
 
 const Input = styled.input`
@@ -76,40 +98,46 @@ const SearchBar = props => {
     }
   };
 
-const ButtonStyled = styled(Button)`
-  border-radius:4px;
-  height: 48px;
-`;
+  const ButtonStyled = styled(Button)`
+    border-radius: 4px;
+    height: 48px;
+  `;
 
   return (
-    <Wrapper style={styles.container} hasSearchButton={props.hasSearchButton }>
-        <Input {...props} style={props.styleinput} type="search" />
-        {props.hideicon !== true && (
-          <Icon>
-            <svg
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-              className="search-icon"
+    <Wrapper style={styles.container} hasSearchButton={props.hasSearchButton}>
+      <Input {...props} style={props.styleinput} type="search" />
+      {props.hideicon !== true && (
+        <Icon className="icon-search">
+          <svg
+            width="20px"
+            height="20px"
+            viewBox="0 0 24 24"
+            className="search-icon"
+          >
+            <title>buscar</title>
+            <g
+              stroke="none"
+              strokeWidth="1"
+              fill="none"
+              fillRule="evenodd"
+              className="color-fill"
             >
-              <title>buscar</title>
-              <g
-                stroke="none"
-                strokeWidth="1"
-                fill="none"
-                fillRule="evenodd"
-                className="color-fill"
-              >
-                <path
-                  d="M22.707,21.293 C23.098,21.684 23.098,22.316 22.707,22.707 C22.316,23.098 21.684,23.098 21.293,22.707 L15.614,17.028 C14.074,18.259 12.125,19 10,19 C5.029,19 1,14.971 1,10 C1,5.029 5.029,1 10,1 C14.971,1 19,5.029 19,10 C19,12.125 18.259,14.074 17.028,15.614 L22.707,21.293 Z M3,10 C3,13.866 6.134,17 10,17 C13.866,17 17,13.866 17,10 C17,6.134 13.866,3 10,3 C6.134,3 3,6.134 3,10 Z"
-                  fill={greyMedium}
-                />
-              </g>
-            </svg>
-          </Icon>
-        )}
+              <path
+                d="M22.707,21.293 C23.098,21.684 23.098,22.316 22.707,22.707 C22.316,23.098 21.684,23.098 21.293,22.707 L15.614,17.028 C14.074,18.259 12.125,19 10,19 C5.029,19 1,14.971 1,10 C1,5.029 5.029,1 10,1 C14.971,1 19,5.029 19,10 C19,12.125 18.259,14.074 17.028,15.614 L22.707,21.293 Z M3,10 C3,13.866 6.134,17 10,17 C13.866,17 17,13.866 17,10 C17,6.134 13.866,3 10,3 C6.134,3 3,6.134 3,10 Z"
+                fill={greyMedium}
+              />
+            </g>
+          </svg>
+        </Icon>
+      )}
 
-      {props.hasSearchButton && <ButtonStyled buttonText={props.buttonText || "Buscar"} {...props.buttonProps} />}
+      {props.hasSearchButton && (
+        <ButtonStyled
+          className="btn-search"
+          buttonText={props.buttonText || "Buscar"}
+          {...props.buttonProps}
+        />
+      )}
     </Wrapper>
   );
 };
