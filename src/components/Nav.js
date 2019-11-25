@@ -311,7 +311,7 @@ const Nav = props => {
           isMenuVisible={isMenuVisible}
           collapsed={isMenuVisible ? "collapsed" : ""}
         >
-          {props.items.map((item, i) => {
+          {props.items && props.items.map((item, i) => {
             let Icon = item.icon ? styledIcon(item.icon.icon) : null;
             return (
               <MenuItem key={i} isActive={item.active} activeColor={props.itemsActiveColor} >
@@ -348,37 +348,3 @@ const Nav = props => {
 };
 
 export default Nav;
-
-/**
- * 
- * {props.items.map((item, i) => {
-            let Icon = item.icon ? styledIcon(item.icon.icon) : null;
-            return (
-              <MenuItem key={i} isActive={item.active} activeColor={props.itemsActiveColor} >
-                <LinkMenuWithIcon
-                  hover={props.hover}
-                  mainColor={mainColor}
-                  direction={item.direction}
-                  isActive={item.active}
-                  activeColor={props.itemsActiveColor}
-                  href={item.link}
-                >
-                  {
-                    Icon && <Icon
-                    className={item.icon.isAlwaysVisible}
-                    mainColor={
-                      item.active
-                        ? props.hover
-                        : isFixed
-                        ? props.itemsColorsWhenSticky ||
-                          bgColor
-                        : props.itemsColor || mainColor
-                    }
-                  />
-                  }
-                  <span>{item.text}</span>
-                </LinkMenuWithIcon>
-              </MenuItem>
-            );
-          })}
- */
