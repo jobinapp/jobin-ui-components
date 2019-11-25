@@ -42,6 +42,6 @@ export {
   ListItem,
   Image,
   Post,
-  GuildWithImage, 
+  GuildWithImage,
   TabContent
 } from "./components";

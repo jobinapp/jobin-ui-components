@@ -312,8 +312,7 @@ const Nav = props => {
           collapsed={isMenuVisible ? "collapsed" : ""}
         >
           {props.items.map((item, i) => {
-            let Icon = item.icon.icon;
-            Icon = styledIcon(Icon);
+            let Icon = item.icon ? styledIcon(item.icon.icon) : null;
             return (
               <MenuItem key={i} isActive={item.active} activeColor={props.itemsActiveColor} >
                 <LinkMenuWithIcon
@@ -324,7 +323,8 @@ const Nav = props => {
                   activeColor={props.itemsActiveColor}
                   href={item.link}
                 >
-                  <Icon
+                  {
+                    Icon && <Icon
                     className={item.icon.isAlwaysVisible}
                     mainColor={
                       item.active
@@ -335,6 +335,7 @@ const Nav = props => {
                         : props.itemsColor || mainColor
                     }
                   />
+                  }
                   <span>{item.text}</span>
                 </LinkMenuWithIcon>
               </MenuItem>
@@ -347,3 +348,37 @@ const Nav = props => {
 };
 
 export default Nav;
+
+/**
+ * 
+ * {props.items.map((item, i) => {
+            let Icon = item.icon ? styledIcon(item.icon.icon) : null;
+            return (
+              <MenuItem key={i} isActive={item.active} activeColor={props.itemsActiveColor} >
+                <LinkMenuWithIcon
+                  hover={props.hover}
+                  mainColor={mainColor}
+                  direction={item.direction}
+                  isActive={item.active}
+                  activeColor={props.itemsActiveColor}
+                  href={item.link}
+                >
+                  {
+                    Icon && <Icon
+                    className={item.icon.isAlwaysVisible}
+                    mainColor={
+                      item.active
+                        ? props.hover
+                        : isFixed
+                        ? props.itemsColorsWhenSticky ||
+                          bgColor
+                        : props.itemsColor || mainColor
+                    }
+                  />
+                  }
+                  <span>{item.text}</span>
+                </LinkMenuWithIcon>
+              </MenuItem>
+            );
+          })}
+ */

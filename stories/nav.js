@@ -22,10 +22,7 @@ const nav = [
     children: null,
     active: false,
     direction: "left",
-    icon: {
-      isAlwaysVisible: "hidden",
-      icon: Light
-    }
+    icon: null
   },
   {
     link: "#",
