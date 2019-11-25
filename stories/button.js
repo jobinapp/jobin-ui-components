@@ -38,6 +38,7 @@ storiesOf("Components|Button", module)
         <CallToAction
             buttonText={text("buttonText", "Call to action")}
             hasIcon={boolean("hasIcon", false)}
+            disabled={boolean("disabled", false)}
             onClick={() => alert("Hola mundo")}
         />
     ));

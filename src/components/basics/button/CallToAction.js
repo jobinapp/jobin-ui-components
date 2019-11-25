@@ -15,6 +15,7 @@ const Button = styled.button`
   outline: 0px;
   background: none;
   border: none;
+  opacity: ${props => props.disabled ? 0.5 : 1};
   ${props => props.style}
 `;
 const LinkStyled = styled.a`
