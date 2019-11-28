@@ -12,6 +12,12 @@ const Container = styled.div`
     align-items: center;
     ${props => props.style}
 `;
+const Button = styled.button`
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+`
 const TextContainer = styled.div`
     display: flex;
     flex: 1;
@@ -40,7 +46,14 @@ const CheckBox = props => {
 
     return (
         <Container {...props}>
-            {selected ? <CheckBoxOn /> : <CheckBoxOff />}
+            <Button 
+                onClick={() => {
+                    setSelected(!selected);
+                    props.onSelectionChange(!selected);
+                }}
+            >
+                {selected ? <CheckBoxOn/> : <CheckBoxOff/>}
+            </Button>
             <TextContainer>
                 <Title>{props.title}</Title>
                 {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
