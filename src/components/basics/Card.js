@@ -17,7 +17,7 @@ const CardStyled = styled.div`
 
 const Card = props => {
     return (
-        <CardStyled style={{...props.style}}>
+        <CardStyled className={props.className} style={{...props.style}}>
             {props.children}
         </CardStyled>
     );

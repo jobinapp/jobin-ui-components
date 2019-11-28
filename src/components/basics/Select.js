@@ -2,18 +2,20 @@ import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 
 import ArrowDown from "../../icons/images/ArrowDown";
-import { greyDark, black, greyBackground, red, greyLight, greenDark } from "../../constants/colors";
+import { greyDark, black, white, red, greyLight } from "../../constants/colors";
 
 const FakeSelect = styled.button`
-  height: 32px;
+  position: relative;
+  height: 48px;
   border-radius: 4px;
   font-size: 16px;
   color: ${black};
   font-family: "Open Sans", sans-serif;
   padding: 4px 16px;
-  background-color:transparent;
-  border: 1px solid ${greyDark};
+  background-color: transparent;
+  border: 1px solid ${greyLight};
   outline: none;
+  cursor:pointer;
 
   :focus {
     background-color: #fff;
@@ -24,66 +26,125 @@ const FakeSelect = styled.button`
   }
 
   ${props => props.style};
-
 `;
-
+const FakeSelectListWrapper = styled.div`
+  display: inline-block;
+  position: relative;
+  cursor:pointer;
+`;
 const FakeSelectList = styled.ul`
-  ${props => props.collapsed ? "display:none;" : "display:block;"}
+  ${props => (props.collapsed ? "display:none;" : "display:block;")}
+  position: absolute;
+  margin-top: 0px;
+  padding-left: 0px;
+  padding-bottom: 12px;
+  list-style: none;
+  position: absolute;
+  z-index: 2;
+  top: 49px;
+  width: 100%;
+  background-color: ${white};
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px var(--white-two);
+  border-top: none;
+  top: 0px;
+  left: 0px;
+  max-height: 150px;
+  overflow: scroll;
+
+  li p {
+    display: block;
+    font-size: 14px;
+    padding: 8px;
+    margin: 0px;
+    color: ${black};
+    overflow-wrap: break-word;
+    &:hover {
+      cursor: pointer;
+      background-color: ${greyLight};
+    }
+  }
 `;
 
 const Select = props => {
-  const { options, name, ...rest } = props;
+  const { options, name, onSelectedValue, ...rest } = props;
   const [selectedValue, setSelectedValue] = useState(
     options.some(op => op.default)
       ? options.filter(op => op.default)[0]
       : options[0]
   );
   const [isSelectListCollapsed, setisSelectListCollapsed] = useState(true);
-  const selectRef = useRef(null)
-  
+  const selectRef = useRef(null);
+  const fakeSelectWrapper = useRef(null);
+  const fakeSelectList = useRef(null);
+
   const handleSelectCollapsed = () => {
     setisSelectListCollapsed(!isSelectListCollapsed);
-  }
+  };
 
-  const onSelectedValue = index => {
+  const onChangedValue = index => {
     setSelectedValue(options[index]);
     setisSelectListCollapsed(true);
-  }
+    props.onSelectedValue && props.onSelectedValue(options[index].value);
+  };
+
+  const handleClickOutsideSelect = event => {
+    if (!fakeSelectWrapper.current.contains(event.target) && !fakeSelectList.current.contains(event.target)) {
+      setisSelectListCollapsed(true);
+    }
+  };
 
   useEffect(() => {
-    console.log(selectRef.current.value);
-  });
+    window.addEventListener("click", handleClickOutsideSelect)
+
+    return () => window.removeEventListener("click", handleClickOutsideSelect)
+  }, []);
 
   return (
     <div {...rest}>
-      <select name={name} value={selectedValue.value} ref={selectRef}>
-        {options.map((op, i) =>
-          !op.default ? (
+      <select
+        name={name}
+        ref={selectRef}
+        style={{ display: "none" }}
+        defaultValue={selectedValue.value}
+      >
+        {options.map((op, i) => (
             <option key={i} value={op.value}>
-              {op.name}
-            </option>
-          ) : (
-            <option key={i} value={op.value} selected>
               {op.name}
             </option>
           )
         )}
       </select>
-
-      <FakeSelect onClick={handleSelectCollapsed}>
-        <span>{selectedValue.icon}</span>
-        <span>{selectedValue.name}</span>
-        <span><ArrowDown style={{ width: 24, heigth: 24 }} mainColor={greyDark} /></span>
-      </FakeSelect>
-
-      <FakeSelectList collapsed={isSelectListCollapsed}>
-        {options.map((op, i) => (
-          <li key={i} onClick={() => onSelectedValue(i)}>
-            <span>{op.icon}</span> <span>{op.name}</span>
-          </li>
-        ))}
-      </FakeSelectList>
-
+      <FakeSelectListWrapper ref={fakeSelectWrapper}>
+        <FakeSelect
+          onClick={handleSelectCollapsed}
+          aria-haspopup="listbox"
+          aria-labelledby="exp_elem exp_button"
+          id="exp_button"
+        >
+          <span>{selectedValue.icon}</span>
+          <span>{selectedValue.name}</span>
+          <span style={{verticalAlign: "middle"}}>
+            <ArrowDown style={{ width: 20, heigth: 20 }} mainColor={greyDark} />
+          </span>
+        </FakeSelect>
+        <FakeSelectList collapsed={isSelectListCollapsed} role="listbox" ref={fakeSelectList}> 
+          {options.map((op, i) => (
+            <li
+              key={i}
+              onClick={() => onChangedValue(i)}
+              tabIndex="-1"
+              role="option"
+              aria-selected={op.value === selectedValue.value}
+            >
+              <p>
+                <span>{op.icon}</span> <span>{op.name}</span>
+              </p>
+            </li>
+          ))}
+        </FakeSelectList>
+      </FakeSelectListWrapper>
     </div>
   );
 };

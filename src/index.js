@@ -43,5 +43,6 @@ export {
   Image,
   Post,
   GuildWithImage,
-  TabContent
+  TabContent,
+  Select
 } from "./components";

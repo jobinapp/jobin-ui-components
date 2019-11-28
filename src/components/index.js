@@ -15,7 +15,8 @@ export {
   Slider,
   Card,
   Counter,
-  CountDown
+  CountDown,
+  Select
 } from "./basics";
 export {
   FilterCustom,
