@@ -45,6 +45,7 @@ const Button = props => {
   return (
     <ButtonStyled
       {...rest}
+      disabled={disabled}
       onClick={disabled || loading ? null : onClick}
     >
       {loading ? (
