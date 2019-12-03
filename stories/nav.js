@@ -76,7 +76,7 @@ const nav = [
 
 storiesOf("Navigation|Navbar", module)
   .addDecorator(withKnobs)
-  .add("Default", () => <Nav brand={{ logo: Logo, link: "#" }} items={nav} />)
+  .add("Default", () => <Nav brand={{ logo: Logo, link: "#" }} items={null} />)
   .add("Setting colors", () => (
     <Nav
       brand={{ logo: Logo, link: "#" }}

@@ -298,6 +298,7 @@ const Nav = props => {
             />
           </LinkHome>
         </Div>
+        {props.items &&
         <ButtonToggleNav onClick={toggleMenu}>
           <MenuBotton mainColor={
                 props.isSticky ?
@@ -306,6 +307,7 @@ const Nav = props => {
                   : props.itemsColor || mainColor
               } />
         </ButtonToggleNav>
+        }
         <MenuContainer
           bgColor={bgColor}
           isMenuVisible={isMenuVisible}
