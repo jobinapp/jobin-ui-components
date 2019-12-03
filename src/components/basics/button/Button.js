@@ -40,16 +40,17 @@ const Button = props => {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
+  const {disabled, loading, onClick, buttonText, ...rest } = props
 
   return (
     <ButtonStyled
-      {...props}
-      onClick={props.disabled || props.loading ? null : props.onClick}
+      {...rest}
+      onClick={disabled || loading ? null : onClick}
     >
-      {props.loading ? (
+      {loading ? (
         <Lottie style={{ height: 20, width: 45 }} options={defaultOptions} />
       ) : (
-        props.buttonText
+        buttonText
       )}
     </ButtonStyled>
   );
