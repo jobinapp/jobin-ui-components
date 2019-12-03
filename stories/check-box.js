@@ -11,5 +11,6 @@ storiesOf("Components|CheckBox", module)
             title={text("title", "Acepto los términos y condiciones de uso")}
             subtitle={text("subtitle", null)}
             selected={boolean("selected", false)}
+            disabled={boolean("disabled", false)}
         />
     ));

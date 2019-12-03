@@ -279,7 +279,7 @@ const Nav = props => {
       mainColor={mainColor}
       bgColor={bgColor}
       hover={props.hover}
-      className="container-fuild"
+      className={props.className}
       itemsColor={props.itemsColor}
       itemsColorsWhenSticky={props.itemsColorsWhenSticky}
       isSticky={props.isSticky ? true : false}
