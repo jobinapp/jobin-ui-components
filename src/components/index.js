@@ -16,7 +16,8 @@ export {
   Card,
   Counter,
   CountDown,
-  Select
+  Select,
+  PushMenu
 } from "./basics";
 export {
   FilterCustom,

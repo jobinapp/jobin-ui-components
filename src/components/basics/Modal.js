@@ -9,6 +9,12 @@ import Back from "../../icons/images/Back";
 import Close from "../../icons/images/Close";
 
 const Modal = props => {
+    const Background = styled.div`
+        position: absolute;
+        background: rgba(0,0,0,.5);
+        height: 100%;
+        width: 100%;
+    `;
     const ModalStyled = styled.div`
         position: absolute;
         top: 50%;
@@ -64,39 +70,41 @@ const Modal = props => {
     `;
 
     return (
-        <ModalStyled big={props.big}>
-            <ButtonImage
-                style={{ position: "absolute", top: 16, right: 24 }}
-                svgSrc={Close}
-                onClick={props.close}
-            />
-            <section>
-                <Header>
-                    <Title>{props.title}</Title>
-                    <Subtitle>{props.subtitle}</Subtitle>
-                </Header>
-                {props.children}
-            </section>
-            {(props.goBack || props.buttonText) && (
-                <ButtonsContainer>
-                    {props.goBack && (
-                        <LeftButtonsContainer>
-                            <ButtonImage svgSrc={Back} onClick={props.goBack} />
-                        </LeftButtonsContainer>
-                    )}
-                    {props.buttonText && (
-                        <RightButtonsContainer>
-                            <Button
-                                buttonText={props.buttonText}
-                                loading={props.loading}
-                                disabled={props.disabled}
-                                onClick={props.onClick}
-                            />
-                        </RightButtonsContainer>
-                    )}
-                </ButtonsContainer>
-            )}
-        </ModalStyled>
+        <Background>
+            <ModalStyled big={props.big}>
+                <ButtonImage
+                    style={{ position: "absolute", top: 16, right: 24 }}
+                    svgSrc={Close}
+                    onClick={props.close}
+                />
+                <section>
+                    <Header>
+                        <Title>{props.title}</Title>
+                        <Subtitle>{props.subtitle}</Subtitle>
+                    </Header>
+                    {props.children}
+                </section>
+                {(props.goBack || props.buttonText) && (
+                    <ButtonsContainer>
+                        {props.goBack && (
+                            <LeftButtonsContainer>
+                                <ButtonImage svgSrc={Back} onClick={props.goBack} />
+                            </LeftButtonsContainer>
+                        )}
+                        {props.buttonText && (
+                            <RightButtonsContainer>
+                                <Button
+                                    buttonText={props.buttonText}
+                                    loading={props.loading}
+                                    disabled={props.disabled}
+                                    onClick={props.onClick}
+                                />
+                            </RightButtonsContainer>
+                        )}
+                    </ButtonsContainer>
+                )}
+            </ModalStyled>
+        </Background>
     );
 };
 

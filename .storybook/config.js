@@ -43,6 +43,7 @@ function loadStories() {
     require("../stories/guildWithImage");
     require("../stories/tab");
     require("../stories/select");
+    require("../stories/pushMenu");
 }
 
 configure(loadStories, module);

@@ -12,3 +12,4 @@ export { default as CountDown } from "./CountDown";
 export { default as ListItem } from "./LitsItem";
 export { default as Image} from "./Image";
 export { default as Select} from "./Select";
+export { default as PushMenu} from "./PushMenu";
