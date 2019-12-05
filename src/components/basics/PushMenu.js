@@ -28,15 +28,6 @@ const Header = styled.div`
     margin-bottom: 12px;
     padding: 24px 24px 0px 24px;
 `
-const CloseButton = styled.button`
-    height: 24px;
-    width: 24px;
-    padding: 0;
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: 0px;
-`
 
 const PushMenu = props => {
 
@@ -47,7 +38,7 @@ const PushMenu = props => {
     useEffect(() => {
         if(props.left) menu.current.style.left = '0px';
         else menu.current.style.right = '0px';
-        background.current.style.background = "rgba(0,0,0,.5)";
+        background.current.style.background = "rgba(0,0,0,.6)";
     }, []);
 
     const initClose = () =>{
@@ -62,10 +53,11 @@ const PushMenu = props => {
     }
 
     return (
-        <Background
-            ref={background}
-            onClick={initClose}
-        >
+        <div>
+            <Background
+                ref={background}
+                onClick={initClose}
+            />
             <Container 
                 ref={menu}
                 left={props.left}
@@ -78,7 +70,7 @@ const PushMenu = props => {
                 </Header>
                 {props.children}
             </Container>
-        </Background>
+        </div>
     );
 };
 
