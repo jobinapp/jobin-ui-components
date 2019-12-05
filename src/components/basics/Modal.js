@@ -22,9 +22,8 @@ const ModalStyled = styled.div`
     top: 150%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 32px 32px;
+    padding: ${props => props.bottomView ? '32px 32px 0px' : '32px 32px'};
     width: ${props => (props.big ? "600px" : "468px")};
-    min-height: 200px;
     max-height: 100%;
     border-radius: 8px;
     box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.3);
@@ -54,13 +53,12 @@ const Subtitle = styled.label`
     color: ${black};
 `;
 const ButtonsContainer = styled.div`
-    position: absolute;
     display: flex;
     flex-direction: row;
-    width: calc(100% - 64px);
     height: 72px;
     bottom: 0px;
     box-shadow: inset 0 1px 0 0 #e8e8e8;
+    margin-top: 12px;
 `;
 const LeftButtonsContainer = styled.div`
     display: flex;
@@ -105,6 +103,7 @@ const Modal = props => {
             <ModalStyled
                 big={props.big}
                 ref={modal}
+                bottomView={(props.goBack || props.buttonText) ? true : false}
             >
                 <ButtonImage
                     style={{ position: "absolute", top: 16, right: 24 }}

@@ -40,7 +40,7 @@ storiesOf("Components|Modal", module)
             )}
             buttonText={text("buttonText", "Siguiente")}
             big={boolean("big", false)}
-            close={() => alert("Close")}
+            onClose={() => alert("Close")}
             onClick={() => alert("On click")}
         />
     ))
@@ -53,7 +53,7 @@ storiesOf("Components|Modal", module)
             )}
             goBack={() => alert("Go back")}
             big={boolean("big", false)}
-            close={() => alert("Close")}
+            onClose={() => alert("Close")}
         />
     ))
     .add("With action button & go back button", () => (
@@ -66,7 +66,7 @@ storiesOf("Components|Modal", module)
             buttonText={text("buttonText", "Siguiente")}
             goBack={() => alert("Go back")}
             big={boolean("big", false)}
-            close={() => alert("Close")}
+            onClose={() => alert("Close")}
             onClick={() => alert("On click")}
         />
     ));
