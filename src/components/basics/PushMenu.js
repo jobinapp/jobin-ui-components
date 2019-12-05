@@ -10,6 +10,7 @@ const Background = styled.div`
     height: 100%;
     width: 100%;
     transition: background .3s ease-out;
+    z-index: 1;
 `;
 const Container = styled.div`
     position: absolute;
@@ -20,6 +21,7 @@ const Container = styled.div`
     left: ${props => props.left ? '-450px' : null};
     box-shadow: ${props => props.left ? '10px 0px 30px 0px rgba(0,0,0,0.5)' : '-10px 0px 30px 0px rgba(0,0,0,0.5)'};
     transition: ${props => props.left ? 'left .3s ease-in-out' : 'right .3s ease-in-out'};
+    z-index: 1;
 `
 const Header = styled.div`
     display: flex;
