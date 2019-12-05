@@ -15,6 +15,7 @@ const Background = styled.div`
     width: 100%;
     opacity: 0;
     transition: opacity .3s ease-in-out;
+    z-index: 100;
 `;
 const ModalStyled = styled.div`
     position: absolute;
@@ -30,6 +31,7 @@ const ModalStyled = styled.div`
     border: solid 1px ${greyLight};
     background-color: #fff;
     transition: top .3s ease-in-out;
+    z-index: 100;
 `;
 const Header = styled.div`
     display: flex;
