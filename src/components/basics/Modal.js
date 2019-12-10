@@ -126,6 +126,15 @@ const Modal = props => {
                         )}
                         {props.buttonText && (
                             <RightButtonsContainer>
+                                {props.secondButtonText &&
+                                    <Button
+                                        style={{marginRight: 8}}
+                                        buttonText={props.secondButtonText}
+                                        loading={props.loading}
+                                        disabled={props.disabled}
+                                        onClick={props.secondOnClick}
+                                    />
+                                }
                                 <Button
                                     buttonText={props.buttonText}
                                     loading={props.loading}
