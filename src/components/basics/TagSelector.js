@@ -21,7 +21,7 @@ const Container = styled.div`
         border-radius: 4px;
         border: 1px solid ${greyLight};
         cursor: text;
-        min-height: 26px;
+        min-height: 36px;
     `
     const Select = styled.div`
         display: block;
@@ -122,7 +122,7 @@ const TagSelector = props => {
     }
 
     return (
-        <Container ref={mainView}>
+        <Container ref={mainView} containerStyle={props.containerStyle}>
             <Bar
                 onClick={() => setOpen(true)}
             >
