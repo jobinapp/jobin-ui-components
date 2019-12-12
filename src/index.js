@@ -45,5 +45,6 @@ export {
   GuildWithImage,
   TabContent,
   Select,
-  PushMenu
+  PushMenu,
+  TagSelector
 } from "./components";

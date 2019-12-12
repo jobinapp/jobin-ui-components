@@ -17,7 +17,8 @@ export {
   Counter,
   CountDown,
   Select,
-  PushMenu
+  PushMenu,
+  TagSelector
 } from "./basics";
 export {
   FilterCustom,

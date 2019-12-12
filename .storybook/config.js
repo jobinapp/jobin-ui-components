@@ -44,6 +44,7 @@ function loadStories() {
     require("../stories/tab");
     require("../stories/select");
     require("../stories/pushMenu");
+    require("../stories/tagSelector");
 }
 
 configure(loadStories, module);
