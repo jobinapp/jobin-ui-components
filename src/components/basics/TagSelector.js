@@ -18,8 +18,7 @@ const Container = styled.div`
         display: block;
         align-items: center;
         padding: 6px 12px 0px;
-        border-radius: 4px;
-        border: 1px solid ${greyLight};
+        border-bottom: 1px solid ${greyLight};
         cursor: text;
         min-height: 36px;
     `
@@ -82,7 +81,7 @@ const TagSelector = props => {
                     const tempItem = selectedItems[i];
                     for(let j=0; j<prevItems.length; j++){
                         const tempItem2 = prevItems[j];
-                        if(tempItem.id === tempItem2.id){
+                        if(tempItem.name === tempItem2.name){
                             find = true;
                             break;
                         }
@@ -102,7 +101,7 @@ const TagSelector = props => {
 
     const removeItem = item =>{
         const tempArray = selectedItems;
-        const index = tempArray.findIndex(selectedItem => selectedItem.id === item.id);
+        const index = tempArray.findIndex(selectedItem => selectedItem.name === item.name);
         if (index > -1) {
             tempArray.splice(index, 1);
         }
@@ -149,7 +148,7 @@ const TagSelector = props => {
             {open &&
                 <Select ref={selectView} multiple>
                     {props.items.map((item) =>{
-                        const selected = selectedItems.find(selectedItem => selectedItem.id === item.id);
+                        const selected = selectedItems.find(selectedItem => selectedItem.name === item.name);
                         return(
                             <Option 
                                 key={item.id}
