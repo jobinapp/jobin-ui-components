@@ -5,6 +5,9 @@ import ArrowDown from "../../icons/images/ArrowDown";
 import { greyDark, black, white, red, greyLight } from "../../constants/colors";
 
 const FakeSelect = styled.button`
+display: flex;
+align-items: center;
+justify-content: center;
   position: relative;
   height: 48px;
   border-radius: 4px;
@@ -54,7 +57,9 @@ const FakeSelectList = styled.ul`
   overflow: scroll;
 
   li p {
-    display: block;
+    display: flex;
+    justify-content: start;
+    align-items: center;
     font-size: 14px;
     padding: 8px;
     margin: 0px;
