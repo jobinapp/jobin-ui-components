@@ -42,14 +42,14 @@ const Title = styled.label`
     margin-bottom: 4px;
     font-size: 18px;
     font-weight: 700;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     color: ${black};
 `;
 const Subtitle = styled.label`
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 350;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     color: ${black};
 `;
 const ButtonsContainer = styled.div`

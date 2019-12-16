@@ -20,7 +20,7 @@ const FooterStyled = styled.footer`
 const ListContainer = styled.ul`
   width: 100%;
   h5 {
-    font-weight: 600;
+    font-weight: bold;
     margin-top: 0px;
     margin-bottom: 16px;
   }

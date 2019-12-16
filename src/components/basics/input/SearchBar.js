@@ -5,7 +5,8 @@ import {
   greyLight,
   greyMedium,
   black,
-  white
+  white,
+  red
 } from "../../../constants/colors";
 
 import Button from "../button/Button";
@@ -17,12 +18,13 @@ const Wrapper = styled.div`
     props.hasSearchButton &&
     `
     background-color: ${white};
-    border:1px solid ${greyLight};
+    border:1px solid ${greyBackground};
     border-radius:4px;
     display:flex;
     flex-wrap:wrap;
     align-items:center;
-    padding:4px;
+    padding:0px;
+    height: 56px;
 
     &:focus-within {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
@@ -36,6 +38,7 @@ const Wrapper = styled.div`
     }
     .btn-search {
       width:100%;
+      height: 56px;
      }
 
     .icon-search {
@@ -44,7 +47,6 @@ const Wrapper = styled.div`
     
     @media ${device.mobileL} {
       flex-wrap:nowrap;
-      padding:4px 4px 4px 0px;
       .btn-search {
        width:auto;
       }
@@ -69,7 +71,7 @@ const Input = styled.input`
   -webkit-appearance: none;
   border: 1px solid transparent;
   color: ${black};
-  font-family: "Open Sans", sans-serif;
+  font-family: "Muli", sans-serif;
   font-family: ${props => props.style};
 
   :focus {
@@ -135,6 +137,7 @@ const SearchBar = props => {
         <ButtonStyled
           className="btn-search"
           buttonText={props.buttonText || "Buscar"}
+          mainColor={red}
           {...props.buttonProps}
         />
       )}

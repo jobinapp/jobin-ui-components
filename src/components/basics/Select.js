@@ -13,7 +13,7 @@ justify-content: center;
   border-radius: 4px;
   font-size: 16px;
   color: ${black};
-  font-family: "Open Sans", sans-serif;
+  font-family: "Muli", sans-serif;
   padding: 4px 16px;
   background-color: transparent;
   border: 1px solid ${greyLight};

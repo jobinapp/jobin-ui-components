@@ -354,8 +354,204 @@
       list-style: none;
   }
   
+/* muli-200 - latin */
+@font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 200;
+    src: url(static/media/muli-v19-latin-200.810d113f.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-200.810d113f.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-200.c13b3c67.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-200.b9e633f0.woff) format('woff'), 
+         url(static/media/muli-v19-latin-200.4f606a33.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-200.4af3ad2a.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-300 - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 300;
+    src: url(static/media/muli-v19-latin-300.847e6cd6.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-300.847e6cd6.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-300.e98ca761.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-300.eccf01ea.woff) format('woff'), 
+         url(static/media/muli-v19-latin-300.e5c90a8f.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-300.6e76a88c.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-500 - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 500;
+    src: url(static/media/muli-v19-latin-500.30c1d195.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-500.30c1d195.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-500.57d63787.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-500.224bba33.woff) format('woff'), 
+         url(static/media/muli-v19-latin-500.9eba65c3.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-500.89d68387.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-regular - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 400;
+    src: url(static/media/muli-v19-latin-regular.fbc1936a.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-regular.fbc1936a.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-regular.705bcc4d.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-regular.91288b87.woff) format('woff'), 
+         url(static/media/muli-v19-latin-regular.5fe52d61.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-regular.2ff6b3b6.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-600 - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 600;
+    src: url(static/media/muli-v19-latin-600.489ac705.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-600.489ac705.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-600.e840b5fe.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-600.5ea5ffaf.woff) format('woff'), 
+         url(static/media/muli-v19-latin-600.1ca72151.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-600.cfe5f138.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-700 - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 700;
+    src: url(static/media/muli-v19-latin-700.d6ecb771.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-700.d6ecb771.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-700.1d982ad1.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-700.c0a2a08d.woff) format('woff'), 
+         url(static/media/muli-v19-latin-700.369ae5dc.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-700.40ca9a00.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-800 - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 800;
+    src: url(static/media/muli-v19-latin-800.107915fa.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-800.107915fa.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-800.73541670.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-800.10ca7e8e.woff) format('woff'), 
+         url(static/media/muli-v19-latin-800.a22fdfbd.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-800.e9112bdc.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-900 - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 900;
+    src: url(static/media/muli-v19-latin-900.c0b1d161.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-900.c0b1d161.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-900.c805b62e.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-900.d84d7000.woff) format('woff'), 
+         url(static/media/muli-v19-latin-900.aff21af5.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-900.a73a02b5.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-200italic - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: italic;
+    font-weight: 200;
+    src: url(static/media/muli-v19-latin-200italic.201292bf.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-200italic.201292bf.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-200italic.6fa84fa7.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-200italic.daa58017.woff) format('woff'), 
+         url(static/media/muli-v19-latin-200italic.be7f4e3c.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-200italic.4943b048.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-300italic - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: italic;
+    font-weight: 300;
+    src: url(static/media/muli-v19-latin-300italic.2b50c215.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-300italic.2b50c215.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-300italic.e2385ec3.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-300italic.433aeba8.woff) format('woff'), 
+         url(static/media/muli-v19-latin-300italic.0f2146c6.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-300italic.f3022cb4.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-italic - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: italic;
+    font-weight: 400;
+    src: url(static/media/muli-v19-latin-italic.36d351bc.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-italic.36d351bc.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-italic.543e731f.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-italic.1e42c4d1.woff) format('woff'), 
+         url(static/media/muli-v19-latin-italic.08c5fe8d.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-italic.7a938ae4.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-600italic - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: italic;
+    font-weight: 600;
+    src: url(static/media/muli-v19-latin-600italic.fc541c70.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-600italic.fc541c70.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-600italic.7db7f0f7.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-600italic.52b09d32.woff) format('woff'), 
+         url(static/media/muli-v19-latin-600italic.55e1f088.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-600italic.bb367161.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-700italic - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: italic;
+    font-weight: 700;
+    src: url(static/media/muli-v19-latin-700italic.7fc4842b.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-700italic.7fc4842b.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-700italic.08ea8fa2.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-700italic.4fbf29a6.woff) format('woff'), 
+         url(static/media/muli-v19-latin-700italic.1db0572f.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-700italic.7f3eb561.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-500italic - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: italic;
+    font-weight: 500;
+    src: url(static/media/muli-v19-latin-500italic.f2b3ba46.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-500italic.f2b3ba46.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-500italic.9f876a07.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-500italic.d4c5908d.woff) format('woff'), 
+         url(static/media/muli-v19-latin-500italic.007619c3.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-500italic.1dfcf95a.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+  /* muli-800italic - latin */
+  @font-face {
+    font-family: 'Muli';
+    font-style: italic;
+    font-weight: 800;
+    src: url(static/media/muli-v19-latin-800italic.f215b5ab.eot); /* IE9 Compat Modes */
+    src: local(''),
+         url(static/media/muli-v19-latin-800italic.f215b5ab.eot?#iefix) format('embedded-opentype'), 
+         url(static/media/muli-v19-latin-800italic.23312133.woff2) format('woff2'), 
+         url(static/media/muli-v19-latin-800italic.6b57e7c3.woff) format('woff'), 
+         url(static/media/muli-v19-latin-800italic.b1bc0f0c.ttf) format('truetype'), 
+         url(static/media/muli-v19-latin-800italic.fe676a96.svg#Muli) format('svg'); /* Legacy iOS */
+  }
+
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
 }
 
 /*# sourceMappingURL=main.css.map*/

@@ -20,7 +20,7 @@ const nav = [
     text: "Información General",
     hasChildren: false,
     children: null,
-    active: false,
+    active: true,
     direction: "left",
     icon: null
   },
@@ -70,7 +70,8 @@ const nav = [
     icon: {
       isAlwaysVisible: "visible",
       icon: ArrowRight
-    }
+    },
+    mainColor :"#2c5bcf"
   }
 ];
 
@@ -80,8 +81,9 @@ storiesOf("Navigation|Navbar", module)
   .add("Setting colors", () => (
     <Nav
       brand={{ logo: Logo, link: "#" }}
-      bgColor={text("Main color", blackDark)}
-      mainColor={text("Alternative color", white)}
+      bgColor={text("Main color", white)}
+      mainColor={text("Alternative color", black)}
+      brandColor={red}
       items={nav}
     />
   ))

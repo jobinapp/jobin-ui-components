@@ -36,7 +36,7 @@ const LabelContainer = styled.div`
 const MinLabel = styled.div`
     display: flex;
     flex: 1;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     color: ${black};
     font-size: 14px;
     ${props => props.labelStyle}
@@ -45,7 +45,7 @@ const MaxLabel = styled.div`
     display: flex;
     flex: 1;
     justify-content: flex-end;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     color: ${black};
     font-size: 14px;
     ${props => props.labelStyle}

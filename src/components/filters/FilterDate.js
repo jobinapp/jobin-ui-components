@@ -13,7 +13,7 @@ const FilterDate = props => {
         display: flex;
         flex: 1;
         margin-top: 8px;
-        font-family: "Open Sans", sans-serif;
+        font-family: "Muli", sans-serif;
     `;
 
     const [title, setTitle] = useState(props.title);
