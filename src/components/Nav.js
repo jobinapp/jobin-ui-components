@@ -16,8 +16,6 @@ const Div = styled.div`
 
 const LinkHome = styled.a`
   display: block;
-  width: 35px;
-  height: 39.1px;
   margin-top: 20px;
   margin-left: 0px;
   overflow: hidden;

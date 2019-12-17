@@ -24,7 +24,7 @@ const Wrapper = styled.div`
     flex-wrap:wrap;
     align-items:center;
     padding:0px;
-    height: 56px;
+    height: auto;
 
     &:focus-within {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
@@ -46,6 +46,7 @@ const Wrapper = styled.div`
     }
     
     @media ${device.mobileL} {
+      height: 56px;
       flex-wrap:nowrap;
       .btn-search {
        width:auto;

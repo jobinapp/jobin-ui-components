@@ -82,10 +82,9 @@ const Grid = props => {
         mobileL: props.mobileL || gridTemp.mobileL,
         tablet: props.tablet || gridTemp.tablet,
         laptop: props.laptop || gridTemp.laptop,
-        laptopL: props.laptopL || (props.laptop || gridTemp.laptop)
+        laptopL: props.laptopL || props.laptop || gridTemp.laptop
       };
     }
-
     return gridTemp;
   };
   const changeContainer = (props, gridStyles) => {
