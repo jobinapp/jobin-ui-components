@@ -17,7 +17,7 @@ const Container = styled.div`
     const Bar = styled.div`
         display: block;
         align-items: center;
-        padding: 6px 12px 0px;
+        padding: 6px 0px 0px;
         border-bottom: 1px solid ${greyLight};
         cursor: text;
         min-height: 36px;
@@ -28,6 +28,7 @@ const Container = styled.div`
         padding: 6px 12px 0px;
         border-radius: 4px;
         z-index: 1;
+        background-color: #fff;
     `
     const Option = styled.div`
         display: inline-block;
