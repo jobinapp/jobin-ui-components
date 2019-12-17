@@ -6,37 +6,21 @@ import {Select} from "../src/components/basics";
 
 const options = [
   {
-    value: "+90",
-    name: "+90",
-    icon: <span>🇪🇸</span>,
-  },
-  {
-    value: "+58",
-    name: "+58",
-    icon: <span>🇪🇸</span>,
-    default:true
-  },
-  {
     value: "+34",
     name: "+34",
-    icon: <span>🇪🇸</span>
+    icon: <img src={require("../assets/images/es.png")} style={{width: 25}} />,
   },
   {
-    value: "+90",
-    name: "+90",
-    icon: <span>🇪🇸</span>,
+    value: "+351",
+    name: "+351",
+    icon: <img src={require("../assets/images/pt.png")} style={{width: 25}} />,
   },
   {
-    value: "+58",
-    name: "+58",
-    icon: <span>🇪🇸</span>,
-    default:true
+    value: "+33",
+    name: "+33",
+    icon: <img src={require("../assets/images/fr.png")} style={{width: 25}} />,
   },
-  {
-    value: "+34",
-    name: "+34",
-    icon: <span>🇪🇸</span>
-  }
+ 
 ]
 
 const onSelectedValue = value  => alert(`Haz selecionado ${value}`);

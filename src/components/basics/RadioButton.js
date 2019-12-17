@@ -14,13 +14,13 @@ const Container = styled.div`
 `;
 const Title = styled.label`
     color: ${black};
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     font-size: 16px;
     cursor: pointer;
 `;
 const Subtitle = styled.label`
     color: ${black};
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     font-size: 12px;
     cursor: pointer;
 `;

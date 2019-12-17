@@ -7,7 +7,7 @@ const InputStyled = styled.input`
     border-radius: 4px;
     font-size: 16px;
     color: ${black};
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     padding: 4px 16px;
     background-color: ${props =>
         props.badInput ? "#fff" : greyBackground};

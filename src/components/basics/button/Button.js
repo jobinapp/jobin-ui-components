@@ -13,8 +13,8 @@ const ButtonStyled = styled.button`
   background-color: ${props =>
     props.empty ? "transparent" : props.mainColor || greenDark};
   border-radius: 4px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+  font-family: "Muli", sans-serif;
+  font-weight: bold;
   font-size: 16px;
   line-height: 24px;
   color: ${props => (props.empty ? props.mainColor || greenDark : "#fff")};

@@ -6,7 +6,7 @@ const H2 = props => {
     const H2Styled = styled.h1`
         display: flex;
         flex: 1;
-        font-family: "Open Sans", sans-serif;
+        font-family: "Muli", sans-serif;
         font-weight: bold;
         font-size: 32px;
         margin: 0px;

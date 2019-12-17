@@ -14,7 +14,7 @@ const View = styled.div`
 `
 const Input = styled.input`
     color: ${black};
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     font-size: 16px;
     width: 60px;
     text-align: center;

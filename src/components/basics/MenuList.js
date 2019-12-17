@@ -26,7 +26,7 @@ const Option = styled.div`
     height: 48px;
     border-bottom: 1px solid ${greyBackground};
     cursor: pointer;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     opacity: ${props => (props.disabled ? 0.5 : 1)};
     align-items: center;
 

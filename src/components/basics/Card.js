@@ -6,7 +6,7 @@ import { greyLight , white} from "../../constants/colors";
 
 const CardStyled = styled.div`
 
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     border-radius: 8px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
     border: solid 1px ${greyLight};

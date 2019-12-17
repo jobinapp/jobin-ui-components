@@ -10,7 +10,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   color: ${props => props.mainColor || greenDark};
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
   outline: 0px;
   background: none;
@@ -22,7 +22,7 @@ const LinkStyled = styled.a`
 	display: flex;
 	justify-content: flex-start;
 	color: ${props => props.mainColor || greenDark};
-	font-weight: 600;
+  font-weight: bold;
 	cursor: pointer;
 	outline: 0px;
 	background: none;

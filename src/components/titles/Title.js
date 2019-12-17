@@ -25,7 +25,7 @@ let createTitleStyledElement = (element) => {
     }
 
     const Title = styled(element)`
-        font-family: "Open Sans", sans-serif;
+        font-family: "Muli", sans-serif;
         margin: 0px;
         color: ${black};
         ${fontWeight ? `font-weight: ${fontWeight }` : "" };

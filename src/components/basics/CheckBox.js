@@ -28,13 +28,13 @@ const TextContainer = styled.div`
 const Title = styled.p`
     margin: 0;
     color: ${black};
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     font-size: 16px;
 `;
 const Subtitle = styled.p`
     margin: 0;
     color: ${black};
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     font-size: 12px;
 `;
 

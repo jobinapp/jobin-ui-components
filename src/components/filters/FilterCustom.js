@@ -17,7 +17,7 @@ const FilterCustom = props => {
         border-radius: 4px;
         outline: none;
         background-color: ${props => (props.filtered ? greenDark : "#fff")};
-        font-family: "Open Sans", sans-serif;
+        font-family: "Muli", sans-serif;
         font-size: 14px;
         color: ${props => (props.filtered ? "#fff" : black)};
         ${props => props.buttonStyle}

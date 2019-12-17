@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { black } from "../../constants/colors";
 
 const PStyled = styled.p`
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     font-size: 16px;
     font-weight: normal;
     font-style: normal;

@@ -32,7 +32,7 @@ const Container = styled.div`
     `
     const Option = styled.div`
         display: inline-block;
-        font-family: "Open Sans", sans-serif;
+        font-family: "Muli", sans-serif;
         height: 24px;
         line-height: 20px;
         padding: 2px 6px;

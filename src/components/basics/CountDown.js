@@ -44,7 +44,7 @@ const TitleView = styled.div`
     border-radius: 4px;
 `
 const Title = styled.label`
-    font-family: "Open Sans", sans-serif;
+    font-family: "Muli", sans-serif;
     font-size: 14px;
     font-weight: 600;
 `
