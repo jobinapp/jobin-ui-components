@@ -553,5 +553,18 @@
 body {
     font-family: "Muli", sans-serif;
 }
+.StripeElement {
+    display: block;
+    margin: 10px 0 10px 0;
+    min-width: 80px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #444444;
+    font-family: "Muli", sans-serif;
+    padding: 8px 16px;
+    background-color: #f2f2f2;
+    border: 1px solid transparent;
+    outline: none;
+}
 
 /*# sourceMappingURL=main.css.map*/

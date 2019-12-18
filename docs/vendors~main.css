@@ -463,15 +463,6 @@
 .DayPickerNavigation__verticalScrollableDefault {
   position: relative
 }
-.DayPickerNavigation__bottom {
-  height: auto
-}
-.DayPickerNavigation__bottomDefault {
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  display: flex;
-  justify-content: space-between
-}
 .DayPickerNavigation_button {
   cursor: pointer;
   -webkit-user-select: none;
@@ -511,10 +502,6 @@
   line-height: .78;
   border-radius: 3px;
   padding: 6px 9px
-}
-.DayPickerNavigation_bottomButton__horizontalDefault {
-  position: static;
-  margin: -10px 22px 30px
 }
 .DayPickerNavigation_leftButton__horizontalDefault {
   left: 22px
