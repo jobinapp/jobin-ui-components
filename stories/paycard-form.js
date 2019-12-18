@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, object } from "@storybook/addon-knobs";
+import { withKnobs, object, text } from "@storybook/addon-knobs";
 
 import PaycardForm from "../src/components/basics/PaycardForm";
 import Button from '../src/components/basics/button/Button';
@@ -26,6 +26,7 @@ storiesOf("Components|PaycardForm", module)
             <div>
                 <PaycardForm
                     ref={paycardForm}
+                    stripeKey={text("stripeKey", "your-stripe-key")}
                     containerStyle={object("containerStyle", {width: '400px', margin: "10px 20px"})}
                     onChange={(result) => setDisabled(!result)}
                 />

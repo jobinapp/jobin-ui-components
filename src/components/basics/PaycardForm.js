@@ -91,7 +91,7 @@ const AddPaycard = (props, ref) => {
 
     useEffect(() => {
         if (window.Stripe) {
-            setStripe(window.Stripe('pk_test_MUm4BJmWGqJNihQ5kdnlHSLY'));
+            setStripe(window.Stripe(props.stripeKey));
         }
         else{
             const script = document.createElement("script");
@@ -101,7 +101,7 @@ const AddPaycard = (props, ref) => {
             document.body.appendChild(script);
 
             document.querySelector('#stripe-js').addEventListener('load', () => {
-                setStripe(window.Stripe('pk_test_MUm4BJmWGqJNihQ5kdnlHSLY'));
+                setStripe(window.Stripe(props.stripeKey));
             });
         }
     }, []);
