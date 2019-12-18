@@ -47,5 +47,5 @@ export {
   Select,
   PushMenu,
   TagSelector,
-  AddPaycard
+  PaycardForm
 } from "./components";

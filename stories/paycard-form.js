@@ -2,10 +2,10 @@ import React, {useState, useRef} from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, object } from "@storybook/addon-knobs";
 
-import AddPaycard from "../src/components/basics/AddPaycard";
+import PaycardForm from "../src/components/basics/PaycardForm";
 import Button from '../src/components/basics/button/Button';
 
-storiesOf("Components|AddPaycard", module)
+storiesOf("Components|PaycardForm", module)
     .addDecorator(withKnobs)
     .add("Default", () => {
 
@@ -24,7 +24,7 @@ storiesOf("Components|AddPaycard", module)
 
         return(
             <div>
-                <AddPaycard
+                <PaycardForm
                     ref={paycardForm}
                     containerStyle={object("containerStyle", {width: '400px', margin: "10px 20px"})}
                     onChange={(result) => setDisabled(!result)}

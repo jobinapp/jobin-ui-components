@@ -19,7 +19,7 @@ export {
   Select,
   PushMenu,
   TagSelector,
-  AddPaycard
+  PaycardForm
 } from "./basics";
 export {
   FilterCustom,
