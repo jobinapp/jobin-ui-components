@@ -18,7 +18,8 @@ export {
   CountDown,
   Select,
   PushMenu,
-  TagSelector
+  TagSelector,
+  AddPaycard
 } from "./basics";
 export {
   FilterCustom,

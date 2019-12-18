@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { greyBackground, black, red, greyLight } from "../../../constants/colors";
+import { greyBackground, black, red, greyLight, greyMedium } from "../../../constants/colors";
 
 const InputStyled = styled.input`
     height: 32px;
@@ -15,6 +15,10 @@ const InputStyled = styled.input`
         props.badInput ? "1px solid " + red : "1px solid transparent"};
     outline: none;
     ${props => props.style};
+
+    ::placeholder {
+        color: ${greyMedium};
+    }
 
     :focus {
         background-color: #fff;
