@@ -45,6 +45,7 @@ function loadStories() {
     require("../stories/select");
     require("../stories/pushMenu");
     require("../stories/tagSelector");
+    require("../stories/paycard-form");
 }
 
 configure(loadStories, module);
