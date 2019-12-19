@@ -1,32 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import Container from "./layout/Container";
+import SearchBar from "./basics/input/SearchBar";
 import styled from "styled-components";
 
 //Styles
-import { black, white, red } from "../constants/colors";
+import {
+  black,
+  white,
+  red,
+  greyBackground,
+  greyLight
+} from "../constants/colors";
 import device from "../constants/mediasQueries";
 
 //Asstes
 import MenuBotton from "../icons/images/Menu";
 
-const Div = styled.div`
-  display: block;
+const BrandAndSearchBarContainer = styled.div`
+  display: flex;
   height: 100%;
+  width: 85%;
+  position: relative;
+
+  @media ${device.tablet} {
+    width: auto;
+  }
+`;
+
+const SearchBarContainer = styled.div`
+  display: ${props => (props.isVisible ? "flex" : "none")};
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+`;
+
+const SearchBarStyled = styled(SearchBar)`
+  background: ${white};
+  border: 1px solid ${greyBackground};
+  height: 36px;
 `;
 
 const LinkHome = styled.a`
   display: block;
-  margin-top: 20px;
   margin-left: 0px;
   overflow: hidden;
   cursor: pointer;
+  width: 120px;
 
   svg {
-    width: 145px;
+    width: 100%;
   }
   @media ${device.tablet} {
     overflow: visible;
-    width: 145px;
     margin-left: -36px;
   }
 `;
@@ -37,7 +62,7 @@ const NavContainer = styled.nav`
   left: auto;
   right: auto;
   width: 100%;
-  height: 72px;
+  height: auto;
   background-color: ${props => props.bgColor};
   z-index: 1000;
 
@@ -46,9 +71,9 @@ const NavContainer = styled.nav`
   }
 
   ${props =>
-    !props.isSticky ||
-    (props.isFixed &&
-      `
+    props.isSticky
+      ? props.isFixed &&
+        `
         position:fixed;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
     
@@ -59,7 +84,8 @@ const NavContainer = styled.nav`
         & li a {
           color: ${props.itemsColorsWhenSticky || props.bgColor};
         }
-      `)}
+      `
+      : ""}
 `;
 
 const ContainerStyled = styled(Container)`
@@ -207,6 +233,36 @@ const ButtonToggleNav = styled.button`
   }
 `;
 
+const QueryResultList = styled.ul`
+  position: relative;
+  margin-bottom: 40px;
+  margin-top: 0;
+  padding-left: 0;
+  padding-bottom: 12px;
+  list-style: none;
+  position: absolute;
+  z-index: 2;
+  top: 74px;
+  width: 249px;
+  background-color: #fff;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px var(--white-two);
+  border-top: none;
+
+  a {
+    display: block;
+    padding: 8px 16px 8px 48px;
+    font-size: 14px;
+    color: var(--greyish-brown);
+    text-decoration: none;
+  }
+  a:hover {
+    cursor: pointer;
+    background-color: ${greyLight};
+  }
+`;
+
 let styledIcon = element => {
   const Icon = styled(element)`
     display: block;
@@ -263,9 +319,10 @@ const Nav = props => {
     // unmount
     return () => {
       if (props.isSticky) window.removeEventListener("scroll", handleScroll);
+
       window.removeEventListener("resize", handleResize);
     };
-  }, [props.isSticky, isFixed, isMenuVisible]);
+  }, []);
 
   const handleScroll = event => {
     setFixed(event.currentTarget.scrollY > STICKY_SINCE);
@@ -294,19 +351,33 @@ const Nav = props => {
       bgColorWhenSticky={props.bgColorWhenSticky}
     >
       <ContainerStyled>
-        <Div>
-          <LinkHome href={props.brand.link}>
-            <props.brand.logo
-              mainColor={
-                props.isSticky
-                  ? isFixed
-                    ? props.brandColorWhenSticky || bgColor
+        <BrandAndSearchBarContainer>
+          <div>
+            <LinkHome href={props.brand.link}>
+              <props.brand.logo
+                mainColor={
+                  props.isSticky
+                    ? isFixed
+                      ? props.brandColorWhenSticky || bgColor
+                      : props.brandColor || mainColor
                     : props.brandColor || mainColor
-                  : props.brandColor || mainColor
-              }
-            />
-          </LinkHome>
-        </Div>
+                }
+              />
+            </LinkHome>
+          </div>
+
+          <SearchBarContainer isVisible={props.isSearchBarVisible}>
+            <SearchBarStyled {...props.searchBarProps} />
+            {props.searchResult && props.searchResult.length > 0 && (
+              <QueryResultList className="query-results">
+                {props.searchResult.map((result, index) => {
+                  return <li key={index}>{result}</li>;
+                })}
+              </QueryResultList>
+            )}
+          </SearchBarContainer>
+        </BrandAndSearchBarContainer>
+
         {props.items && (
           <ButtonToggleNav onClick={toggleMenu}>
             <MenuBotton
@@ -368,4 +439,4 @@ const Nav = props => {
   );
 };
 
-export default Nav;
+export default memo(Nav);

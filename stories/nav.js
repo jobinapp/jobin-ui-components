@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, text, number, boolean } from "@storybook/addon-knobs";
 
 import Nav from "../src/components/Nav";
 import ArrowRight from "../src/icons/images/ArrowRight";
 import Light from "../src/icons/images/Light";
-import Logo from "../src/icons/images/Logo";
+import Logo from "../src/icons/images/JobinLogoDefault";
 import {
   black,
   blackDark,
@@ -75,6 +75,8 @@ const nav = [
   }
 ];
 
+
+
 storiesOf("Navigation|Navbar", module)
   .addDecorator(withKnobs)
   .add("Default", () => <Nav brand={{ logo: Logo, link: "#" }} items={null} />)
@@ -126,4 +128,49 @@ storiesOf("Navigation|Navbar", module)
       itemsActiveColor={text("Active item color", red)}
       isSticky={boolean("Define if navbar should be sticky when scroll", true)}
     />
-  ));
+  )).add("With Search bar", () => {
+    const [query, setQuery] = useState("")
+    const [result, setResult] = useState([])
+
+    const changeHandler = e => {
+      setQuery(e.target.value)
+      if (e.target.value == ""){ setResult([])}
+      else {
+        setResult([
+        <a>Result</a>,
+        <a>Result</a>
+      ])}
+    };
+    const focusHandler = e => console.log(e.target.value);
+
+
+     return <div>
+        <Nav
+      brand={{ logo: Logo, link: "#" }}
+      bgColor={text("Main color", white)}
+      mainColor={text("Alternative color", black)}
+      brandColor={red}
+      items={nav}
+      isSearchBarVisible={boolean("Active Search bar", true)}
+      searchBarProps={{
+        placeholder:"Busca el servicio",
+        value: query,
+        onChange:changeHandler,
+        onFocus:focusHandler,
+        hasSearchButton:false,
+        buttonProps:{
+          mainColor: red,
+          onClick: () => alert("Si funciona")
+        }
+      }}
+      searchResult={
+        result
+      }
+      isSticky={true}
+      stickyScrollSince={number("Set value for sticky", 10)}
+    />
+    <div style={{height:2000, paddingTop:100}}>
+        </div>
+     </div>
+   
+    });
