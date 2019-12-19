@@ -61,7 +61,10 @@ const FilterCustom = props => {
     }, [active]);
 
     return (
-        <div ref={mainView} style={props.style}>
+        <div ref={mainView} style={{
+            ...props.style,
+            position: 'relative'
+        }}>
             <Button
                 {...props}
                 onClick={() => {
