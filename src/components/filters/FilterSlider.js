@@ -44,6 +44,10 @@ const FilterSlider = props => {
             type={props.type}
             title={title}
             filtered={value ? true : false}
+            onBlur={() => {
+                if (props.onBlur)
+                    props.onBlur(value)
+            }}
         >
             {renderMenu()}
         </FilterCustom>

@@ -15,39 +15,33 @@ const fuseOptions = {
     keys: ["name"]
 };
 
+const NestedButton = props => {
+    // TODO: this styles wont be needed when inline svg element dissappears
+    const styles = {
+        nestedButton: {
+            width: 12,
+            height: 12,
+            marginLeft: 8,
+            verticalAlign: "middle",
+            ...props.style
+        },
+        nestedButtonRotated: {
+            width: 12,
+            height: 12,
+            marginLeft: 8,
+            verticalAlign: "middle",
+            transform: "rotate(90deg)",
+            ...props.style
+        }
+    };
 
-// TODO: this styles wont be needed when inline svg element dissappears
-const styles = {
-    nestedTitle: {
-        cursor: "pointer",
-        verticalAlign: "middle"
-    },
-    nestedButton: {
-        width: 12,
-        height: 12,
-        marginLeft: 8,
-        verticalAlign: "middle"
-    },
-    nestedButtonRotated: {
-        width: 12,
-        height: 12,
-        marginLeft: 8,
-        verticalAlign: "middle",
-        transform: "rotate(90deg)"
-    },
-    nestedList: {
-        marginTop: 8
-    }
-};
-
-const NestedButton = collapsed => {
     return (
         <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
             style={
-                collapsed.collapsed
+                props.collapsed
                     ? styles.nestedButton
                     : styles.nestedButtonRotated
             }
@@ -87,6 +81,19 @@ const FilterSelection = props => {
     const [filtered, setFiltered] = useState(false);
     const [items, setItems] = useState([]);
     const [itemsIsArr, setItemsIsArr] = useState(true);
+
+    // TODO: this styles wont be needed when inline svg element dissappears
+    const styles = {
+        nestedTitle: {
+            cursor: "pointer",
+            verticalAlign: "middle",
+            ...props.style
+        },
+        nestedList: {
+            marginTop: 8,
+            ...props.style
+        }
+    };
 
     useEffect(() => {
         const keys = Object.keys(props.items).filter(
@@ -315,14 +322,11 @@ const FilterSelection = props => {
                 props.selectionChange([]);
             } else {
                 setTitle(props.title + " - " + (selectionArray.length - 1));
-                const tempArray = [...selectionArray];
-                tempArray.map((prevItem, idx) => {
-                    if (prevItem.id === item.id) {
-                        tempArray.splice(idx, 1);
-                        setSelectionArray(tempArray);
-                        props.selectionChange(tempArray);
-                    }
-                });
+                const tempArray = selectionArray.filter(
+                    prevItem => prevItem.id !== item.id
+                );
+                setSelectionArray(tempArray);
+                props.selectionChange(tempArray);
             }
         }
     };
@@ -413,131 +417,33 @@ const FilterSelection = props => {
                                         {item.parent}
                                         <NestedButton
                                             collapsed={item.collapsed}
+                                            style={props.style}
                                         />
                                     </span>
                                     {!item.collapsed && (
                                         <ul style={styles.nestedList}>
                                             {item.items.length > 0
-                                                ? item.items.map(item => {
-                                                      return (
-                                                          <li
-                                                              key={`${item.name}-${item.id}`}
-                                                          >
-                                                              <label
-                                                                  htmlFor={
-                                                                      item.id
-                                                                  }
-                                                              >
-                                                                  <input
-                                                                      id={
-                                                                          item.id
-                                                                      }
-                                                                      type="checkbox"
-                                                                      className="native-hidden"
-                                                                      onChange={() =>
-                                                                          optionSelected(
-                                                                              item
-                                                                          )
-                                                                      }
-                                                                  />
-                                                                  <svg
-                                                                      width="24"
-                                                                      height="24"
-                                                                      viewBox="0 0 24 24"
-                                                                  >
-                                                                      <g
-                                                                          fill="none"
-                                                                          fillRule="evenodd"
-                                                                      >
-                                                                          <path d="M0 0h24v24H0z" />
-                                                                          {item.selected ? (
-                                                                              <React.Fragment>
-                                                                                  <rect
-                                                                                      width="22"
-                                                                                      height="22"
-                                                                                      x="1"
-                                                                                      y="1"
-                                                                                      fill="#05AFB4"
-                                                                                      rx="2"
-                                                                                  />
-                                                                                  <path
-                                                                                      fill="#FFF"
-                                                                                      d="M9.615 14.279L7.742 12.36a1.002 1.002 0 0 0-1.443 0 1.06 1.06 0 0 0 0 1.477l2.594 2.656a1.002 1.002 0 0 0 1.443 0l6.165-6.311a1.06 1.06 0 0 0 0-1.477 1.002 1.002 0 0 0-1.443 0L9.615 14.28z"
-                                                                                  />
-                                                                              </React.Fragment>
-                                                                          ) : (
-                                                                              <rect
-                                                                                  width="21"
-                                                                                  height="21"
-                                                                                  x="1.5"
-                                                                                  y="1.5"
-                                                                                  stroke="#444444"
-                                                                                  rx="2"
-                                                                              />
-                                                                          )}
-                                                                      </g>
-                                                                  </svg>
-                                                                  <span>
-                                                                      {
-                                                                          item.name
-                                                                      }
-                                                                  </span>
-                                                              </label>
-                                                          </li>
-                                                      );
-                                                  })
+                                                ? item.items.map(item => (
+                                                    <CheckBox
+                                                        key={`${item.name}-${item.id}`}
+                                                        style={{ marginTop: 8 }}
+                                                        title={item.name}
+                                                        onClick={() => optionSelected(item)}
+                                                        selected={item.selected}
+                                                    />
+                                                  ))
                                                 : ""}
                                         </ul>
                                     )}
                                 </li>
                             ) : (
-                                <li key={`${item.name}-${item.id}`}>
-                                    <label htmlFor={item.id}>
-                                        <input
-                                            id={item.id}
-                                            type="checkbox"
-                                            className="native-hidden"
-                                            onChange={() =>
-                                                optionSelected(item)
-                                            }
-                                        />
-                                        <svg
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <g fill="none" fillRule="evenodd">
-                                                <path d="M0 0h24v24H0z" />
-                                                {item.selected ? (
-                                                    <React.Fragment>
-                                                        <rect
-                                                            width="22"
-                                                            height="22"
-                                                            x="1"
-                                                            y="1"
-                                                            fill="#05AFB4"
-                                                            rx="2"
-                                                        />
-                                                        <path
-                                                            fill="#FFF"
-                                                            d="M9.615 14.279L7.742 12.36a1.002 1.002 0 0 0-1.443 0 1.06 1.06 0 0 0 0 1.477l2.594 2.656a1.002 1.002 0 0 0 1.443 0l6.165-6.311a1.06 1.06 0 0 0 0-1.477 1.002 1.002 0 0 0-1.443 0L9.615 14.28z"
-                                                        />
-                                                    </React.Fragment>
-                                                ) : (
-                                                    <rect
-                                                        width="21"
-                                                        height="21"
-                                                        x="1.5"
-                                                        y="1.5"
-                                                        stroke="#444444"
-                                                        rx="2"
-                                                    />
-                                                )}
-                                            </g>
-                                        </svg>
-                                        <span>{item.name}</span>
-                                    </label>
-                                </li>
+                                <CheckBox
+                                    key={`${item.name}-${item.id}`}
+                                    style={{ marginTop: 8 }}
+                                    title={item.name}
+                                    onClick={() => optionSelected(item)}
+                                    selected={item.selected}
+                                />
                             );
                         })}
                     </ul>
@@ -552,6 +458,11 @@ const FilterSelection = props => {
             type={props.type}
             title={title}
             filtered={filtered}
+            onBlur={() => {
+                if (props.onBlur && props.singleSelection)
+                    props.onBlur(selection);
+                else if (props.onBlur) props.onBlur(selectionArray);
+            }}
         >
             {itemsIsArr ? renderMenu() : renderNestedMenu()}
         </FilterCustom>

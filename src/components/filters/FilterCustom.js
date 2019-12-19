@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import {
     greyMedium,
@@ -9,6 +9,7 @@ import {
 
 const FilterCustom = props => {
     const [active, setActive] = useState(false);
+    const mainView = useRef();
 
     const Button = styled.button`
         cursor: pointer;
@@ -42,11 +43,30 @@ const FilterCustom = props => {
         ${props => props.menuStyle}
     `;
 
+    const handleClickOutside = e =>{
+        if (!mainView.current.contains(e.target)) {
+            setActive(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    useEffect(() => {
+        if(!active && props.onBlur) props.onBlur()
+    }, [active]);
+
     return (
-        <div style={props.style}>
+        <div ref={mainView} style={props.style}>
             <Button
                 {...props}
-                onClick={() => setActive(!active)}
+                onClick={() => {
+                    setActive(!active)
+                }}
                 className={props.filtered}
             >
                 {props.title}

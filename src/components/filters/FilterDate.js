@@ -102,6 +102,10 @@ const FilterDate = props => {
             menuStyle={props.menuStyle}
             title={title}
             filtered={filtered}
+            onBlur={() => {
+                if (props.onBlur)
+                    props.onBlur(date);
+            }}
         >
             {renderCalendar()}
             {renderFooter()}
