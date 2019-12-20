@@ -3,6 +3,20 @@ import { Image } from "../basics";
 import { P } from "../texts";
 import { CallToAction } from "../basics/button";
 import { greenDark } from "../../constants/colors";
+import styled from "styled-components";
+
+const GuildTitle = styled(P)`
+  text-align:left;
+  font-weight: bold;
+  padding-top:8px;
+  font-size: 16px;
+`;
+
+const GuildWrapper = styled.a`
+  display:block;
+  width:222px;
+  text-decoration:none;
+`;
 
 const GuildWithImage = props => {
   const {
@@ -14,7 +28,7 @@ const GuildWithImage = props => {
   } = props;
 
   return (
-    <div style={{ width: 222 }} {...rest}>
+    <GuildWrapper href={guildLink}{...rest}>
       <Image
         src={guildImgSrc}
         aspectRatio="16:9"
@@ -22,10 +36,11 @@ const GuildWithImage = props => {
         cover="width"
         style={{ borderRadius: "4px" }}
       />
-      <P style={{ paddingTop: 8, fontSize: 14, fontWeight: 600 }}>
+      <GuildTitle>
         {guildTitle}
-      </P>
-      <div style={{ paddingTop: 8 }}>
+      </GuildTitle>
+      {
+        props.callToActionVisible && <div style={{ paddingTop: 8 }}>
         <CallToAction
           buttonText="Ver más"
           mainColor={callToActionColor || greenDark}
@@ -34,7 +49,8 @@ const GuildWithImage = props => {
           href={guildLink}
         />
       </div>
-    </div>
+      }
+    </GuildWrapper>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { white, black } from "../../constants/colors";
 
@@ -45,8 +45,6 @@ const ChildrenWrapper = styled.div`
 const Guild = props => {
   const guildRef = useRef(null);
 
-  useEffect(() => {
-  })
   return (
     <LinkStyled ref={guildRef}  {...props}>
       <ChildrenWrapper>

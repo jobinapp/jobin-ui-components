@@ -32,10 +32,10 @@ const ImageStyled = styled.img`
 
 
 const Image = props => {
-  const {aspectRatio, cover, ...rest} = props
+  const {aspectRatio, cover, src, ...rest} = props
   return (
     <AspectRatio aspectRatio={props.aspectRatio} {...rest}>
-      <ImageStyled src={props.src} alt={props.alt} cover={props.cover} />
+      <ImageStyled src={src} alt={props.alt} cover={props.cover} />
     </AspectRatio>
   );
 };

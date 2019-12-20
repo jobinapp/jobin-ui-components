@@ -29,7 +29,7 @@ const reviews = [
     }
   ];
 
-  storiesOf("Carrousel|Reviews", module)
+  storiesOf("Carousel|Reviews", module)
   .addDecorator(withKnobs)
   .add("Default", () => (
     <Reviews

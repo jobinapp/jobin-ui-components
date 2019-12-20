@@ -221,7 +221,7 @@ const LinkMenuWithIcon = styled(LinkMenu)`
 
 const ButtonToggleNav = styled.button`
   height: 100%;
-  width: 55px;
+  width: 10%;
   background: transparent;
   border: none;
   outline: none;

@@ -42,7 +42,7 @@ const guildsCarousels = [
   }
 ];
 
-storiesOf("Guild|Guild Carousel", module)
+storiesOf("Carousel|Guild", module)
   .addDecorator(withKnobs)
   .add("Default", () => (
     <Section>
