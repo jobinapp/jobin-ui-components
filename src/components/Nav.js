@@ -62,7 +62,7 @@ const NavContainer = styled.nav`
   left: auto;
   right: auto;
   width: 100%;
-  height: auto;
+  height: 72px;
   background-color: ${props => props.bgColor};
   z-index: 1000;
 
