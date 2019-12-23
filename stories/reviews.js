@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React  from "react";
 import { storiesOf } from "@storybook/react";
 import Reviews from "../src/components/Reviews";
 import { withKnobs, number, boolean } from "@storybook/addon-knobs";
+import styled from "styled-components";
 
 const reviews = [
     {
@@ -36,5 +37,5 @@ const reviews = [
             items={reviews}
             time={number("time",3000)}
             autoplay={boolean("Autoplay", true)}
-          ></Reviews>
+          />
   ));

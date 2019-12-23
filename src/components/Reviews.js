@@ -154,7 +154,7 @@ const Reviews = props => {
   };
 
   return (
-    <div>
+    <div className={props.className}>
       <Grid
         tablet="calc(50% - 106px) auto"
         laptop="calc(50% - 106px) auto"

@@ -352,7 +352,7 @@ const Nav = props => {
     >
       <ContainerStyled>
         <BrandAndSearchBarContainer>
-          <div>
+          <div style={{display: "flex", alignItems: "center"}}>
             <LinkHome href={props.brand.link}>
               <props.brand.logo
                 mainColor={
