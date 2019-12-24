@@ -20,13 +20,12 @@ const Job = props => {
         return 0;
       })
   
-
     return JSON.parse(JSON.stringify( isWindowMobile ? items.slice(0,3) : items))
       .map(item => {
         item.date = (
-              <div>{
-                  moment(item.date).locale(locale).fromNow()} 
-                { moment().diff(moment(item.date), newestsJobs[1]) <= newestsJobs[0] && 
+              <div>
+                {moment(item.date).locale(locale).fromNow()} 
+                {moment().diff(moment(item.date), newestsJobs[1]) <= newestsJobs[0] && 
                     <span> - <span style={{color:greenDark}}>NUEVO</span></span> }
               </div>)
           return item;
@@ -58,6 +57,7 @@ const Job = props => {
       tablet="auto auto auto"
       laptop="auto auto auto"
       style={props.style}
+      className={props.className}
     >
       {items.map((item, i) => {
         if (i < (props.maxitems || 3))

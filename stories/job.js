@@ -6,7 +6,7 @@ import { withKnobs, number } from "@storybook/addon-knobs";
 const latestJobs = [
     {
       guild: "Pintar",
-      title: "Quitar gotelé y pintar una pared de 20m2",
+      title: "Quitar gotelé y pintar una pared de 20m2 Quitar gotelé y pintar una pared de 20m2 Quitar gotelé y pintar una pared de 20m2",
       user: "Jorge",
       location: "Madrid, España",
       date: "2019-10-02 09:59:26.387"
@@ -47,7 +47,6 @@ const latestJobs = [
       date: "2019-10-02 10:00:26.387"
     }
   ];
-
 
   storiesOf("Job", module)
   .addDecorator(withKnobs)

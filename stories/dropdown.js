@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import DropdownGrouped from "../src/components/dropdown/DropdownGrouped";
 import { withKnobs} from "@storybook/addon-knobs";
+import { red, greyDark } from "../src/constants/colors";
 
 const dropdownItems = [
     {

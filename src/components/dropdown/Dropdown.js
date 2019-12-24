@@ -53,17 +53,17 @@ const Dropdown = props => {
   const children = React.Children.toArray(props.children);
 
   return (
-    <div>
-      <FlexibleContainer collapsed={props.collapsed} onClick={props.onClickDropdown}>
-        <div>{children[0]}</div>
-        <div>
-          <span>
-            <ArrowDown style={{width:24, transform:`rotate( ${ props.collapsed ? "180deg" : "0deg"} )` }} mainColor={greyMedium} />
+    <div className={props.className}>
+      <FlexibleContainer collapsed={props.collapsed} onClick={props.onClickDropdown} className="title-and-icon-container">
+        <div className="title-container">{children[0]}</div>
+        <div className="arrow-container">
+          <span className="arrow-wrapper">
+            <ArrowDown className="arrow" style={{width:24, transform:`rotate( ${ props.collapsed ? "180deg" : "0deg"} )` }} mainColor={greyMedium} />
           </span>
         </div>
       </FlexibleContainer>
      
-        <CollapseContainerActive collapsed={props.collapsed}>
+        <CollapseContainerActive collapsed={props.collapsed} className="collapse-container">
         {props.collapsed && (children[1]
         )}
         </CollapseContainerActive>

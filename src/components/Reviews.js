@@ -46,19 +46,18 @@ const TextsContainer = styled.div`
 
 const ImageContainer = styled.div`
   width:100%;
-  padding-top: 56.25%; 
+  padding-top: 100%; 
   position: relative;
   overflow:hidden;
   border-radius:5px;
 
+  background-image: url(${props => props.imgUrl});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
   img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width:100%;
-    border-radius:5px;
+    display: none;
   }
 
   @media ${device.tablet} {
@@ -83,6 +82,7 @@ const ControlWrapper = styled.div`
     margin-top: 0px;
   }
 `;
+
 
 const Reviews = props => {
   const [activeReview, setActiveReview] = useState(() => {
@@ -160,13 +160,11 @@ const Reviews = props => {
         laptop="calc(50% - 106px) auto"
         gap="24px 106px"
       >
-        <ImageContainer>
-          <div>
+        <ImageContainer imgUrl={props.items[activeReview].imgUrl}>
             <img
               style={{ maxWidth: "100%" }}
               src={props.items[activeReview].imgUrl}
             />
-          </div>
         </ImageContainer>
         <FlexContainer>
           <TextsContainer>

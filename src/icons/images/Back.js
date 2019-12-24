@@ -1,12 +1,23 @@
 import React from "react";
 
 const SvgBack = props => (
-  <svg width={36} height={36} style={{...props.style}} onClick={props.onClick}>
-    <g fill={props.mainColor || "#000"} fillRule="evenodd">
-      <path d="M18 0c9.941 0 18 8.059 18 18s-8.059 18-18 18S0 27.941 0 18 8.059 0 18 0zm0 2C9.163 2 2 9.163 2 18s7.163 16 16 16 16-7.163 16-16S26.837 2 18 2z" />
-      <path d="M20.5 26a.997.997 0 01-.707-.293l-7-7a.999.999 0 010-1.414l7.071-7.071a.999.999 0 111.414 1.414L14.914 18l6.293 6.293A.999.999 0 0120.5 26" />
-    </g>
-  </svg>
+    <svg width={24} height={24} {...props}>
+        <defs>
+            <path
+                d="M22 11H4.414l3.95-3.95A.999.999 0 106.95 5.636l-5.657 5.657a.999.999 0 000 1.414l5.657 5.657a.995.995 0 00.707.293.999.999 0 00.707-1.707L4.414 13H22a1 1 0 100-2"
+                id="back_svg__a"
+            />
+        </defs>
+        <g fill="none" fillRule="evenodd">
+            <mask id="back_svg__b" fill="#fff">
+                <use xlinkHref="#back_svg__a" />
+            </mask>
+            <use fill="#000" xlinkHref="#back_svg__a" />
+            <g mask="url(#back_svg__b)" fill="#444">
+                <path d="M0 0h24v24H0z" />
+            </g>
+        </g>
+    </svg>
 );
 
 export default SvgBack;

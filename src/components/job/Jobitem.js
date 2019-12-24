@@ -4,14 +4,12 @@ import Card from "../basics/Card";
 import P from "../texts/P";
 
 //Styles
-
 import { greenDark, black } from "../../constants/colors";
 
 //Icons
-import UserIcon from "../../icons/images/User";
-import LocationIcon from "../../icons/images/Location";
-import CalendarIcon from "../../icons/images/Calendar";
-
+import UserIcon from "../../icons/images/UserEmpty";
+import LocationIcon from "../../icons/images/LocationEmpty";
+import CalendarIcon from "../../icons/images/CalendarEmpty";
 
 const Guild = styled.span`
     font-size: 13px;
@@ -21,7 +19,6 @@ const Guild = styled.span`
     padding-bottom:4px;
     text-transform: uppercase;
     margin-bottom: 4px;
-
 `;
 
 const JobDesc = styled(P)`
@@ -30,7 +27,9 @@ const JobDesc = styled(P)`
     line-height: 1.5;
     color: ${black};
     margin-bottom:12px;
+    word-break: break-word;
 `;
+
 const TextIconAligned = styled.div`
     display:flex;
     justify-content: flex-start;
@@ -45,13 +44,11 @@ const TextIconAligned = styled.div`
     span:first-child {
         margin-right:8px;
     }
-
 `;
-
 
 const Jobitem = props => {
     return (
-        <Card style={{...props.style}} onClick={props.onJobItemClick}>
+        <Card className={props.className} style={{...props.style}} onClick={props.onJobItemClick}>
             <div className="Guild">
                 <Guild>{props.guild}</Guild>
             </div>
