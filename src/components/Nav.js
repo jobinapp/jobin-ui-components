@@ -136,6 +136,7 @@ const MenuItem = styled.li`
 
   a {
     position: relative;
+    font-family: "Muli",sans-serif;
   }
 
   @media ${device.tablet} {

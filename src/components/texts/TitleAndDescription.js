@@ -52,7 +52,6 @@ const WrapperStyled = styled.div`
 
 const TitleAndDescription = props => {
   const Icon = props.icon;
-
   return (
     <div className={props.className} style={{ ...props.style }}>
       <WrapperStyled align={props.align} hasIcon={Icon ? true : false}>

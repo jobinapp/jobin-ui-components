@@ -27,10 +27,10 @@ const LinkStyled = styled.a`
 	outline: 0px;
 	background: none;
 	border: none;
-	text-decoration:none;
+  text-decoration:none;
+  font-family: "Muli",sans-serif;
 	${props => props.style}
 `;
-
 const CallToAction = props => {
   const [Icon] = useState(() => {
     return props.icon || ArrowRight;
