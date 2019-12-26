@@ -11,6 +11,7 @@ const Container = styled.div`
     height: 48px;
     align-items: center;
     cursor: pointer;
+    ${props => props.style}
 `;
 const Title = styled.label`
     color: ${black};
@@ -39,7 +40,10 @@ const RadioButton = props => {
 
     return (
         <Container
-            onClick={() => props.onClick(props.item)}
+            onClick={() => {
+                if(props.onClick) props.onClick(props.item);
+            }}
+            style={props.style}
         >
             <div style={{ height: 20 }}>
                 {props.item.selected ? 

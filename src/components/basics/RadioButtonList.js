@@ -13,7 +13,7 @@ const RadioButtonList = props => {
             if(tempItem.id === item.id){
                 tempItem.selected = true;
                 tempArray.push(tempItem);
-                props.onChange(tempItem);
+                if(props.onClick) props.onClick(tempItem);
             }
             else{
                 tempItem.selected = false;
@@ -24,7 +24,7 @@ const RadioButtonList = props => {
     }
 
     return (
-        <div>
+        <div style={props.style}>
             {items.map((item) =>{
                 return(
                     <RadioButton
