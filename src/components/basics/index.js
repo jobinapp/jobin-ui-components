@@ -5,6 +5,7 @@ export { default as Loading } from "./Loading";
 export { default as MenuList } from "./MenuList";
 export { default as Modal } from "./Modal";
 export { default as RadioButton } from "./RadioButton";
+export { default as RadioButtonList } from "./RadioButtonList";
 export { default as Slider } from "./Slider";
 export { default as Card } from "./Card";
 export { default as Counter } from "./Counter";

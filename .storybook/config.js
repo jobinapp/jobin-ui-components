@@ -11,6 +11,7 @@ function loadStories() {
     require("../stories/input.js");
     require("../stories/button.js");
     require("../stories/radio-button.js");
+    require("../stories/radio-button-list.js");
     require("../stories/check-box.js");
     require("../stories/counter.js");
     require("../stories/count-down.js");

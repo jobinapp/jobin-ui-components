@@ -37,53 +37,28 @@ const RadioButtonOffStyled = styled(RadioButtonOff)`
 
 const RadioButton = props => {
 
-    const [items, setItems] = useState(props.items);
-
-    const changeSelection = item =>{
-        const tempArray = [];
-        for(let i=0; i<items.length; i++){
-            const tempItem = items[i];
-            if(tempItem.title === item.title){
-                tempItem.selected = true;
-                tempArray.push(tempItem);
-                props.onChange(tempItem);
-            }
-            else{
-                tempItem.selected = false;
-                tempArray.push(tempItem);
-            }
-        }
-        setItems(tempArray);
-    }
-
     return (
-        <div>
-            {items.map((item) =>{
-                return(
-                    <Container
-                        onClick={() => changeSelection(item)}
-                    >
-                        <div style={{ height: 20 }}>
-                            {item.selected ? 
-                                props.customOnImage ?
-                                    props.customOnImage
-                                :
-                                    <RadioButtonOnStyled />
-                            :
-                                props.customOffImage ?
-                                    props.customOffImage
-                                :
-                                    <RadioButtonOffStyled />
-                            }
-                        </div>
-                        <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
-                            <Title>{item.title}</Title>
-                            {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
-                        </div>
-                    </Container>
-                )
-            })}
-        </div>
+        <Container
+            onClick={() => props.onClick(props.item)}
+        >
+            <div style={{ height: 20 }}>
+                {props.item.selected ? 
+                    props.customOnImage ?
+                        props.customOnImage
+                    :
+                        <RadioButtonOnStyled />
+                :
+                    props.customOffImage ?
+                        props.customOffImage
+                    :
+                        <RadioButtonOffStyled />
+                }
+            </div>
+            <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
+                <Title>{props.item.title}</Title>
+                {props.item.subtitle && <Subtitle>{props.item.subtitle}</Subtitle>}
+            </div>
+        </Container>
     );
 };
 

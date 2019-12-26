@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, array } from "@storybook/addon-knobs";
+import { withKnobs, object } from "@storybook/addon-knobs";
 
 import RadioButton from "../src/components/basics/RadioButton";
 
@@ -9,8 +9,8 @@ storiesOf("Components|RadioButton", module)
     .add("Default", () => (
         <div>
             <RadioButton
-                items={array("items", [{title: "Option 1", selected: true}, {title: "Option 2", subtitle: "Subtitle", selected: false}, {title: "Option 3", selected: false}])}
-                onChange={item => console.log(item)}
+                item={object("item", {id: "option-1", title: "Option 1", subtitle: "Subtitulo", selected: true})}
+                onClick={item => console.log(item)}
             />
         </div>
     ));
