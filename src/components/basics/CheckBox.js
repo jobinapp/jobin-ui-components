@@ -46,12 +46,12 @@ const CheckBox = props => {
     }, [props.selected]);
 
     return (
-        <Container {...props}>
+        <Container style={props.style}>
             <Button 
                 onClick={() => {
                     if(!props.disabled){
                         setSelected(!selected);
-                        props.onSelectionChange(!selected);
+                        if(props.onChange) props.onChange(!selected);
                     }
                 }}
             >
