@@ -31,9 +31,6 @@ const Wrapper = styled.div`
       border:none;
       box-shadow:none;
     }
-    input {
-      background-color: ${white};
-    }
     .btn-search {
       width:100%;
       height: 56px;
@@ -66,7 +63,7 @@ const Input = styled.input`
   font-size: 16px;
   line-height: 1.5;
   padding: 12px 12px 12px ${props => (props.hideicon ? "12px" : "48px")};
-  background-color: ${white};
+  background-color: transparent;
   -webkit-appearance: none;
   border: 1px solid transparent;
   color: ${black};
@@ -75,7 +72,6 @@ const Input = styled.input`
 
   :focus {
     outline: none;
-    background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
     border-color: ${greyLight};
   }
@@ -104,12 +100,12 @@ const SearchBar = props => {
     height: 48px;
   `;
 
+
   return (
     <Wrapper className={props.className} style={styles.container} hasSearchButton={props.hasSearchButton}>
       <Input {...props} style={props.styleinput} type="search" />
       {props.hideicon !== true && (
         <Icon className="icon-search">
-          {console.log("333", styles)}
           <svg
             width="20px"
             height="20px"

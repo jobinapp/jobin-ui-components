@@ -36,7 +36,6 @@ const SearchBarContainer = styled.div`
 `;
 
 const SearchBarStyled = styled(SearchBar)`
-  background: ${white};
   height: 36px;
 `;
 
@@ -248,7 +247,6 @@ const QueryResultList = styled.ul`
   background-color: #fff;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.05);
-  border: solid 1px var(--white-two);
   border-top: none;
 
   a {
