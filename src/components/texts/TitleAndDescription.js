@@ -57,7 +57,7 @@ const TitleAndDescription = props => {
       <WrapperStyled align={props.align} hasIcon={Icon ? true : false}>
         {Icon && (
           <div>
-            <Icon mainColor={props.iconMainColor || null} />
+            <Icon mainColor={props.iconMainColor || null} style={{...props.iconStyles}} />
           </div>
         )}
         <div>
