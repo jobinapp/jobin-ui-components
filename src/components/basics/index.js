@@ -9,6 +9,7 @@ export { default as RadioButtonList } from "./RadioButtonList";
 export { default as Slider } from "./Slider";
 export { default as Card } from "./Card";
 export { default as Counter } from "./Counter";
+export {default as InputCounter} from "./InputCounter";
 export { default as CountDown } from "./CountDown";
 export { default as ListItem } from "./LitsItem";
 export { default as Image} from "./Image";
