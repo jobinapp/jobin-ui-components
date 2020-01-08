@@ -2,22 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 //Styles
-import { greyLight , white} from "../../constants/colors";
+import { white} from "../../constants/colors";
+import {getElevation, getDivider} from "../../constants/elevation";
 
 const CardStyled = styled.div`
 
     font-family: "Muli", sans-serif;
     border-radius: 8px;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
-    border: solid 1px ${greyLight};
+    ${props => getElevation(props.elevation)};
+    ${props => getDivider(props.divider)};
     background-color:${white};
     padding: 16px 16px 23px 16px;
     ${props => props.style}
 `;
 
 const Card = props => {
+    const {elevation, divider, ...rest} = props
     return (
-        <CardStyled className={props.className} style={{...props.style}}>
+        <CardStyled className={props.className} {...rest} elevation={elevation} divider={divider}>
             {props.children}
         </CardStyled>
     );

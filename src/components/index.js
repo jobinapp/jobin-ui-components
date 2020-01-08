@@ -16,6 +16,7 @@ export {
   Slider,
   Card,
   Counter,
+  InputCounter,
   CountDown,
   Select,
   PushMenu,

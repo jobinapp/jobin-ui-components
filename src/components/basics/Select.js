@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 
 import ArrowDown from "../../icons/images/ArrowDown";
-import { greyDark, black, white, red, greyLight } from "../../constants/colors";
+import { greyDark, black, white, red, greyLight, colors } from "../../constants/colors";
 
 const FakeSelect = styled.button`
-display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
   height: 48px;
   border-radius: 4px;
@@ -23,9 +23,9 @@ justify-content: center;
   :focus {
     background-color: #fff;
     box-shadow: ${props =>
-      props.badInput ? "0 2px 2px 0 " + red : "0 4px 8px 0 rgba(0, 0, 0, .05)"};
+      props.badInput ? "0 2px 2px 0 " + colors["red"]["500P"] : "0 4px 8px 0 rgba(0, 0, 0, .05)"};
     border: ${props =>
-      props.badInput ? "1px solid " + red : "1px solid " + greyLight};
+      props.badInput ? "1px solid " + colors["red"]["500P"] : "1px solid " + greyLight};
   }
 
   ${props => props.style};
@@ -49,7 +49,6 @@ const FakeSelectList = styled.ul`
   background-color: ${white};
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.05);
-  border: solid 1px var(--white-two);
   border-top: none;
   top: 0px;
   left: 0px;
@@ -67,7 +66,7 @@ const FakeSelectList = styled.ul`
     overflow-wrap: break-word;
     &:hover {
       cursor: pointer;
-      background-color: ${greyLight};
+      background-color: ${colors["gray"]["200"]};
     }
   }
 `;
@@ -113,6 +112,7 @@ const Select = props => {
         ref={selectRef}
         style={{ display: "none" }}
         defaultValue={selectedValue.value}
+        className="select-hidden"
       >
         {options.map((op, i) => (
             <option key={i} value={op.value}>
@@ -121,8 +121,9 @@ const Select = props => {
           )
         )}
       </select>
-      <FakeSelectListWrapper ref={fakeSelectWrapper}>
+      <FakeSelectListWrapper className="fake-select-list-wrapper" ref={fakeSelectWrapper}>
         <FakeSelect
+          className="fake-select"
           onClick={handleSelectCollapsed}
           aria-haspopup="listbox"
           aria-labelledby="exp_elem exp_button"
@@ -134,7 +135,7 @@ const Select = props => {
             <ArrowDown style={{ width: 20, heigth: 20 }} mainColor={greyDark} />
           </span>
         </FakeSelect>
-        <FakeSelectList collapsed={isSelectListCollapsed} role="listbox" ref={fakeSelectList}> 
+        <FakeSelectList className="fake-select-list" collapsed={isSelectListCollapsed} role="listbox" ref={fakeSelectList}> 
           {options.map((op, i) => (
             <li
               key={i}
@@ -142,6 +143,7 @@ const Select = props => {
               tabIndex="-1"
               role="option"
               aria-selected={op.value === selectedValue.value}
+              className="fake-select-list-item"
             >
               <p>
                 <span>{op.icon}</span> <span>{op.name}</span>

@@ -1,23 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
-import { greenDark } from "../../../constants/colors";
+import { greenDark, colors } from "../../../constants/colors";
 import { darken } from "polished";
 
 import * as cardSpinnerData from "../../../../assets/animations/button-loading.json";
 
 const ButtonStyled = styled.button`
-	border: 2px solid ${props => props.mainColor || greenDark};
+	border: 2px solid ${props => props.mainColor || colors["green"]["500P"] };
 	padding: 12px 24px 12px 24px;
 	height: 56px;
 	background-color: ${props =>
-		props.empty ? "transparent" : props.mainColor || greenDark};
+		props.empty ? "transparent" : props.mainColor || colors("green", "500P")};
 	border-radius: 4px;
 	font-family: "Muli", sans-serif;
 	font-weight: bold;
 	font-size: 16px;
 	line-height: 24px;
-	color: ${props => (props.empty ? props.mainColor || greenDark : "#fff")};
+	color: ${props => (props.empty ? props.mainColor || colors["green"]["500P"] : "#fff")};
 	align-items: center;
 	justify-content: center;
 	cursor: ${props => (props.disabled || props.loading) ? null : "pointer"};
@@ -26,8 +26,8 @@ const ButtonStyled = styled.button`
 	${props => props.style}
 
 	:hover {
-		color: ${props => (props.disabled || props.loading) ? (props.empty ? (props.mainColor || greenDark) : '#fff') : '#fff'};
-		background-color: ${props => (props.disabled || props.loading) ? (props.empty ? "empty" : (props.mainColor || greenDark)) : darken(0.05, props.mainColor || greenDark)};
+		color: ${props => (props.disabled || props.loading) ? (props.empty ? (props.mainColor || colors["green"]["500P"]) : '#fff') : '#fff'};
+		background-color: ${props => (props.disabled || props.loading) ? (props.empty ? "empty" : (props.mainColor || colors["green"]["500P"])) : darken(0.05, props.mainColor || colors["green"]["500P"])};
 	}
 `;
 

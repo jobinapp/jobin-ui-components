@@ -11,10 +11,10 @@ import { black } from "../../constants/colors";
 
 const WrapperStyled = styled.div`
     display:block;
-
     div:first-child {
         margin-bottom:10.4px;
     }
+    font-family: "Muli", sans-serif;
 
     @media ${device.tablet} {
 

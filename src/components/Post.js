@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { black, greyDark, greyLight, greyBackground } from "../constants/colors";
+import { black, greyDark } from "../constants/colors";
 import { P } from "./texts";
 import { Title } from "./titles";
 import moment from "moment/min/moment-with-locales";

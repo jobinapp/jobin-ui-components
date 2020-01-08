@@ -1,18 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { greyBackground, black, red, greyLight, greyMedium } from "../../../constants/colors";
+import { greyDark, red, greyLight, greyMedium, getColor} from "../../../constants/colors";
 
 const InputStyled = styled.input`
-    height: 32px;
+    height: 48px;
     border-radius: 4px;
     font-size: 16px;
-    color: ${black};
+    color: ${greyDark};
     font-family: "Muli", sans-serif;
     padding: 4px 16px;
-    background-color: ${props =>
-        props.badInput ? "#fff" : greyBackground};
+    background-color: transparent;
     border: ${props =>
-        props.badInput ? "1px solid " + red : "1px solid transparent"};
+        props.badInput ? "1px solid " + getColor("red", "500P") : `1px solid ${greyLight}`};
     outline: none;
     ${props => props.style};
 
@@ -24,10 +23,10 @@ const InputStyled = styled.input`
         background-color: #fff;
         box-shadow: ${props =>
             props.badInput
-                ? "0 2px 2px 0 " + red
+                ? "0 2px 2px 0 " + getColor("red", "500P")
                 : "0 4px 8px 0 rgba(0, 0, 0, .05)"};
         border: ${props =>
-            props.badInput ? "1px solid " + red : "1px solid " + greyLight};
+            props.badInput ? "1px solid " + getColor("red", "500P") : "1px solid " + greyLight};
     }
 `;
 

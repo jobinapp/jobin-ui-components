@@ -6,6 +6,7 @@ import Button from "../src/components/basics/button/Button";
 import ButtonTextImage from "../src/components/basics/button/ButtonTextImage";
 import ButtonImage from "../src/components/basics/button/ButtonImage";
 import CallToAction from "../src/components/basics/button/CallToAction";
+import { colors } from "../src/constants/colors";
 
 storiesOf("Components|Button", module)
     .addDecorator(withKnobs)
@@ -16,7 +17,7 @@ storiesOf("Components|Button", module)
             loading={boolean("loading", false)}
             onClick={() => alert("Hola mundo")}
             empty={boolean("empty", false)}
-            mainColor={text("mainColor","#fa504c")}
+            mainColor={text("mainColor",colors["red"]["500P"])}
         />
     ))
     .add("Text with image", () => (

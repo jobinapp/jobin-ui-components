@@ -6,7 +6,7 @@ import {
   greyMedium,
   black,
   white,
-  red
+  colors
 } from "../../../constants/colors";
 
 import Button from "../button/Button";
@@ -14,9 +14,7 @@ import device from "../../../constants/mediasQueries";
 
 const Wrapper = styled.div`
   position: relative;
-  ${props =>
-    props.hasSearchButton &&
-    `
+
     background-color: ${white};
     border:1px solid ${greyBackground};
     border-radius:4px;
@@ -56,7 +54,6 @@ const Wrapper = styled.div`
         top:50%;
       }
     }
-    `}
 `;
 
 const Input = styled.input`
@@ -68,7 +65,7 @@ const Input = styled.input`
   font-size: 16px;
   line-height: 1.5;
   padding: 12px 12px 12px ${props => (props.hideicon ? "12px" : "48px")};
-  background-color: ${greyBackground};
+  background-color: ${white};
   -webkit-appearance: none;
   border: 1px solid transparent;
   color: ${black};
@@ -138,7 +135,7 @@ const SearchBar = props => {
         <ButtonStyled
           className="btn-search"
           buttonText={props.buttonText || "Buscar"}
-          mainColor={red}
+          mainColor={colors["red"]["500P"]}
           {...props.buttonProps}
         />
       )}

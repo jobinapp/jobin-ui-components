@@ -9,7 +9,8 @@ import {
   white,
   red,
   greyBackground,
-  greyLight
+  greyLight,
+  colors
 } from "../constants/colors";
 import device from "../constants/mediasQueries";
 
@@ -149,7 +150,7 @@ const MenuItem = styled.li`
         position:absolute;
         width: 100%;
         height: 2px;
-        background: ${props.activeColor || (props.hover ? props.hover : red)};
+        background: ${props.activeColor || (props.hover ? props.hover : colors["red"]["500P"])};
         bottom:-8px;
       }`}
 
@@ -157,7 +158,7 @@ const MenuItem = styled.li`
     ${props =>
       props.isActive &&
       `/* border-bottom:2px solid ${props.activeColor ||
-        (props.hover ? props.hover : red)} */`}
+        (props.hover ? props.hover : colors["red"]["500P"])} */`}
 
     &:last-child {
       margin-right: 0px;
@@ -190,10 +191,10 @@ const LinkMenu = styled.a`
   ${props =>
     props.isActive &&
     `color:${props.activeColor ||
-      (props.hover ? props.hover : red)} !important`}
+      (props.hover ? props.hover : colors["red"]["500P"])} !important`}
 
   &:hover {
-    color: ${props => (props.hover ? props.hover : red)};
+    color: ${props => (props.hover ? props.hover : colors["red"]["500P"])};
     transition: 0.5s all;
   }
 `;
@@ -255,7 +256,7 @@ const QueryResultList = styled.ul`
     display: block;
     padding: 8px 16px 8px 48px;
     font-size: 14px;
-    color: var(--greyish-brown);
+    color: ${colors["gray"]["100P"]};
     text-decoration: none;
   }
   a:hover {

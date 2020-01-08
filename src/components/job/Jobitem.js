@@ -48,7 +48,7 @@ const TextIconAligned = styled.div`
 
 const Jobitem = props => {
     return (
-        <Card className={props.className} style={{...props.style}} onClick={props.onJobItemClick}>
+        <Card className={props.className} style={{...props.style}} onClick={props.onJobItemClick} elevation="1dp">
             <div className="Guild">
                 <Guild>{props.guild}</Guild>
             </div>

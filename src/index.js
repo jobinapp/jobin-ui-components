@@ -33,6 +33,7 @@ export {
   Jobitem,
   Jumbotron,
   Counter,
+  InputCounter,
   CountDown,
   Footer,
   TitleAndDescription,
@@ -48,5 +49,18 @@ export {
   Select,
   PushMenu,
   TagSelector,
-  PaycardForm
+  PaycardForm,
 } from "./components";
+
+export {
+  red,
+  redDark,
+  green,
+  greenDark,
+  greyDark,
+  greyMedium,
+  greyLight,
+  greyBackground,
+  black,
+  colors,
+} from "./constants/colors"

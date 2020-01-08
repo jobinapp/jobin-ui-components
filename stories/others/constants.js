@@ -9,8 +9,33 @@ import {
     greyMedium,
     greyLight,
     greyBackground,
-    black
+    black,
+    colors
 } from "../../src/constants/colors";
+import Card from "../../src/components/basics/Card";
+
+const renderColors = () => {
+    let html = []
+    for (const key in colors) {
+        if (colors.hasOwnProperty(key)) {
+            const element = colors[key];
+            for (const variant in element) {
+                if (element.hasOwnProperty(variant)) {
+                    const color = element[variant];
+                    html.push(
+                        <div style={{background: color, width: 200, height: 48}}>
+                            <div>
+                                <p style={{color: black}}>{variant} : {color}</p>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+        }
+    }
+    
+    return <div>{html.map((El, _) => El)}</div>;
+}
 
 const style = {
     mainContainer: {
@@ -141,5 +166,54 @@ storiesOf("Constants", module).add("colors", () => (
                 <label style={style.subtitle}>{black}</label>
             </div>
         </div>
+        {
+            renderColors()
+        }
+    </div>
+)).add("Elevations", () => (
+    <div style={style.mainContainer}>
+    <Card style={{width:200,height:200, marginLeft: 32}} elevation={"0dp"} >
+        <p>0dp</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginLeft: 32}} elevation={"1dp"} >
+        <p>1dp</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginLeft: 32}} elevation={"2dp"} >
+        <p>2dp</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginLeft: 32}} elevation={"3dp"} >
+        <p>3dp</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginLeft: 32}} elevation={"4dp"} >
+        <p>4dp</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginLeft: 32}} elevation={"5dp"} >
+        <p>5dp</p>
+    </Card>
+
+    </div>
+)).add("Dividers", () => (
+    <div style={style.mainContainer}>
+    <Card style={{width:200,height:200, marginTop: 32, marginLeft: 32}} divider={"shadow-down"} >
+        <p>Shadow down</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginTop: 32, marginLeft: 32}} divider={"shadow-up"} >
+        <p>Shadow up</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginTop: 32, marginLeft: 32}} divider={"inner-down"} >
+        <p>Inner down</p>
+    </Card>
+
+    <Card style={{width:200,height:200, marginTop: 32, marginLeft: 32}} divider={"inner-up"} >
+        <p>Inner up</p>
+    </Card>
+
     </div>
 ));
