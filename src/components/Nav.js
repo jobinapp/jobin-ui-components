@@ -243,7 +243,7 @@ const QueryResultList = styled.ul`
   list-style: none;
   position: absolute;
   z-index: 2;
-  top: 74px;
+  top: 58px;
   width: 249px;
   background-color: #fff;
   border-radius: 0 0 4px 4px;
@@ -368,7 +368,7 @@ const Nav = props => {
           </div>
 
           <SearchBarContainer isVisible={props.isSearchBarVisible}>
-            <SearchBarStyled {...props.searchBarProps} />
+            <SearchBarStyled {...props.searchBarProps}/>
             {props.searchResult && props.searchResult.length > 0 && (
               <QueryResultList className="query-results">
                 {props.searchResult.map((result, index) => {

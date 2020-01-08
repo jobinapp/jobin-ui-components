@@ -54,6 +54,7 @@ const Wrapper = styled.div`
         top:50%;
       }
     }
+    ${props => props.style}
 `;
 
 const Input = styled.input`
@@ -104,10 +105,11 @@ const SearchBar = props => {
   `;
 
   return (
-    <Wrapper style={styles.container} hasSearchButton={props.hasSearchButton}>
+    <Wrapper className={props.className} style={styles.container} hasSearchButton={props.hasSearchButton}>
       <Input {...props} style={props.styleinput} type="search" />
       {props.hideicon !== true && (
         <Icon className="icon-search">
+          {console.log("333", styles)}
           <svg
             width="20px"
             height="20px"
