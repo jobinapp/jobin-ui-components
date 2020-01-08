@@ -37,7 +37,6 @@ const SearchBarContainer = styled.div`
 
 const SearchBarStyled = styled(SearchBar)`
   background: ${white};
-  border: 1px solid ${greyBackground};
   height: 36px;
 `;
 
