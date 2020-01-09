@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Button / 2. Outlined / 1. Icon only / Light / Add / Enabled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Componentes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Button/2.-Outlined/B.-Icon/_Light/Add/Enabled">
+            <g id="Button-/-2.-Outlined-/-1.-Icon-only-/-Light-/-Add-/-Enabled">
+                <circle id="State" cx="18" cy="18" r="18"></circle>
+                <path d="M18,0 C27.9405,0 36,8.0595 36,18 C36,27.9405 27.9405,36 18,36 C8.0595,36 0,27.9405 0,18 C0,8.0595 8.0595,0 18,0 Z M18,1 C8.61115925,1 1,8.61115925 1,18 C1,27.3888407 8.61115925,35 18,35 C27.3888407,35 35,27.3888407 35,18 C35,8.61115925 27.3888407,1 18,1 Z" id="Color" fill="#EBE9E7"></path>
+                <g id="Icon/1.-Basics/Add-S" transform="translate(6.000000, 6.000000)" fill="#2C5BCF">
+                    <path d="M17,13 L13,13 L13,17 C13,17.553 12.552,18 12,18 C11.448,18 11,17.553 11,17 L11,13 L7,13 C6.448,13 6,12.553 6,12 C6,11.447 6.448,11 7,11 L11,11 L11,7 C11,6.447 11.448,6 12,6 C12.552,6 13,6.447 13,7 L13,11 L17,11 C17.552,11 18,11.447 18,12 C18,12.553 17.552,13 17,13" id="Color"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

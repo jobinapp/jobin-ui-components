@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
-import {black, greenDark} from '../../constants/colors'
+import {black, greenDark, colors} from '../../constants/colors'
 import AddButton from '../../icons/images/AddButton'
 import SubstractButton from '../../icons/images/SubstractButton'
 
@@ -100,7 +100,7 @@ const Counter = props => {
                 onClick={disabledLeft ? null : substractToCounter}
                 disabled={disabledLeft}
             >
-                <SubstractButton style={{fill: greenDark}}/>
+                <SubstractButton fillColor={disabledLeft ? colors["gray"]["200"] :"none"} />
             </ButtonLeft>
             <Input
                 key={"input"}
@@ -112,7 +112,7 @@ const Counter = props => {
                 onClick={disabledRight ? null : addToCounter}
                 disabled={disabledRight}
             >
-                <AddButton style={{fill: greenDark}}/>
+                <AddButton fillColor={disabledRight ? colors["gray"]["200"] :"none"} />
             </ButtonRight>
         </View>
     );
