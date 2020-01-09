@@ -144,7 +144,7 @@ const Footer = props => {
           mobileS="auto auto"
           gap="48px 24px"
         >
-          {props.items.map((items, i) => (
+          {props.items && props.items.map((items, i) => (
             <ListContainer key={`${items.title}-${i}`}>
               <h5>{items.title}</h5>
               {renderItems(items)}

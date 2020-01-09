@@ -6,7 +6,6 @@ import { white} from "../../constants/colors";
 import {getElevation, getDivider} from "../../constants/elevation";
 
 const CardStyled = styled.div`
-
     font-family: "Muli", sans-serif;
     border-radius: 8px;
     ${props => getElevation(props.elevation)};
