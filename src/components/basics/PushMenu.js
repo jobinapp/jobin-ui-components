@@ -28,7 +28,7 @@ const Container = styled.div`
 `
 const Header = styled.div`
     display: flex;
-    flex: 1;
+    flex: 0;
     justify-content: flex-end;
     margin-bottom: 12px;
     padding: 24px 24px 0px 24px;
@@ -69,6 +69,20 @@ const PushMenu = props => {
                 onTransitionEnd={onTransitionEnd}
             >
                 <Header>
+                    {props.title && (
+                        <label
+                            style={{
+                                paddingRight: 24,
+                                paddingLeft: 24,
+                                fontSize: 24,
+                                fontWeight: 700,
+                                alignSelf: 'center',
+                                width: '100%'
+                            }}
+                        >
+                            {props.title}
+                        </label>
+                    )}
                     <ButtonImage onClick={initClose}
                         svgSrc={Close}
                     />
