@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import {black, greenDark, colors} from '../../constants/colors'
-import AddButton from '../../icons/images/AddButton'
-import SubstractButton from '../../icons/images/SubstractButton'
+import { black, greenDark, colors } from "../../constants/colors";
+import AddButton from "../../icons/images/AddButton";
+import SubstractButton from "../../icons/images/SubstractButton";
 
 const View = styled.div`
     display: flex;
@@ -11,7 +11,7 @@ const View = styled.div`
     height: 48px;
     justify-content: center;
     align-items: center;
-`
+`;
 const Input = styled.input`
     color: ${black};
     font-family: "Muli", sans-serif;
@@ -20,63 +20,60 @@ const Input = styled.input`
     text-align: center;
     border: none;
     outline: none;
-`
+`;
 const ButtonRight = styled.button`
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     border: 0px;
-    cursor: ${props => props.disabled ? null : "pointer"};
+    cursor: ${props => (props.disabled ? null : "pointer")};
     outline: 0px;
-    opacity: ${props => props.disabled ? 0.5 : 1.0};
+    opacity: ${props => (props.disabled ? 0.5 : 1.0)};
     background-color: transparent;
-    ${props => props.style}
-
-    :hover{
-        opacity: ${props => props.disabled ? 0.5 : 0.8};
+    ${props => props.style} :hover {
+        opacity: ${props => (props.disabled ? 0.5 : 0.8)};
     }
-`
+`;
 const ButtonLeft = styled.button`
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     border: 0px;
-    cursor: ${props => props.disabled ? null : "pointer"};
+    cursor: ${props => (props.disabled ? null : "pointer")};
     outline: 0px;
-    opacity: ${props => props.disabled ? 0.5 : 1.0};
+    opacity: ${props => (props.disabled ? 0.5 : 1.0)};
     background-color: transparent;
-    ${props => props.style}
-
-    :hover{
-        opacity: ${props => props.disabled ? 0.5 : 0.8};
+    ${props => props.style} :hover {
+        opacity: ${props => (props.disabled ? 0.5 : 0.8)};
     }
-`
+`;
 
 const Counter = props => {
-
     const [counter, setCounter] = useState(props.min || 0);
     const [input, setInput] = useState(null);
     const [disabledLeft, setDisabledLeft] = useState(true);
     const [disabledRight, setDisabledRight] = useState(props.min === props.max);
 
-    const addToCounter = () =>{
-        const temp = counter+1;
+    const addToCounter = () => {
+        const temp = counter + 1;
         setDisabledLeft(false);
         setCounter(temp);
         if (props.onClick) props.onClick(temp);
 
-        if(temp+1 > props.max){
+        if (temp + 1 > props.max) {
             setDisabledRight(true);
         }
-    }
+    };
 
-    const substractToCounter = () =>{
-        const temp = counter-1;
+    const substractToCounter = () => {
+        const temp = counter - 1;
         setDisabledRight(false);
         setCounter(temp);
         if (props.onClick) props.onClick(temp);
-        if(temp-1 < props.min || temp-1 < 0){
+        if (temp - 1 < props.min || temp - 1 < 0) {
             setDisabledLeft(true);
         }
-    }
+    };
 
-    const changeInputValue = (input) =>{
+    const changeInputValue = input => {
         if (input.length > 0) {
-            var reg = new RegExp("^[0-9]+(\.[0-9]{1,2})?$");
+            var reg = new RegExp("^[0-9]+(.[0-9]{1,2})?$");
             if (reg.test(input)) {
                 if (input >= (props.min ? props.min : 0)) {
                     setCounter(Number(input));
@@ -91,7 +88,7 @@ const Counter = props => {
         } else {
             setInput(input);
         }
-    }
+    };
 
     return (
         <View>
@@ -100,19 +97,23 @@ const Counter = props => {
                 onClick={disabledLeft ? null : substractToCounter}
                 disabled={disabledLeft}
             >
-                <SubstractButton fillColor={disabledLeft ? colors["gray"]["200"] :"none"} />
+                <SubstractButton
+                    fillColor={disabledLeft ? colors["gray"]["200"] : "none"}
+                />
             </ButtonLeft>
             <Input
                 key={"input"}
                 value={input ? input : counter}
-                onChange={(e) => changeInputValue(e.target.value)}
+                onChange={e => changeInputValue(e.target.value)}
             />
             <ButtonRight
                 key={"button-right"}
                 onClick={disabledRight ? null : addToCounter}
                 disabled={disabledRight}
             >
-                <AddButton fillColor={disabledRight ? colors["gray"]["200"] :"none"} />
+                <AddButton
+                    fillColor={disabledRight ? colors["gray"]["200"] : "none"}
+                />
             </ButtonRight>
         </View>
     );
