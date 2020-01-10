@@ -46,7 +46,7 @@ const CheckBox = props => {
     }, [props.selected]);
 
     return (
-        <Container style={props.style}>
+        <Container className={props.className} style={props.style}>
             <Button 
                 onClick={() => {
                     if(!props.disabled){
@@ -54,12 +54,13 @@ const CheckBox = props => {
                         if(props.onChange) props.onChange(!selected);
                     }
                 }}
+                className="checkbox"
             >
                 {selected ? <CheckBoxOn/> : <CheckBoxOff/>}
             </Button>
-            <TextContainer>
-                <Title>{props.title}</Title>
-                {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
+            <TextContainer className="text-container">
+                <Title className="title">{props.title}</Title>
+                {props.subtitle && <Subtitle className="subtitle">{props.subtitle}</Subtitle>}
             </TextContainer>
         </Container>
     );
