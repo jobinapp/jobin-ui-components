@@ -49,5 +49,5 @@ storiesOf("Dropdowns", module)
         setItems(newItems)
     };
 
-    return <DropdownGrouped onClickDropdown={onClickDropdown} items={items} />
+    return <DropdownGrouped onClickDropdown={onClickDropdown} items={items} iconAlign="left"/>
   });

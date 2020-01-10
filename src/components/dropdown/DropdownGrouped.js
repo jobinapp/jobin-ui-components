@@ -11,6 +11,8 @@ const DropdownGrouped = props => {
             key={`${item}-${i}`}
             onClickDropdown={props.onClickDropdown ? () => props.onClickDropdown(item, i) : null}
             collapsed={props.items[i].collapsed}
+            customIcon={props.customIcon ? props.customIcon: null}
+            iconAlign={props.iconAlign || "left"}
           >
             <h2 className="dropdown-title" style={{fontSize: "18px", margin:0, fontWeight: 600}}>{item.title}</h2>
             <P className="dropdown-p" style={{marginTop: 16}}>{item.text}</P>
