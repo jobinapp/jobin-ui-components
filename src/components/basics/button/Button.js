@@ -11,7 +11,7 @@ const ButtonStyled = styled.button`
 	padding: 12px 24px 12px 24px;
 	height: 56px;
 	background-color: ${props =>
-		props.empty ? "transparent" : props.mainColor || colors("green", "500P")};
+		props.empty ? "transparent" : props.mainColor || colors["green", "500P"]};
 	border-radius: 4px;
 	font-family: "Muli", sans-serif;
 	font-weight: bold;
