@@ -1,11 +1,30 @@
-import React, { useEffect, useState, useImperativeHandle, forwardRef, useRef } from "react";
+import React, {
+    useEffect,
+    useState,
+    useImperativeHandle,
+    forwardRef,
+    useRef
+} from "react";
 import styled from "styled-components";
-import { black, red, greyMedium } from "../../constants/colors";
-import { CardNumberElement, CardExpiryElement, CardCVCElement, StripeProvider, Elements } from 'react-stripe-elements'
+import {
+    black,
+    red,
+    greyMedium,
+    greyDark,
+    greyLight,
+    colors
+} from "../../constants/colors";
+import {
+    CardNumberElement,
+    CardExpiryElement,
+    CardCVCElement,
+    StripeProvider,
+    Elements
+} from "react-stripe-elements";
 
-import Input from './input/Input'
+import Input from "./input/Input";
 
-import '../../../styles/stripe-element.css'
+import "../../../styles/stripe-element.css";
 
 const Container = styled.div`
     display: flex;
@@ -13,24 +32,29 @@ const Container = styled.div`
     flex-direction: column;
     min-width: 250px;
     ${props => props.style}
-`
+`;
 const Form = styled.form`
     display: flex;
     flex: 1;
     flex-direction: column;
-`
+    padding-bottom: 20px;
+`;
+
 const ElementView = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
+    padding-bottom: 20px;
     ${props => props.style}
-`
+`;
+
 const BottomView = styled.div`
     display: flex;
     flex: 1;
-`
+`;
+
 const Label = styled.label`
-    color: ${black};
+    color: ${colors["gray"]["900"]};
     font-size: 14px;
     max-height: 16px;
     overflow: hidden;
@@ -38,7 +62,9 @@ const Label = styled.label`
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     display: -webkit-box;
-`
+    margin-bottom: 4px;
+`;
+
 const ErrorLabel = styled.label`
     font-weight: 600;
     font-size: 14px;
@@ -49,18 +75,68 @@ const ErrorLabel = styled.label`
     display: flex;
     flex: 1;
     justify-content: center;
-`
+`;
+
+const CardExpiryElementStyled = styled(CardExpiryElement)`
+    height: 48px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: ${greyDark};
+    font-family: "Muli", sans-serif;
+    padding: 0px 16px;
+    background-color: #fff;
+    border: 1px solid  ${greyLight};
+    display: flex !important;
+    align-items: center;
+
+    .__PrivateStripeElement {
+        width: 100%;
+    }
+`;
+
+const CardCVCElementStyled = styled(CardCVCElement)`
+    height: 48px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: ${greyDark};
+    font-family: "Muli", sans-serif;
+    padding: 0px 16px;
+    background-color: #fff;
+    border: 1px solid  ${greyLight};
+    display: flex !important;
+    align-items: center;
+
+    .__PrivateStripeElement {
+        width: 100%;
+    }
+`;
+
+const CardNumberElementStyled = styled(CardNumberElement)`
+    height: 38px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: ${greyDark};
+    font-family: "Muli", sans-serif;
+    padding: 4px 16px;
+    background-color: #fff;
+    border: 1px solid  ${greyLight};
+    display: flex !important;
+    align-items: center;
+
+    .__PrivateStripeElement {
+        width: 100%;
+    }
+`;
 
 const AddPaycard = (props, ref) => {
-
     useImperativeHandle(ref, () => ({
         async createPaymentMethod() {
             const result = await stripe.createPaymentMethod({
-                type: 'card',
+                type: "card",
                 card: cardElement.current._element,
-                billing_details: {name: name},
+                billing_details: { name: name }
             });
-            return(result);
+            return result;
         }
     }));
 
@@ -74,122 +150,127 @@ const AddPaycard = (props, ref) => {
     const [date, setDate] = useState(false);
     const [cvc, setCvc] = useState(false);
 
-    const style={
-        base:{
-            fontSize: '16px',
+    const style = {
+        base: {
+            fontSize: "16px",
             fontWeight: 500,
-            letterSpacing: '0.025em',
+            letterSpacing: "0.025em",
             color: black,
-            '::placeholder': {
-                color: greyMedium,
+            "::placeholder": {
+                color: greyMedium
             }
         },
         invalid: {
-            color: red,
-        },
-    }
+            color: red
+        }
+    };
 
     useEffect(() => {
         if (window.Stripe) {
             setStripe(window.Stripe(props.stripeKey));
-        }
-        else{
+        } else {
             const script = document.createElement("script");
             script.id = "stripe-js";
             script.src = "https://js.stripe.com/v3/";
             script.async = true;
             document.body.appendChild(script);
 
-            document.querySelector('#stripe-js').addEventListener('load', () => {
-                setStripe(window.Stripe(props.stripeKey));
-            });
+            document
+                .querySelector("#stripe-js")
+                .addEventListener("load", () => {
+                    setStripe(window.Stripe(props.stripeKey));
+                });
         }
     }, []);
 
     const handleChange = element => {
-        if(element.elementType === "cardNumber"){
-            if(element.complete){
+        if (element.elementType === "cardNumber") {
+            if (element.complete) {
                 dateInput.focus();
                 setCard(true);
                 checkResult(true, date, cvc, name);
-            }
-            else{
+            } else {
                 setCard(null);
                 checkResult(null, date, cvc, name);
             }
-        }
-        else if(element.elementType === "cardExpiry"){
-            if(element.complete){
+        } else if (element.elementType === "cardExpiry") {
+            if (element.complete) {
                 cvcInput.focus();
                 setDate(true);
                 checkResult(card, true, cvc, name);
-            }
-            else{
+            } else {
                 setDate(null);
                 checkResult(card, null, cvc, name);
             }
-        }
-        else if(element.elementType === "cardCvc"){
-            if(element.complete){
+        } else if (element.elementType === "cardCvc") {
+            if (element.complete) {
                 setCvc(true);
                 checkResult(card, date, true, name);
-            }
-            else{
+            } else {
                 setCvc(null);
                 checkResult(card, date, null, name);
             }
         }
         setError(element.error ? element.error.message : null);
-    }
+    };
 
-    const handleNameChange = input =>{
+    const handleNameChange = input => {
         setName(input);
         checkResult(card, date, cvc, input);
-    }
+    };
 
-    const checkResult = (card, date, cvc, name) =>{
-        if(card && date && cvc && name){
+    const checkResult = (card, date, cvc, name) => {
+        if (card && date && cvc && name) {
             props.onChange(true);
-        }
-        else{
+        } else {
             props.onChange(false);
         }
-    }
+    };
 
     return (
-        <Container style={props.containerStyle}>
+        <Container className={props.className} style={props.containerStyle}>
             <StripeProvider stripe={stripe}>
                 <Elements>
                     <Form>
-                        <div style={{display: 'flex', flex: 1, flexDirection: 'column'}}>
-                            <Label>Nombre del titular</Label>
+                        <div
+                            style={{
+                                display: "flex",
+                                flex: 1,
+                                flexDirection: "column", 
+                                paddingBottom: 20
+                            }}
+                            className="ElementView input-container"
+                        >
+                            <Label className="label">Nombre del titular</Label>
                             <Input
-                                style={{display: 'flex', flex: 1, padding: '8px 16px', fontSize: 16, height: 'unset', margin: '10px 0px'}}
+                                className="input"
                                 placeholder={"Luke Skywalker"}
                                 onChange={e => handleNameChange(e.target.value)}
                             />
                         </div>
-                        <ElementView>
-                            <Label>Número de tarjeta</Label>
-                            <CardNumberElement
+                        <ElementView className="ElementView input-container">
+                            <Label className="label">Número de tarjeta</Label>
+                            <CardNumberElementStyled
+                                 className="CardNumberElement"
                                 ref={cardElement}
                                 style={style}
                                 onChange={handleChange}
                             />
                         </ElementView>
-                        <BottomView>
-                            <ElementView style={{marginRight: 12}}>
-                                <Label>Fecha de caducidad</Label>
-                                <CardExpiryElement
-                                    onReady={(e) => setDateInput(e)}
+                        <BottomView className="BottomView">
+                            <ElementView className="ElementView input-container" style={{ marginRight: 12 }}>
+                                <Label className="label">Fecha de caducidad</Label>
+                                <CardExpiryElementStyled
+                                    onReady={e => setDateInput(e)}
                                     style={style}
                                     onChange={handleChange}
                                 />
                             </ElementView>
-                            <ElementView>
-                                <Label>CVC</Label>
-                                <CardCVCElement
-                                    onReady={(e) => setCvcInput(e)}
+                            <ElementView className="ElementView input-container">
+                                <Label  className="label">CVC</Label>
+                                <CardCVCElementStyled
+                                     className="CardNumberElement"
+                                    onReady={e => setCvcInput(e)}
                                     style={style}
                                     onChange={handleChange}
                                 />
@@ -198,11 +279,9 @@ const AddPaycard = (props, ref) => {
                     </Form>
                 </Elements>
             </StripeProvider>
-            {error &&
-                <ErrorLabel>{error}</ErrorLabel>
-            }
+            {error && <ErrorLabel>{error}</ErrorLabel>}
         </Container>
     );
-}
+};
 
 export default forwardRef(AddPaycard);

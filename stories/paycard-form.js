@@ -30,13 +30,7 @@ storiesOf("Components|PaycardForm", module)
                     containerStyle={object("containerStyle", {width: '400px', margin: "10px 20px"})}
                     onChange={(result) => setDisabled(!result)}
                 />
-                <Button
-                    style={{marginLeft: 20}}
-                    buttonText={"Guardar"}
-                    disabled={disabled}
-                    onClick={createPaymentMethod}
-                    loading={loading}
-                />
+                
             </div>
         );
     });

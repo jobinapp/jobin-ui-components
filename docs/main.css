@@ -553,7 +553,7 @@
 body {
     font-family: "Muli", sans-serif;
 }
-.StripeElement {
+/* .StripeElement {
     display: block;
     margin: 10px 0 10px 0;
     min-width: 80px;
@@ -565,6 +565,6 @@ body {
     background-color: #f2f2f2;
     border: 1px solid transparent;
     outline: none;
-}
+} */
 
 /*# sourceMappingURL=main.css.map*/

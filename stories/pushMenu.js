@@ -14,11 +14,12 @@ storiesOf("Components|PushMenu", module)
             <div>
                 {showMenu &&
                     <PushMenu
+                        title={text('title', 'Menú')}
                         left={boolean("left", false)}
                         onClose={() => setShowMenu(false)}
                     >
                         <div style={{padding: '0px 24px'}}>
-                            <label style={{fontSize: 24, fontWeight: 600}}>Menú</label>
+                            <label style={{fontSize: 24, fontWeight: 600}}>{text('title2', 'Menú')}</label>
                         </div>
                     </PushMenu>
                 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { greyDark, greyLight, greyMedium, colors} from "../../../constants/colors";
 
 const InputStyled = styled.input`
-    height: 48px;
+    height: 38px;
     border-radius: 4px;
     font-size: 16px;
     color: ${greyDark};

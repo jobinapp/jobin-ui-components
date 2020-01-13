@@ -22,10 +22,13 @@ const Container = styled.div`
     box-shadow: ${props => props.left ? '10px 0px 30px 0px rgba(0,0,0,0.5)' : '-10px 0px 30px 0px rgba(0,0,0,0.5)'};
     transition: ${props => props.left ? 'left .3s ease-in-out' : 'right .3s ease-in-out'};
     z-index: 100;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 `
 const Header = styled.div`
     display: flex;
-    flex: 1;
+    flex: 0;
     justify-content: flex-end;
     margin-bottom: 12px;
     padding: 24px 24px 0px 24px;
@@ -66,6 +69,20 @@ const PushMenu = props => {
                 onTransitionEnd={onTransitionEnd}
             >
                 <Header>
+                    {props.title && (
+                        <label
+                            style={{
+                                paddingRight: 24,
+                                paddingLeft: 24,
+                                fontSize: 24,
+                                fontWeight: 700,
+                                alignSelf: 'center',
+                                width: '100%'
+                            }}
+                        >
+                            {props.title}
+                        </label>
+                    )}
                     <ButtonImage onClick={initClose}
                         svgSrc={Close}
                     />
