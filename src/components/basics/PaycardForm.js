@@ -112,7 +112,7 @@ const CardCVCElementStyled = styled(CardCVCElement)`
 `;
 
 const CardNumberElementStyled = styled(CardNumberElement)`
-    height: 38px;
+    height: 48px;
     border-radius: 4px;
     font-size: 16px;
     color: ${greyDark};
