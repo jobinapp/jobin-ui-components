@@ -24,8 +24,6 @@ import {
 
 import Input from "./input/Input";
 
-import "../../../styles/stripe-element.css";
-
 const Container = styled.div`
     display: flex;
     flex: 1;
