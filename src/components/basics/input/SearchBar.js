@@ -6,7 +6,7 @@ import {
   greyMedium,
   black,
   white,
-  colors
+  colors,
 } from "../../../constants/colors";
 
 import Button from "../button/Button";
@@ -26,6 +26,7 @@ const Wrapper = styled.div`
 
     &:focus-within {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+      border: solid 1px ${colors["gray"]["800"]};
     }
     input:focus {
       border:none;
