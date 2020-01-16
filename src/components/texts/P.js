@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 //Styles
-import { black } from "../../constants/colors";
+import {  colors } from "../../constants/colors";
 
 const PStyled = styled.p`
     font-family: "Muli", sans-serif;
@@ -13,7 +13,7 @@ const PStyled = styled.p`
     line-height: 1.5;
     letter-spacing: normal;
     margin:0px;
-    color: ${black};
+    color: ${colors["gray"]["800"]};
     ${props => props.style}
 `;
 

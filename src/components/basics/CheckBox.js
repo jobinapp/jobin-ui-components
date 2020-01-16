@@ -25,17 +25,26 @@ const TextContainer = styled.div`
     flex-direction: column;
     margin-left: 12px;
 `;
+
 const Title = styled.p`
     margin: 0;
     color: ${black};
     font-family: "Muli", sans-serif;
     font-size: 16px;
 `;
+
 const Subtitle = styled.p`
     margin: 0;
     color: ${black};
     font-family: "Muli", sans-serif;
     font-size: 12px;
+`;
+
+const ButtonStyled = styled(Button)`
+    outline:none;
+    :focus {
+        outline:none;
+    }
 `;
 
 const CheckBox = props => {
@@ -47,7 +56,7 @@ const CheckBox = props => {
 
     return (
         <Container className={props.className} style={props.style}>
-            <Button 
+            <ButtonStyled
                 onClick={() => {
                     if(!props.disabled){
                         setSelected(!selected);
@@ -57,7 +66,7 @@ const CheckBox = props => {
                 className="checkbox"
             >
                 {selected ? <CheckBoxOn/> : <CheckBoxOff/>}
-            </Button>
+            </ButtonStyled>
             <TextContainer className="text-container">
                 <Title className="title">{props.title}</Title>
                 {props.subtitle && <Subtitle className="subtitle">{props.subtitle}</Subtitle>}

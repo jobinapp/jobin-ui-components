@@ -12,11 +12,11 @@ const FakeSelect = styled.button`
   height: 48px;
   border-radius: 4px;
   font-size: 16px;
-  color: ${black};
+  color: ${colors["gray"]["800"]};
   font-family: "Muli", sans-serif;
   padding: 4px 16px;
   background-color: transparent;
-  border: 1px solid ${greyLight};
+  border: 1px solid ${colors["gray"]["200"]};
   outline: none;
   cursor:pointer;
 
@@ -25,7 +25,7 @@ const FakeSelect = styled.button`
     box-shadow: ${props =>
       props.badInput ? "0 2px 2px 0 " + colors["red"]["500P"] : "0 4px 8px 0 rgba(0, 0, 0, .05)"};
     border: ${props =>
-      props.badInput ? "1px solid " + colors["red"]["500P"] : "1px solid " + greyLight};
+      props.badInput ? "1px solid " + colors["red"]["500P"] : "1px solid " + colors["gray"]["800"]};
   }
 
   ${props => props.style};
@@ -46,7 +46,7 @@ const FakeSelectList = styled.ul`
   z-index: 2;
   top: 49px;
   width: 100%;
-  background-color: ${white};
+  background-color: #FFF;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.05);
   border-top: none;
@@ -62,7 +62,7 @@ const FakeSelectList = styled.ul`
     font-size: 14px;
     padding: 8px;
     margin: 0px;
-    color: ${black};
+    color: ${colors["gray"]["900"]};
     overflow-wrap: break-word;
     &:hover {
       cursor: pointer;
@@ -132,7 +132,7 @@ const Select = props => {
           <span>{selectedValue.icon}</span>
           <span>{selectedValue.name}</span>
           <span style={{verticalAlign: "middle"}}>
-            <ArrowDown style={{ width: 20, heigth: 20 }} mainColor={greyDark} />
+            <ArrowDown style={{ width: 20, heigth: 20 }} mainColor={colors["gray"]["600"]} />
           </span>
         </FakeSelect>
         <FakeSelectList className="fake-select-list" collapsed={isSelectListCollapsed} role="listbox" ref={fakeSelectList}> 
