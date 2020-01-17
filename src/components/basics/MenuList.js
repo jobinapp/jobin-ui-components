@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
 import { greyBackground } from "../../constants/colors";
 
@@ -36,8 +36,23 @@ const Option = styled.div`
 `;
 
 export default function MenuList(props) {
+    const mainView = useRef();
+
+    const handleClickOutside = e =>{
+        if (!mainView.current.contains(e.target) && props.onClickOutside) {
+            props.onClickOutside();
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
-        <Menu {...props}>
+        <Menu ref={mainView} {...props}>
             {props.aditionalAction && (
                 <CallToAction
                     style={{ position: "absolute", right: 0, fontSize: 12, marginTop: 8, marginRight: 8 }}
