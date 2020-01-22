@@ -143,6 +143,7 @@ const Modal = props => {
                                     disabled={props.disabled}
                                     onClick={props.onClick}
                                     mainColor={props.buttonMainColor}
+                                    disabled={props.buttonDisabled}
                                 />
                             </RightButtonsContainer>
                         )}
