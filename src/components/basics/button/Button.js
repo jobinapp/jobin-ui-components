@@ -17,7 +17,7 @@ const ButtonStyled = styled.button`
 	font-weight: bold;
 	font-size: 16px;
 	line-height: 24px;
-	color: ${props => (props.empty ? props.mainColor || colors["green"]["500P"] : "#fff")};
+	color: ${props => (!props.empty ? props.mainColor || colors["green"]["500P"] : "#fff")};
 	align-items: center;
 	justify-content: center;
 	cursor: ${props => (props.disabled || props.loading) ? null : "pointer"};
