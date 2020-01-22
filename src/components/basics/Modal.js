@@ -9,13 +9,15 @@ import BackArrow from "../../icons/images/BackArrow";
 import Close from "../../icons/images/Close";
 
 const Background = styled.div`
-    position: absolute;
+    position: fixed;
     background: rgba(0,0,0,.6);
     height: 100%;
     width: 100%;
     opacity: 0;
     transition: opacity .3s ease-in-out;
     z-index: 100;
+    top: 0; 
+    left:0;
 `;
 const ModalStyled = styled.div`
     position: absolute;
