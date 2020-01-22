@@ -23,11 +23,6 @@ const ButtonStyled = styled.button`
 	cursor: ${props => (props.disabled || props.loading) ? null : "pointer"};
 	outline: 0px;
 	opacity: ${props => props.disabled ? 0.5 : 1.0};
-
-	${
-		props => console.log(props.empty ? "transparent" : (props.mainColor || colors["green", "500P"]))
-	}
-
 	${props => props.style}
 
 	:hover {
