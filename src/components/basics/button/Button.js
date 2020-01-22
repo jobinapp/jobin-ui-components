@@ -11,18 +11,23 @@ const ButtonStyled = styled.button`
 	padding: 12px 24px 12px 24px;
 	height: 56px;
 	background-color: ${props =>
-		props.empty ? "transparent" : props.mainColor || colors["green", "500P"]};
+		props.empty ? "transparent" : (props.mainColor || colors["green"]["500P"])};
 	border-radius: 4px;
 	font-family: "Muli", sans-serif;
 	font-weight: bold;
 	font-size: 16px;
 	line-height: 24px;
-	color: ${props => (!props.empty ? props.mainColor || colors["green"]["500P"] : "#fff")};
+	color: ${props => ( props.empty ? (props.mainColor || colors["green"]["500P"]) :  "#fff")};
 	align-items: center;
 	justify-content: center;
 	cursor: ${props => (props.disabled || props.loading) ? null : "pointer"};
 	outline: 0px;
 	opacity: ${props => props.disabled ? 0.5 : 1.0};
+
+	${
+		props => console.log(props.empty ? "transparent" : (props.mainColor || colors["green", "500P"]))
+	}
+
 	${props => props.style}
 
 	:hover {
@@ -33,11 +38,11 @@ const ButtonStyled = styled.button`
 
 const Button = props => {
 	const defaultOptions = {
-		loop: true,
-		autoplay: true,
-		animationData: cardSpinnerData.default,
-		rendererSettings: {
-		preserveAspectRatio: "xMidYMid slice"
+			loop: true,
+			autoplay: true,
+			animationData: cardSpinnerData.default,
+			rendererSettings: {
+			preserveAspectRatio: "xMidYMid slice"
 		}
 	};
   	const {disabled, loading, onClick, buttonText, ...rest } = props
