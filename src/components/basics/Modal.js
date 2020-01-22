@@ -144,6 +144,7 @@ const Modal = props => {
                                     onClick={props.onClick}
                                     mainColor={props.buttonMainColor}
                                     disabled={props.buttonDisabled}
+                                    loading={props.buttonLoading}
                                 />
                             </RightButtonsContainer>
                         )}
