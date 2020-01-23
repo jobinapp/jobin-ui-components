@@ -73,11 +73,9 @@ const FakeSelectList = styled.ul`
 
 const Select = props => {
   const { options, name, onSelectedValue, ...rest } = props;
-  const [selectedValue, setSelectedValue] = useState(
-    options.some(op => op.default)
-      ? options.filter(op => op.default)[0]
-      : options[0]
-  );
+  const [selectedValue, setSelectedValue] = useState(options.some(op => op.default)
+  ? options.filter(op => op.default)[0]
+  : options[0]);
   const [isSelectListCollapsed, setisSelectListCollapsed] = useState(true);
   const selectRef = useRef(null);
   const fakeSelectWrapper = useRef(null);
@@ -99,11 +97,23 @@ const Select = props => {
     }
   };
 
+  const selectDefaultValue = () => {
+    setSelectedValue(() => (
+      options.some(op => op.default)
+      ? options.filter(op => op.default)[0]
+      : options[0]
+    ));
+  };
+
   useEffect(() => {
     window.addEventListener("click", handleClickOutsideSelect)
 
     return () => window.removeEventListener("click", handleClickOutsideSelect)
   }, []);
+
+  useEffect(() => {
+    selectDefaultValue();
+  }, [props.options])
 
   return (
     <div {...rest}>
