@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="24px" viewBox="0 0 32 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 9</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M22.0002,-0.0001 L2.1002,-0.0001 C0.9422,-0.0001 0.000199999999,0.9509 0.000199999999,2.1199 L0.000199999999,13.8799 C0.000199999999,15.0489 0.9422,15.9999 2.1002,15.9999 L21.9002,15.9999 C23.0582,15.9999 24.0002,15.0489 24.0002,13.8799 L24.0002,1.9999 C24.0002,0.8969 23.1032,-0.0001 22.0002,-0.0001" id="path-1"></path>
+        <filter x="-22.9%" y="-34.4%" width="154.2%" height="181.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="📎-Iconos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/8.-M/Credit-card/Mastercard" transform="translate(-1.000000, -5.000000)">
+            <g id="Group-10" transform="translate(4.000000, 4.000000)">
+                <g id="Group-9" transform="translate(0.000000, 4.000000)">
+                    <g id="Path">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <polygon id="Fill-5" fill="#EA611D" points="9.813 11.93 14.188 11.93 14.188 4.069 9.813 4.069"></polygon>
+                    <path d="M10.0905,8.0009 C10.0885,6.4669 10.7925,5.0169 11.9995,4.0689 C9.8285,2.3629 6.6865,2.7399 4.9795,4.9109 C3.2735,7.0819 3.6505,10.2249 5.8215,11.9309 C7.6345,13.3549 10.1865,13.3549 11.9995,11.9309 C10.7935,10.9839 10.0895,9.5349 10.0905,8.0009" id="Fill-7" fill="#E31622"></path>
+                    <path d="M20.089,8.0009 C20.089,10.7619 17.851,12.9999 15.089,12.9999 C13.969,12.9999 12.881,12.6239 12,11.9309 C14.171,10.2249 14.547,7.0819 12.841,4.9109 C12.595,4.5979 12.313,4.3149 12,4.0689 C14.17,2.3629 17.313,2.7389 19.02,4.9099 C19.713,5.7909 20.089,6.8789 20.089,7.9999 L20.089,8.0009 Z" id="Fill-8" fill="#F49E1F"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

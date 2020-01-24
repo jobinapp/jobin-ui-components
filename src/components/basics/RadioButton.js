@@ -11,6 +11,9 @@ const Container = styled.div`
     height: 48px;
     align-items: center;
     cursor: pointer;
+    .icon {
+        width: 100%;
+    }
     ${props => props.style}
 `;
 const Title = styled.label`
@@ -37,30 +40,39 @@ const RadioButtonOffStyled = styled(RadioButtonOff)`
 `;
 
 const RadioButton = props => {
-
     return (
         <Container
             onClick={() => {
-                if(props.onClick) props.onClick(props.item);
+                if (props.onClick) props.onClick(props.item);
             }}
             style={props.style}
+            className={props.className}
         >
-            <div style={{ height: 20 }}>
-                {props.item.selected ? 
-                    props.customOnImage ?
+            <div className="radio-button-wrapper" style={{ height: 20 }}>
+                {props.item.selected ? (
+                    props.customOnImage ? (
                         props.customOnImage
-                    :
-                        <RadioButtonOnStyled />
-                :
-                    props.customOffImage ?
-                        props.customOffImage
-                    :
-                        <RadioButtonOffStyled />
-                }
+                    ) : (
+                        <RadioButtonOnStyled className="radio-button radio-button-on"  />
+                    )
+                ) : props.customOffImage ? (
+                    props.customOffImage
+                ) : (
+                    <RadioButtonOffStyled className="radio-button radio-button-off" />
+                )}
             </div>
-            <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
-                <Title>{props.item.title}</Title>
-                {props.item.subtitle && <Subtitle>{props.item.subtitle}</Subtitle>}
+            <div className="text-icon-wrapper" style={{ display: "flex", alignItems: "center" }}>
+                {props.item.icon &&
+                    <div className="icon-wrapper">
+                        <img className="icon" src={props.item.icon}/>
+                    </div>
+                }
+                <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
+                    <Title>{props.item.title}</Title>
+                    {props.item.subtitle && (
+                        <Subtitle>{props.item.subtitle}</Subtitle>
+                    )}
+                </div>
             </div>
         </Container>
     );

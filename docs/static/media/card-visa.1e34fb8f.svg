@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="24px" viewBox="0 0 32 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 12</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M22,-0.0001 L2.1,-0.0001 C0.942,-0.0001 0,0.9509 0,2.1199 L0,13.8799 C0,15.0489 0.942,15.9999 2.1,15.9999 L21.9,15.9999 C23.058,15.9999 24,15.0489 24,13.8799 L24,1.9999 C24,0.8969 23.103,-0.0001 22,-0.0001" id="path-1"></path>
+        <filter x="-22.9%" y="-34.4%" width="154.2%" height="181.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="📎-Iconos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/8.-M/Credit-card/Visa" transform="translate(-1.000000, -5.000000)">
+            <g id="Group-13" transform="translate(4.000000, 4.000000)">
+                <g id="Group-12" transform="translate(0.000000, 4.000000)">
+                    <g id="Path">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#025197" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M7.6289,5.2065 L6.1699,9.0135 L5.5689,6.0345 C5.5689,6.0345 5.5099,5.2075 4.9209,5.2075 L2.5169,5.2075 L2.5169,5.3225 C2.5169,5.3225 3.2309,5.4555 4.0569,5.9725 L4.0499,5.9725 L5.3329,10.8135 L6.8229,10.8135 L9.1399,5.2065 L7.6289,5.2065 Z" id="Fill-4" fill="#FFFFFF"></path>
+                    <polygon id="Fill-6" fill="#FFFFFF" points="8.8145 10.8139 10.2215 10.8139 11.1315 5.1859 9.7045 5.1859"></polygon>
+                    <path d="M13.2422,6.7172 C13.2422,6.7172 13.4492,5.7652 15.2702,6.5302 L15.4762,5.3522 C15.4762,5.3522 14.8552,5.1032 14.1112,5.1032 C13.3662,5.1032 11.7522,5.5792 11.7522,6.9652 C11.7522,8.3512 13.7592,8.4132 13.7592,9.1782 C13.7592,9.9442 11.9592,9.8622 11.4212,9.3652 L11.1932,10.5862 C11.1932,10.5862 12.0002,10.8962 12.7242,10.8962 C13.4492,10.8962 15.2492,10.7312 15.2492,8.9312 C15.2492,7.3582 13.2422,7.6692 13.2422,6.7172" id="Fill-8" fill="#FFFFFF"></path>
+                    <path d="M17.4004,8.8481 L18.1874,6.7791 L18.6634,8.8481 L17.4004,8.8481 Z M19.1594,5.2481 L17.9184,5.2481 C17.9184,5.2481 17.4624,5.3001 17.2564,5.8481 C17.0594,6.3691 15.1664,10.8141 15.1664,10.8141 L16.7174,10.8141 L16.9874,10.0071 L18.8904,10.0071 L19.0484,10.8061 L20.3944,10.8061 L19.1594,5.2481 Z" id="Fill-10" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
