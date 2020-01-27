@@ -23,14 +23,14 @@ const Image = styled.img`
 `;
 
 const ButtonImage = props => {
-
+    const {svgSrc, src, ...rest} = props
     return (
         <ButtonImageStyled
-            {...props}
+            {...rest}
             onClick={props.disabled ? null : props.onClick}
         >
-            {props.svgSrc ? <props.svgSrc /> : <Image src={props.src} />}
-            {props.buttonText}
+            {svgSrc ? <svgSrc /> : <Image src={src} />}
+           {props.buttonText}
         </ButtonImageStyled>
     );
 };

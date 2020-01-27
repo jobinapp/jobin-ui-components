@@ -4,7 +4,6 @@ import { black, greyBackground } from "../../../constants/colors";
 
 const ButtonImageStyled = styled.button`
     display: flex;
-    flex-direction: column;
     border: 0px;
     padding: 12px;
     color: ${black};
@@ -31,14 +30,15 @@ const Image = styled.img`
 `;
 
 const ButtonTextImage = props => {
-
+    const {src, flexDirection, ...rest} =props
     return (
         <ButtonImageStyled
-            {...props}
+            {...rest}
             onClick={props.disabled ? null : props.onClick}
+            style={{flexDirection: flexDirection || "column"}}
         >
             <Image src={props.src} />
-            {props.buttonText}
+            <span>{props.buttonText}</span>
         </ButtonImageStyled>
     );
 };

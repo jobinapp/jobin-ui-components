@@ -26,6 +26,7 @@ storiesOf("Components|Button", module)
             src={text("src", "http://jobin.es/resources/ic_pro.png")}
             disabled={boolean("disabled", false)}
             onClick={() => alert("Hola mundo")}
+            flexDirection={text("flex-direction", "column")}
         />
     ))
     .add("Only image", () => (
