@@ -21,6 +21,7 @@ const RadioButtonList = props => {
             }
         }
         setItems(tempArray);
+        console.log(tempArray)
     }
 
     return (

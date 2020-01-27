@@ -53,12 +53,12 @@ const RadioButton = props => {
                     props.customOnImage ? (
                         props.customOnImage
                     ) : (
-                        <RadioButtonOnStyled className="radio-button radio-button-on"  />
+                        <RadioButtonOnStyled className="radio-button radio-button-on" mainColor={props.item.radioButtonMainColor}  />
                     )
                 ) : props.customOffImage ? (
                     props.customOffImage
                 ) : (
-                    <RadioButtonOffStyled className="radio-button radio-button-off" />
+                    <RadioButtonOffStyled className="radio-button radio-button-off" mainColor={props.item.radioButtonMainColor}/>
                 )}
             </div>
             <div className="text-icon-wrapper" style={{ display: "flex", alignItems: "center" }}>

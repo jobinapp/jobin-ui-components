@@ -18,6 +18,7 @@ storiesOf("Components|RadioButton", module)
             <RadioButton
                 item={object("item", {id: "option-1", title: "Option 1", subtitle: "Subtitulo", selected: true})}
                 onClick={item => console.log(item)}
+                
             />
         </div>
     )).add("With Image", () => (
