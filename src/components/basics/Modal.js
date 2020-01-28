@@ -96,38 +96,41 @@ const Modal = props => {
     }
 
     return (
-        <div>
+        <div className={props.className}>
             <Background
                 ref={background}
                 onClick={initClose}
                 onTransitionEnd={onTransitionEnd}
+                className="modal-overlay"
             />
             <ModalStyled
                 big={props.big}
                 ref={modal}
                 bottomView={(props.goBack || props.buttonText) ? true : false}
+                className="modal-wrapper"
             >
                 <ButtonImage
                     style={{ position: "absolute", top: 16, right: 24 }}
                     svgSrc={Close}
                     onClick={initClose}
+                    className="modal-button-close"
                 />
-                <section>
-                    <Header>
-                        <Title>{props.title}</Title>
-                        <Subtitle>{props.subtitle}</Subtitle>
+                <section className="modal-header-wrapper"> 
+                    <Header className="modal-header">
+                        <Title className="modal-header-title">{props.title}</Title>
+                        <Subtitle className="modal-header-subtitle">{props.subtitle}</Subtitle>
                     </Header>
                     {props.children}
                 </section>
                 {(props.goBack || props.buttonText) && (
-                    <ButtonsContainer>
+                    <ButtonsContainer className="modal-button-container">
                         {props.goBack && (
-                            <LeftButtonsContainer>
-                                <ButtonImage svgSrc={BackArrow} onClick={props.goBack} />
+                            <LeftButtonsContainer className="modal-left-button-container"> 
+                                <ButtonImage className="modal-button modal-left-button" svgSrc={BackArrow} onClick={props.goBack} />
                             </LeftButtonsContainer>
                         )}
                         {props.buttonText && (
-                            <RightButtonsContainer>
+                            <RightButtonsContainer className="modal-right-button-container">
                                 {props.secondButtonText &&
                                     <Button
                                         style={{marginRight: 8}}
@@ -135,6 +138,7 @@ const Modal = props => {
                                         loading={props.loading}
                                         disabled={props.disabled}
                                         onClick={props.secondOnClick}
+                                        className="modal-button modal-left-button"
                                     />
                                 }
                                 <Button
@@ -145,6 +149,7 @@ const Modal = props => {
                                     mainColor={props.buttonMainColor}
                                     disabled={props.buttonDisabled}
                                     loading={props.buttonLoading}
+                                    className="modal-button modal-right-button"
                                 />
                             </RightButtonsContainer>
                         )}
