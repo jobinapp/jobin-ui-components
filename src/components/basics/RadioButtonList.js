@@ -26,9 +26,10 @@ const RadioButtonList = props => {
 
     return (
         <div className={props.className} style={props.style}>
-            {items.map((item) =>{
+            {items.map((item, i) =>{
                 return(
                     <RadioButton
+                    key={"radioButtonListItem-"+i}
                         item={item}
                         onClick={() => changeSelection(item)}
                         className="radio-button-item"
