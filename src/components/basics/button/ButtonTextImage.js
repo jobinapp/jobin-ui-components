@@ -30,14 +30,15 @@ const Image = styled.img`
 `;
 
 const ButtonTextImage = props => {
-    const {src, svgSrc, flexDirection, ...rest} =props
+    const {src, svgSrc, flexDirection, ...rest} = props
+    const SvgSrc = svgSrc;
     return (
         <ButtonImageStyled
             {...rest}
             onClick={props.disabled ? null : props.onClick}
             style={{flexDirection: flexDirection || "column"}}
         >
-              {svgSrc ? svgSrc : <Image src={src} />}
+              {svgSrc ? SvgSrc : <Image src={src} />}
             <span>{props.buttonText}</span>
         </ButtonImageStyled>
     );
