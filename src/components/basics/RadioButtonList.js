@@ -31,6 +31,7 @@ const RadioButtonList = props => {
                     <RadioButton
                         item={item}
                         onClick={() => changeSelection(item)}
+                        className="radio-button-item"
                     />
                 )
             })}
