@@ -25,7 +25,7 @@ const RadioButtonList = props => {
     }
 
     return (
-        <div style={props.style}>
+        <div className={props.className} style={props.style}>
             {items.map((item) =>{
                 return(
                     <RadioButton
