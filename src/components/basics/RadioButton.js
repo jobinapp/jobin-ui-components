@@ -67,7 +67,7 @@ const RadioButton = props => {
                         <img className="icon" src={props.item.icon}/>
                     </div>
                 }
-                <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
+                <div className="text-wrapper" style={{ display: "flex", flex: 1, flexDirection: "column" }}>
                     <Title>{props.item.title}</Title>
                     {props.item.subtitle && (
                         <Subtitle>{props.item.subtitle}</Subtitle>
